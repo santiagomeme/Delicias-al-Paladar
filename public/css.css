@@ -172,10 +172,15 @@
  
       #top-panel {
         background: linear-gradient(to right ,  #d6d6d6, #d6d6d6, #d6d6d6);
-        padding: 2px;
+        padding: 10px;
         display: flex;
         justify-content: space-between;
         align-items: center; /* Agrega esto para centrar verticalmente */
+        position: relative; /* Ajusta la posición para que el z-index funcione */
+        z-index: 998; /* Asegura que el panel superior esté por debajo del panel derecho */
+        margin-right: 0px; 
+      
+      
       }
       #top-panel {
         display: flex;
@@ -200,11 +205,35 @@
       }
       
     
-#top-panel {
-    position: relative; /* Ajusta la posición para que el z-index funcione */
-    z-index: 998; /* Asegura que el panel superior esté por debajo del panel derecho */
-    margin-right: 0px; /* Ajusta el margen derecho para dejar espacio al panel derecho */
+
+
+
+
+
+  #inputBusqueda {
+    width: 200px;
   }
+  
+  /* Estilos para dispositivos móviles */
+  @media only screen and (max-width: 767px) {
+    #top-panel {
+      flex-direction: column;
+    }
+  
+    #inputBusqueda {
+      width: 100%;
+      margin-top: 10px;
+    }
+  
+    #logo img {
+      width: 50%;
+      margin-bottom: 10px;
+    }
+  }  
+
+
+
+
 #right-panel {
  /* position: fixed;*/
   top: 0;
@@ -301,11 +330,14 @@ body {
 
  #logo{
   border-radius: 50%;
-  height: 95px;
-  width: 95px;
+  height: 45px;
+  width: 55px;
   border:none;
   background-color: rgb(255, 255, 255);
-  position: relative;
+  position:relative;
+    align-items: center;
+  display: flex;
+  justify-content: center;
 
  }
 
@@ -315,17 +347,19 @@ body {
   border-radius: 50%;
   height: 150px;
   width: 150px;
-  
+  position: relative;
+  margin-top: 2px;
+
  }
 
 
  
  #imgLogo{
   border-radius: 50%;
-  height:90px;
-  width: 90px;
+  max-height: 60%; /* Establece la altura máxima al 100% del contenedor */
+  max-width: 60%;
   position: relative;
-  margin-top: 2px;
+  margin-top: 0px;
 
  }
 
@@ -496,8 +530,30 @@ position: relative;
 #imgBuscar{
   height: 50px;
   width: 50px;
-  
-
-  
 
 }
+
+.mostrar {
+  display: block !important;
+}
+
+.detalle {
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

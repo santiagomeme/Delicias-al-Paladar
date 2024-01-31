@@ -1,11 +1,37 @@
 
-document.addEventListener('DOMContentLoaded', function () {
 
+// Agrega esta línea al principio de tu script
+window.fbAsyncInit = function() {
+  FB.init({
+    appId: '928300531633759',
+    autoLogAppEvents: true,
+    xfbml: true,
+    version:  'v19.0'
+  });
+
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+};
+
+// Agrega este fragmento de código después de la inicialización de tu script
+(function(d, s, id){
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "https://connect.facebook.net/en_US/sdk.js";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  function onResize() {
 
 var productos = [{
     id: 1,
-    nombre: "Arroz",
-    precio: 1234
+    nombre: "Pollo",
+    precio: 120000,
+    detalle: "Hawallano, Verduras, Agridulce"
   }, {
     id: 2,
     nombre: "carne",
@@ -81,12 +107,15 @@ var productos = [{
           <div class="card-body">
             <h5 class="card-title">${producto.nombre}</h5>
             <p class="card-text">Precio: ${producto.precio}</p>
+            <div id="detalle-${producto.id}" class="detalle" style="display: none;">
+            <p>Detalle: ${producto.detalle}</p></div>            
             <button id="btn-catalogo-${producto.id}" class="btn btn-success">Agregar</button>
+            <button id="btn-detalle-${producto.id}" class="btn btn-info">Detalles</button>
+
           </div>
         </div>
       </div>`;
   };
-  
   const productoCarritoHTML = (producto) => {
     return`
       <div class="col">
@@ -97,7 +126,11 @@ var productos = [{
           />
           <div class="card-body">
             <h5 class="card-title">${producto.nombre}</h5>
+            <div id="detalle-${producto.id}" style="display: none;">
+            <p>Detalle: ${producto.detalle}</p></div>               
             <button id="btn-carrito-${producto.idCompra}" class="btn btn-danger">Quitar</button>
+            <button id="btn-detalle-${producto.id}" class="btn btn-info">Detalles</button>
+
           </div>
         </div>
       </div>`;
@@ -170,6 +203,122 @@ var productos = [{
 
 
 
+
+
+  
+
+// Añade estas funciones al final de tu archivo JS
+
+const abrirDetalleProductoPanel = (producto) => {
+  const detallePanel = document.getElementById("detalle");
+  
+  // Si el detalle está visible, ocúltalo
+  if (detallePanel.style.display === "block") {
+    detallePanel.style.display = "none";
+  } else {
+    // Si el detalle está oculto, actualiza y muestra
+    detallePanel.innerHTML = `<p>Detalle: ${producto.detalle}</p>`;
+    detallePanel.style.display = "block";
+  }
+};
+
+
+const abrirPanelFlotante = () => {
+  const detalleProductoPanel = document.getElementById("detalleProductoPanel");
+  const panelFlotante = document.getElementById("panelFlotante");
+
+  detalleProductoPanel.style.display = "none";
+  panelFlotante.style.display = "block";
+};
+
+
+
+
+
+// Llamar a ambas funciones para agregar los listeners
+const botonesCatalogoDetalle = () => {
+  for (const producto of productos) {
+    const botonId = `btn-detalle-${producto.id}`;
+    const botonNodo = document.getElementById(botonId);
+
+    botonNodo.addEventListener("click", () => {
+      toggleDetalleVisibilidad(producto.id);
+    });
+  }
+};
+
+const toggleDetalleVisibilidad = (productoId) => {
+  const detalleId = `detalle-${productoId}`;
+  const detalleNodo = document.getElementById(detalleId);
+
+  // Alterna la visibilidad del detalle
+  detalleNodo.classList.toggle("mostrar");
+};
+
+
+// Llama a esta función después de cargar la página
+
+
+
+
+
+
+
+
+  FB.login(function(response) {
+    // handle the response
+  }, {scope: 'public_profile,email'});
+
+  FB.login(function(response) {
+    if (response.status === 'connected') {
+      // Logged into your webpage and Facebook.
+    } else {
+      // The person is not logged into your webpage or we are unable to tell. 
+    }
+  });
+
+  FB.logout(function(response) {
+    // Person is now logged out
+ });
+
+
+
+
+ 
+ function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
+  console.log('statusChangeCallback');
+  console.log(response);                   // The current login status of the person.
+  if (response.status === 'connected') {   // Logged into your webpage and Facebook.
+    testAPI();  
+  } else {                                 // Not logged into your webpage or we are unable to tell.
+    document.getElementById('status').innerHTML = 'Please log ' +
+      'into this webpage.';
+  }
+}
+
+
+function checkLoginState() {               // Called when a person is finished with the Login Button.
+  FB.getLoginStatus(function(response) {   // See the onlogin handler
+    statusChangeCallback(response);
+  });
+}
+
+
+function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+  console.log('Welcome!  Fetching your information.... ');
+  FB.api('/me', function(response) {
+    console.log('Successful login for: ' + response.name);
+    document.getElementById('status').innerHTML =
+      'Thanks for logging in, ' + response.name + '!';
+  });
+}
+
+
+
+
+
+
+  
 
 
 function validar() {
@@ -309,10 +458,10 @@ googleSignInButton.addEventListener("click", function () {
 });
 
 // Manejar clic en el botón de inicio de sesión con Facebook (requiere configuración adicional)
-facebookSignInButton.addEventListener("click", function () {
+//facebookSignInButton.addEventListener("click", function () {
   // Implementa la lógica de inicio de sesión con Facebook aquí
   // Esto puede requerir configuración adicional, como la inclusión del SDK de Facebook
-});
+//});
 
 
 
@@ -371,7 +520,7 @@ var precioTotalElement = document.getElementById("precioTotal");
 precioTotalElement.textContent = nuevoValorDelCarrito;
 
 
- carrito = [];
+var carrito = [];
 let precioTotal = 0;
 
 // Función para agregar un artículo al carrito
@@ -501,7 +650,6 @@ function enviarCorreoConfirmacion(customerId) {
     }
   });
 
-  // Función para enviar un correo electrónico de confirmación al cliente
 
   // Lógica para enviar un correo electrónico de confirmación al cliente
   console.log('Enviando correo de confirmación al cliente: ' + customerId);
@@ -699,10 +847,19 @@ function verificarNequi() {
       return false;
     }
     
+  document.getElementById("btnNequi").addEventListener("click", verificarNequi);
 
+  botonesCatalogoDetalle();
+ 
+  console.log('La ventana cambió de tamaño');
 
+}
+window.addEventListener('resize', onResize);
 
-
-
-  document.getElementById("btnPagarNequi").addEventListener("click", verificarNequi);
 });
+
+
+
+
+
+

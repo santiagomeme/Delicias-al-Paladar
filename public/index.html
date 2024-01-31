@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Delicias al Palada</title>
+    <title>Welcome to Delicias al Paladar</title>
 
     <link rel="stylesheet" type="text/css" href="css.css">
 
@@ -13,6 +13,9 @@
     integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
     crossorigin="anonymous"
      />
+
+
+     
     <!-- update the version number as needed -->
     <script defer src="/__/firebase/10.7.1/firebase-app-compat.js"></script>
     <!-- include only the Firebase features as you need -->
@@ -29,51 +32,41 @@
       initialize the SDK after all desired features are loaded, set useEmulator to false
       to avoid connecting the SDK to running emulators.
     -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
 
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
+   
   </head>
   <body>
 
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId            : '928300531633759',
+          xfbml            : true,
+          version          : 'v19.0'
+        });
+      };
+    </script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
 
 
 
+    <div id="fb-root"></div>
+<script type="module" src="prueba.js"></script>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+   <div class="fb-login-button" data-width="" data-size="" data-button-type="" data-layout="" data-auto-logout-link="true" data-use-continue-as="true"></div>
+    
+   <div id="fb-root"></div>
 
-          
-
-      <script type="module" src="prueba.js"></script>
-      
-      
-      
-      
-                        
-        
-          
           <div id="top-panel">
-      
-          
-            
-            <div  id="logo"><img  img id="imgLogo"  src="../images/logo.png" alt="logo"></div>
+    
+           <div  id="logo"><img  img id="imgLogo"  src="../images/logo.jpg" alt="logo" ></div>
             <input type="text" class="form-control" id="inputBusqueda" placeholder="Buscar platos">
-            <span class="btn btn-primary" id="btnBuscar"><img  id="imgBuscar" src="../images/iconBuscar1.PNG"alt="buscar" ></span>
+            <span class="btn btn-primary" id="btnBuscar"><img  id="imgBuscar" src="../images/iconBuscar1.jpg"alt="buscar" ></span>
             <span class="btn btn-primary" id="btnGuiaPedido">Tu Guia de Pedido</span>
               <span class="btn btn-primary" id="btnEnviarComentario" >Comentario</span>
               <span class="btn btn-primary" id="mostrarCompra" onclick="mostrarCompra()">Finalizar Compra</span>
-              <span class="btn btn-primary"  id="mostrarRegistro" onclick="mostrarRegistro()"> <img  id="imgUser" src="../images/iconUser1.PNG"alt="registrarse" ></span>
-            </div>
+              <span class="btn btn-primary"  id="mostrarRegistro" onclick="mostrarRegistro()"> <img  id="imgUser" src="../images/iconUser11.jpg"alt="registrarse" ></span>
+           </div>
          
       
       <!--codigo del contenedor de la caja de registro-->
@@ -89,11 +82,15 @@
       <!-- Contenedor para mostrar los resultados de búsqueda -->
       <div id="panelBusqueda"></div>
       </div>
+
+
+
+
+      
       <!--<img id="mostrarRegistro" src="../images/iconUser.png" alt="Registrarse" onclick="mostrarRegistro()">-->
       <div class="registro-box" id="registroBox" style="display: none;">
           <!-- Contenido del formulario de registro -->
       <form id="formRegistro" clsss="form" onclick="mostrarRegistro()" id="formularioRegistro" onsubmit="return validarRegistro()">
-        <img id="RegistroLogo" src="../images/logo.png" alt="logo">
       
         <label for="correoRegistro">Correo Electrónico:</label>
         <input type="email" id="correoRegistro" placeholder="Correo Electrónico" required>
@@ -103,10 +100,19 @@
         <button id="buttonInicio" type="submit">Iniciar Sesión </button>
         <button id="googleSignInButton">Iniciar sesión con Google</button>
         <button id="facebookSignInButton">Iniciar sesión con Facebook</button>
+
+
+        <fb:login-button          class="fb-login-button" data-width="" data-size="" data-button-type="" data-layout="" data-auto-logout-link="true" data-use-continue-as="true"
+        scope="public_profile,email" onlogin="checkLoginState();">
+         </fb:login-button>
+
+        <div id="status"></div>
+
       </form>
       </div>
       
-      
+     
+       
       <!--<img id="mostrarRegistro" src="../images/iconUser.png" alt="Registrarse" onclick="mostrarRegistro()">-->
       <div id="container"> 
        <div  class="container-flex">
@@ -120,7 +126,6 @@
           <!-- Añade esto al final de tu carrito -->
        </div>
       </div>
-      
       
         <div id="right-panel">
             <div class="panel-item">
@@ -173,11 +178,14 @@
         <h2>Resumen de Compra</h2>
         <div id="items-panel"></div>
         <p>Total: <span id="total-panel">0</span></p>
+        <h1 class="container1"> <span id="precioTotal"></span></h1>
+
         <p id="totalFactura">Total: $0.00</p>
         
             <button onclick="realizarPago()">Pagar</button>
-            <button id="btnNequi"onclick="redirigirANequi()"onclick="verificarNequi()" onclick="realizarPagoNequi()">Pagar con Nequi</button>
-          <!-- Botón para cerrar el panel flotante -->
+            <button id="btnNequi" onclick="realizarPagoNequi()">Pagar con Nequi</button>
+            
+            <!-- Botón para cerrar el panel flotante -->
           <p>Pagar con targeta</p>
         <!-- campos necesarios para el pago (tarjeta, dirección, etc.) -->
       
@@ -188,13 +196,13 @@
          <label for="seleccionTarjeta">Seleccionar tarjeta:</label>
           <select id="seleccionTarjeta" name="seleccionTarjeta">
             <option value="visa">
-              <img src="../images/visa.PNG" alt="Visa">Visa 
+              <img src="../images/visa.jpg" alt="Visa">Visa 
             </option>
             <option value="mastercard">
-              <img src="../images/master.PNG"alt="MasterCard">MasterCard 
+              <img src="../images/master.jpg"alt="MasterCard">MasterCard 
             </option>
             <option value="amex">
-              <img src="../images/american.PNG" alt="American Express">American Express 
+              <img src="../images/american.jpg" alt="American Express">American Express 
             <!-- Agrega más opciones según las tarjetas que desees ofrecer -->
           </select>
           <div>
@@ -225,70 +233,19 @@
               </p>
             </div>
           </div>
-        
-      
-             
+
+<!-- Agrega esto al final de tu HTML, antes de cerrar el body -->
+<div id="detalleProductoPanel" style="display: none;">
+  <div>
+      <img id="detalleProductoImg" src="" alt="Detalle del Producto">
+      <p id="detalleProductoTexto"></p>
+      <button onclick="abrirPanelFlotante()">Ir al Pago</button>
+  </div>
+</div>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
-    </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
-
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-    </script>
   </body>
 </html>
