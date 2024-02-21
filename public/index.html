@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="es">
+  <head>                                                                                                                                                                                                                                                                                           
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Delicias al Paladar</title>
+    <title>Welcomess to Delicias al Paladar</title>
 
     <link rel="stylesheet" type="text/css" href="css.css">
 
@@ -13,7 +13,6 @@
     integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
     crossorigin="anonymous"
      />
-
 
      
     <!-- update the version number as needed -->
@@ -32,11 +31,6 @@
       initialize the SDK after all desired features are loaded, set useEmulator to false
       to avoid connecting the SDK to running emulators.
     -->
-
-   
-  </head>
-  <body>
-
     <script>
       window.fbAsyncInit = function() {
         FB.init({
@@ -45,29 +39,41 @@
           version          : 'v19.0'
         });
       };
+
+
+      (function(d, s, id){
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "https://connect.facebook.net/en_US/sdk.js";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+
+
     </script>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
 
+    <script  defer type="module" src="firebase-config.js"></script>
+    <script  defer type="module" src="firebase-auth.js"></script>
 
+        
+  </head>
+  <body>
+ 
 
-    <div id="fb-root"></div>
-<script type="module" src="prueba.js"></script>
-  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
-   <div class="fb-login-button" data-width="" data-size="" data-button-type="" data-layout="" data-auto-logout-link="true" data-use-continue-as="true"></div>
-    
-   <div id="fb-root"></div>
-
+  
+           
           <div id="top-panel">
     
-           <div  id="logo"><img  img id="imgLogo"  src="../images/logo.jpg" alt="logo" ></div>
-            <input type="text" class="form-control" id="inputBusqueda" placeholder="Buscar platos">
-            <span class="btn btn-primary" id="btnBuscar"><img  id="imgBuscar" src="../images/iconBuscar1.jpg"alt="buscar" ></span>
-            <span class="btn btn-primary" id="btnGuiaPedido">Tu Guia de Pedido</span>
-              <span class="btn btn-primary" id="btnEnviarComentario" >Comentario</span>
-              <span class="btn btn-primary" id="mostrarCompra" onclick="mostrarCompra()">Finalizar Compra</span>
-              <span class="btn btn-primary"  id="mostrarRegistro" onclick="mostrarRegistro()"> <img  id="imgUser" src="../images/iconUser11.jpg"alt="registrarse" ></span>
+           <div  id="logo"><img id="imgLogo"  src="../images/logo.png" alt="logo" ></div>
+           <div id="user-info"></div>
+           <input type="text" class="form-control" id="inputBusqueda" placeholder="Buscar platos">
+           <span class="btn btn-primary" id="btnGuiaPedido">Tu Guia de Pedido</span>
+           <button class="btn btn-primary" onclick="abrirChatWhatsApp()">Reservas</button>
+           <span class="btn btn-primary" id="mostrarRegistroButton" >Registrase</span>
            </div>
          
+           <div id="status"></div>
       
       <!--codigo del contenedor de la caja de registro-->
       <h1 id="nombreUsuario"></h1>
@@ -77,50 +83,49 @@
       
       
       
-      
+      <div id="panelBusqueda">
         <div id="resultadoBusqueda">
-      <!-- Contenedor para mostrar los resultados de búsqueda -->
-      <div id="panelBusqueda"></div>
-      </div>
-
-
-
+            <!-- Aquí se mostrarán los resultados de la búsqueda -->
+        </div>
+    </div>
 
       
       <!--<img id="mostrarRegistro" src="../images/iconUser.png" alt="Registrarse" onclick="mostrarRegistro()">-->
-      <div class="registro-box" id="registroBox" style="display: none;">
+      <div class="registro-box" id="registroBox" >
           <!-- Contenido del formulario de registro -->
-      <form id="formRegistro" clsss="form" onclick="mostrarRegistro()" id="formularioRegistro" onsubmit="return validarRegistro()">
-      
-        <label for="correoRegistro">Correo Electrónico:</label>
+      <form id="formRegistro" class="form" onclick="mostrarRegistro()" id="formularioRegistro" onsubmit="return validarInicioSesion()">
+      <label for="correoRegistro">Correo Electrónico:</label>
         <input type="email" id="correoRegistro" placeholder="Correo Electrónico" required>
         <label for="passwordRegistro">Contraseña:</label>
         <input type="password" id="passwordRegistro" placeholder="Contraseña" required>
         <button id="buttonRegistro" type="submit">Registrarse</button>
         <button id="buttonInicio" type="submit">Iniciar Sesión </button>
-        <button id="googleSignInButton">Iniciar sesión con Google</button>
-        <button id="facebookSignInButton">Iniciar sesión con Facebook</button>
-
-
-        <fb:login-button          class="fb-login-button" data-width="" data-size="" data-button-type="" data-layout="" data-auto-logout-link="true" data-use-continue-as="true"
-        scope="public_profile,email" onlogin="checkLoginState();">
+        <button id="googleSignInButton" type="button">Iniciar sesión con Google</button>
+        <button id="facebookSignInButton" type="button">Iniciar sesión con Facebook</button>
+      <div id="fb-root"></div>
+      <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+      <div class="fb-login-button" data-width="" data-size="" data-button-type="" data-layout="" data-auto-logout-link="true" data-use-continue-as="true"></div>
+      
+     
+     <fb:login-button          class="fb-login-button" data-width="" data-size="" data-button-type="" data-layout="" data-auto-logout-link="true" data-use-continue-as="true"
+        scope="public_profile,email" onlogin="checkLoginState()">
          </fb:login-button>
 
-        <div id="status"></div>
+         <fb:logoutButton         class="fb-login-button" data-width="" data-size="" data-button-type="" data-layout="" data-auto-logout-link="true" data-use-continue-as="true"
+         scope="public_profile,email" onlogin="checkLoginState()">
+          </fb:logoutButton>
 
       </form>
       </div>
       
-     
-       
+  
       <!--<img id="mostrarRegistro" src="../images/iconUser.png" alt="Registrarse" onclick="mostrarRegistro()">-->
       <div id="container"> 
        <div  class="container-flex">
           <!--codigo de contenedor del catalogo y carrito-->
         <div  class="container-fluid">
           <div id="resultadoBusqueda"></div>
-      
-          <div id="catalogo" class="row"></div>
+            <div id="catalogo" class="row"></div>
           <h1 class="container1"> <span id="precioTotal"></span></h1>
           <div id="carrito" class="row" ></div>
           <!-- Añade esto al final de tu carrito -->
@@ -158,74 +163,14 @@
               <p>Paginas Web y Apps</p>
               <button class="btn btn-success">Botón 2</button>
             </div>
-            <!-- Agrega más paneles según sea necesario -->
+           </div>
       
       
-        </div>
-      
-      
-      
-      
-      <br>/<br>
-      
-      
-        <div id="formulario-contenedor">
-        <form id="formularioPago">
           
-      <!-- Añade esto al final de tu HTML -->
-      <div id="panelFlotante" style="display: none;">
-       <!-- Aquí agregarás la información del carrito y el formulario para el método de pago -->
-        <h2>Resumen de Compra</h2>
-        <div id="items-panel"></div>
-        <p>Total: <span id="total-panel">0</span></p>
-        <h1 class="container1"> <span id="precioTotal"></span></h1>
-
-        <p id="totalFactura">Total: $0.00</p>
-        
-            <button onclick="realizarPago()">Pagar</button>
-            <button id="btnNequi" onclick="realizarPagoNequi()">Pagar con Nequi</button>
-            
-            <!-- Botón para cerrar el panel flotante -->
-          <p>Pagar con targeta</p>
-        <!-- campos necesarios para el pago (tarjeta, dirección, etc.) -->
-      
-          <label for="tarjeta">Tarjeta:</label>
-          <input type="text" id="tarjeta" placeholder="su número de su tarjeta"name="tarjeta" required>
-            <!-- mensaje de erroe para el campo de targeta -->
-            <span id="error-tarjeta" >Ingrese un número de tarjeta válido</span>
-         <label for="seleccionTarjeta">Seleccionar tarjeta:</label>
-          <select id="seleccionTarjeta" name="seleccionTarjeta">
-            <option value="visa">
-              <img src="../images/visa.jpg" alt="Visa">Visa 
-            </option>
-            <option value="mastercard">
-              <img src="../images/master.jpg"alt="MasterCard">MasterCard 
-            </option>
-            <option value="amex">
-              <img src="../images/american.jpg" alt="American Express">American Express 
-            <!-- Agrega más opciones según las tarjetas que desees ofrecer -->
-          </select>
-          <div>
-          <img id="tagetaImg"src="../images/imgNequi.jpg" alt="Nequi">
-          <img id="tagetaImg" src="../images/master.PNG" alt="MasterCard">
-          <img id="tagetaImg"src="../images/american.PNG" alt="American Express">
-          <img id="tagetaImg" src="../images/visa.PNG" alt="Visa">
-          </div>
-          <button onclick="cerrarPanelFlotante()">Cerrar</button>
-      
-       </div>
-      </form>
-        </div>
-        </div>
-      
-      
-      
-      
-               
       </div>
       
           <div class="bottom-panel">
-            <img src="../images/logo.png" alt="Imagen" class="panel-image">
+            <div  id="logo"><img id="imgLogo"  src="../images/logo.png" alt="logo" ></div>
             <div class="panel-content">
               <h2>Delicias al Paladar </h2>
               <p>Comida gastronomica y Cathering.
@@ -235,15 +180,17 @@
           </div>
 
 <!-- Agrega esto al final de tu HTML, antes de cerrar el body -->
-<div id="detalleProductoPanel" style="display: none;">
+<div id="detalleProductoPanel" class="oculto">
   <div>
       <img id="detalleProductoImg" src="" alt="Detalle del Producto">
       <p id="detalleProductoTexto"></p>
-      <button onclick="abrirPanelFlotante()">Ir al Pago</button>
+      <button onclick="reservar()">Ir al Pago</button>
+     s
   </div>
 </div>
 
 
+<script defer type="module" src="prueba.js"></script>
 
 
 

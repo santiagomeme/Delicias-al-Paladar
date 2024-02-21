@@ -1,5 +1,17 @@
 {
+  "name": "Delicias-al-Paladar",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run build && firebase serve",
+    "build": "webpack"
+  },
   "dependencies": {
-    "stripe": "^14.10.0"
+    "cors": "^2.8.5",
+    "esm": "^3.2.25",
+    "firebase": "^10.6.0"
+  },
+  "engines": {
+    "node": ">=10.0.0"
   }
 }
