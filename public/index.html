@@ -16,7 +16,7 @@
 
      
     <!-- update the version number as needed -->
-    <script defer src="/__/firebase/10.7.1/firebase-app-compat.js"></script>
+    <script defer src="/firebase/10.7.1/firebase-app-compat.js"></script>
     <!-- include only the Firebase features as you need -->
     <script defer src="/__/firebase/10.7.1/firebase-auth-compat.js"></script>
     <script defer src="/__/firebase/10.7.1/firebase-database-compat.js"></script>
@@ -27,6 +27,12 @@
     <script defer src="/__/firebase/10.7.1/firebase-analytics-compat.js"></script>
     <script defer src="/__/firebase/10.7.1/firebase-remote-config-compat.js"></script>
     <script defer src="/__/firebase/10.7.1/firebase-performance-compat.js"></script>
+   
+   
+    <script  defer type="module" src="firebase-config.js"></script>
+    <script  defer type="module" src="firebase-auth.js"></script>
+
+   
     <!-- 
       initialize the SDK after all desired features are loaded, set useEmulator to false
       to avoid connecting the SDK to running emulators.
@@ -52,9 +58,6 @@
 
 
     </script>
-
-    <script  defer type="module" src="firebase-config.js"></script>
-    <script  defer type="module" src="firebase-auth.js"></script>
 
         
   </head>
@@ -171,10 +174,11 @@
       
           <div class="bottom-panel">
             <div  id="logo"><img id="imgLogo"  src="../images/logo.png" alt="logo" ></div>
+            <br>
             <div class="panel-content">
               <h2>Delicias al Paladar </h2>
               <p>Comida gastronomica y Cathering.
-                Barrio San Fernando, Cali Colombia.
+                Cali Colombia.
               </p>
             </div>
           </div>
@@ -182,10 +186,9 @@
 <!-- Agrega esto al final de tu HTML, antes de cerrar el body -->
 <div id="detalleProductoPanel" class="oculto">
   <div>
-      <img id="detalleProductoImg" src="" alt="Detalle del Producto">
-      <p id="detalleProductoTexto"></p>
-      <button onclick="reservar()">Ir al Pago</button>
-     s
+   <img id="detalleProductoImg" src="" alt="Detalle del Producto">
+   <p id="detalleProductoTexto"></p>
+   <button onclick="reservar()">Ir al Pago</button>
   </div>
 </div>
 

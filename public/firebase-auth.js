@@ -29,11 +29,23 @@ firebase.auth().createUserWithEmailAndPassword(correo, password)
   return false; // Impedir que se envíe el formulario si hay campos vacíos
   }
 
-  export { createUserWithEmailAndPassword, signInWithEmailAndPassword, restablecerFormulario };
-  export function registrarUsuario(correo, password) {
-    return firebaseApp.auth().createUserWithEmailAndPassword(correo, password);
-  }
-  
+
+import { firebaseApp } from './firebase-config'; // Asegúrate de importar firebaseApp correctamente
+
+export function createUserWithEmailAndPassword(email, password) {
+  return firebaseApp.auth().createUserWithEmailAndPassword(email, password);
+}
+
+export function signInWithEmailAndPassword(email, password) {
+  return firebaseApp.auth().signInWithEmailAndPassword(email, password);
+}
+
+export function resetPassword(email) {
+  return firebaseApp.auth().sendPasswordResetEmail(email);
+}
+
+
+
   // Función para iniciar sesión
   export function iniciarSesion(correo, password) {
     return firebaseApp.auth().signInWithEmailAndPassword(correo, password);

@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-function onResize(){
+//function onResize(){
 
 var productos = [{
     id: 1,
@@ -102,10 +102,8 @@ var productos = [{
           <div class="card-body">
             <h5 class="card-title">${producto.nombre}</h5>
             <div id="detalle-${producto.id}" style="display: none;">
-            <p>Detalle: ${producto.detalle}</p></div>               
+            <p>Detalle:${producto.detalle}</p></div>               
             <button id="btn-carrito-${producto.idCompra}" class="btn btn-danger">Quitar</button>
-            <button id="btn-detalle-${producto.id}" class="btn btn-info">Detalles</button>
-
           </div>
         </div>
       </div>`;
@@ -261,6 +259,20 @@ botonesCatalogoDetalle();
     document.getElementById('status').innerHTML = 'Please log ' +
       'into this webpage.';
   }
+}
+
+//chat de wattsap
+function abrirChatWhatsApp() {
+  // Reemplaza '123456789' con tu número de WhatsApp (con el código de país)
+  console.log("Función abrirChatWhatsApp ejecutada");
+
+  var numeroWhatsApp = '57 3177505231';
+
+  // Crea el enlace de Chat de WhatsApp
+  var enlaceChatWhatsApp = 'https://wa.me/' + numeroWhatsApp + '?text=Hola%20Quisiera%20hacerte%20una%20consulta.';
+
+  // Abre el enlace en una nueva ventana o pestaña
+  window.open(enlaceChatWhatsApp);
 }
 
 
@@ -472,21 +484,12 @@ function verificarNequi() {
 document.getElementById("btnNequi").addEventListener("click", verificarNequi);
   botonesCatalogoDetalle();
   console.log('La ventana cambió de tamaño');
-  }
+  
 
 
-//chat de wattsap
-function abrirChatWhatsApp() {
-  // Reemplaza '123456789' con tu número de WhatsApp (con el código de país)
-  var numeroWhatsApp = '57 3177505231';
 
-  // Crea el enlace de Chat de WhatsApp
-  var enlaceChatWhatsApp = 'https://wa.me/' + numeroWhatsApp + '?text=Hola%20Quisiera%20hacerte%20una%20consulta.';
 
-  // Abre el enlace en una nueva ventana o pestaña
-  window.open(enlaceChatWhatsApp);
-}
+//window.addEventListener('resize', onResize);
+//});
 
-window.addEventListener('resize', onResize);
-});
-
+})

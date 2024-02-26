@@ -1,5 +1,3 @@
-firebase.initializeApp(config);
-
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
 import 'firebase/auth'; // No es necesario almacenar en una variable, Firebase se vuelve global
@@ -24,3 +22,4 @@ const firebaseConfig = {
 // Inicializa Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+6

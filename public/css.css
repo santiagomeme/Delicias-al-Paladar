@@ -1,20 +1,5 @@
 
-    
-  
-  
-          * {
-              margin: 0;
-              padding: 0;
-              box-sizing: border-box;
-              font-family: sans-serif;
-          }
-  
           
-  
-        
-  
-  
-       
           .input-container input {
               width: 100%;
               padding: 10px;
@@ -45,6 +30,7 @@
               justify-content: center;
               min-height: 200vh;
               background: linear-gradient(to right, #ffffff, #000000);
+              margin: 0%;
           }
 
           
@@ -167,7 +153,7 @@
       }
  
       #top-panel {
-        background: linear-gradient(to right ,  #d6d6d6, #d6d6d6, #d6d6d6);
+        background: linear-gradient(to right ,  #ffffff, #ffffff, #ffffff);
         padding: 10px;
         display: flex;
         justify-content: space-between;
@@ -175,7 +161,10 @@
         position: relative; /* Ajusta la posición para que el z-index funcione */
         z-index: 998; /* Asegura que el panel superior esté por debajo del panel derecho */
         margin-right: 0px; 
-      
+        border: solid;
+        border-color: #b8b8b8;
+        
+     
       
       }
       #top-panel {
@@ -188,16 +177,15 @@
       }
       
       #top-panel span {
-        background-color: transparent; /* Fondo transparente */
-        border: none; /* Sin borde */
-        color: rgb(#3e3f3f);
+        background-color: rgb(180, 180, 180); /* Fondo transparente */
+        border: solid; /* Sin borde */
+        color: rgb(#818181);
         cursor: pointer; /* Cambia el cursor al pasar sobre el texto */
         font-size: 16px;
         margin: 1px; /* Elimina el margen predeterminado */
         padding: 80; /* Elimina el relleno predeterminado */
         padding-right: 0px;
         position: relative;
-
       }
       
     
