@@ -1,3 +1,4 @@
+
 // Registra un nuevo usuario
 firebase.auth().createUserWithEmailAndPassword(correo, password)
   .then((userCredential) => {
@@ -31,22 +32,28 @@ firebase.auth().createUserWithEmailAndPassword(correo, password)
 
 
 import { firebaseApp } from './firebase-config'; // Asegúrate de importar firebaseApp correctamente
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
-export function createUserWithEmailAndPassword(email, password) {
+
+export const createUserWithEmailAndPassword = (email, password) => {
   return firebaseApp.auth().createUserWithEmailAndPassword(email, password);
-}
+};
 
-export function signInWithEmailAndPassword(email, password) {
+export const signInWithEmailAndPassword = (email, password) => {
   return firebaseApp.auth().signInWithEmailAndPassword(email, password);
-}
+};
 
-export function resetPassword(email) {
+export const resetPassword = (email) => {
   return firebaseApp.auth().sendPasswordResetEmail(email);
-}
-
+};
 
 
   // Función para iniciar sesión
-  export function iniciarSesion(correo, password) {
+export function iniciarSesion(correo, password) {
     return firebaseApp.auth().signInWithEmailAndPassword(correo, password);
   }
+
+
+
+

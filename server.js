@@ -1,12 +1,13 @@
-//"use strict";
-
-
 const express = require('express');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
 const path = require('path');
 const functions = require('firebase-functions');
+
 const app = express();
 const port = process.env.PORT || 3000;
 const cors = require('cors');
+require('dotenv').config();
 
 
 app.use(cors({
@@ -18,6 +19,30 @@ app.use(cors({
 
 // Middleware para servir archivos estáticos desde la carpeta 'public'
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Configuración de cookies
+app.use(cookieParser());
+app.use(session({
+  secret: 'process.env.SESSION_SECRET',
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    secure: true, // Asegúrate de que tu servidor esté configurado con HTTPS para usar secure: true
+    sameSite: 'None',
+  },
+}));
+
+// Configuración de la sesión
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: true,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 3600000, // Tiempo de expiración en milisegundos (1 hora)
+    secure: true, // Configura a true si tu aplicación utiliza HTTPS
+    sameSite: 'None', // Configura a 'None' si tus cookies necesitan ser enviadas en solicitudes de sitios cruzados
+  },
+}));
 
 // Ruta para manejar solicitudes a la raíz
 app.get('/', (req, res) => {

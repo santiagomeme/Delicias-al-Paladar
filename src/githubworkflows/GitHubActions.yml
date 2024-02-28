@@ -1,0 +1,69 @@
+'''yaml
+name: Deploy to Firebase
+
+en:
+ empujar:
+ ramas:
+ -principal
+
+Trabajos:
+ desplegar:
+ Se ejecuta: ubuntu-latest
+ Pasos:
+ - name: Repositorio de Checkout
+ Usos: Acciones/checkout@v2
+
+- nombre: Configurar Node.js
+ Usos: Acciones/Setup-node@v3
+ con:
+ node-version: '14'
+
+- name: Instalar dependencias
+ Ejecute: npm install -g firebase-tools
+
+- name: Deploy to Firebase
+ Ejecutar: |
+ Firebase Deploy: solo alojamiento
+ Env:
+ FIREBASE_TOKEN: ${{ secretos. FIREBASE_TOKEN }}
+'''
+
+
+
+
+
+- name: Checkout Repository
+  uses: actions/checkout@v2
+
+
+
+
+
+
+name: Deploy to Firebase
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set Up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '14'
+
+    - name: Install Dependencies
+      run: npm install -g firebase-tools
+
+    - name: Deploy to Firebase
+      run: |
+        firebase deploy --only hosting
+      env:
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
