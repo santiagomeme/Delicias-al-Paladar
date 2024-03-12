@@ -1,8 +1,8 @@
-import './firebase-config.mjs';
-import './firebase-auth.mjs';
+import { firebaseConfig, db, auth } from './firebase-config.mjs';
 
 
 document.addEventListener('DOMContentLoaded', function () {
+  console.log(firebaseConfig);
 
 var productos = [{
     id: 1,

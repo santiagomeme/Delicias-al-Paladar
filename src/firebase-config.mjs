@@ -6,7 +6,6 @@ import { getAnalytics } from "firebase/analytics";
 
 import { getAuth } from 'firebase/auth';
 import 'firebase/auth';
-// Otros módulos de Firebase que estés utilizando
 
 
 
@@ -46,3 +45,4 @@ async function getCities(db) {
 
 export const db = getFirestore(firebaseApp);
 export const auth = getAuth(firebaseApp);
+export { firebaseConfig };
