@@ -3,7 +3,9 @@
   <head>                                                                                                                                                                                                                                                                                           
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcomess to Delicias al Paladar</title>
+    <meta http-equiv="Permissions-Policy" content="ambient-light-sensor 'self';">
+
+    <title>Delicias al Paladar</title>
 
     <link rel="stylesheet" type="text/css" href="css.css">
 
@@ -15,28 +17,16 @@
      />
 
      
-    <!-- update the version number as needed -->
-    <script defer src="/firebase/10.7.1/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/10.7.1/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/10.7.1/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/10.7.1/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/10.7.1/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/10.7.1/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/10.7.1/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/10.7.1/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/10.7.1/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/10.7.1/firebase-performance-compat.js"></script>
+    <script defer src="/__/firebase/10.8.1/firebase-app-compat.js"></script>
+    <script defer src="/__/firebase/10.8.1/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/10.8.1/firebase-functions-compat.js"></script>
+    <script defer src="/__/firebase/10.8.1/firebase-remote-config-compat.js"></script>
    
    
-    <script  defer type="module" src="..firebase-config.js"></script>
-    <script  defer type="module" src="firebase-auth.js"></script>
+    
 
    
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
+ 
     <script>
       window.fbAsyncInit = function() {
         FB.init({
@@ -63,16 +53,20 @@
   </head>
   <body>
  
+    <script defer type="module" src="prueba.mjs"></script>
+
+
+
+
 
   
            
           <div id="top-panel">
     
-           <div  id="logo"><img id="imgLogo"  src="../images/logo.png" alt="logo" ></div>
-           <div id="user-info"></div>
+           <div   class="logo"><img class="imgLogo"  src="../images/logo.png" alt="logo" ></div>
            <input type="text" class="form-control" id="inputBusqueda" placeholder="Buscar platos">
-           <span class="btn btn-primary" id="btnGuiaPedido">Tu Guia de Pedido</span>
-           <button class="btn btn-primary" onclick="abrirChatWhatsApp()">Reservas</button>
+         <button id="btnMostrarCarrito" class="btn btn-primary">Mostrar Carrito</button>
+         <button type="button" class="btn btn-primary" onclick="abrirChatWhatsApp()">Reservas</button>
            <span class="btn btn-primary" id="mostrarRegistroButton" >Registrase</span>
            <div id="user-info">
             ¡Bienvenido, <span id="user-email"></span>!
@@ -84,6 +78,7 @@
       
       <!--codigo del contenedor de la caja de registro-->
       <h1 id="nombreUsuario"></h1>
+      
       
       
       <h2 id="titulo1" class="cursiva sobreado">Delicias al Paladar</h2>
@@ -133,9 +128,12 @@
         <div  class="container-fluid">
           <div id="resultadoBusqueda"></div>
             <div id="catalogo" class="row"></div>
+            <div id="contenedorCarrito" >
           <h1 class="container1"> <span id="precioTotal"></span></h1>
           <div id="carrito" class="row" ></div>
           <!-- Añade esto al final de tu carrito -->
+          </div>
+
        </div>
       </div>
       
@@ -143,32 +141,32 @@
             <div class="panel-item">
               <img src="../images/tiger.jpg" alt="Imagen 1">
               <p>Hotel Cobeñas</p>
-              <button class="btn btn-success">Botón 1</button>
+              <button type="button" class="btn btn-success">Botón 1</button>
             </div>
             <div class="panel-item">
               <img src="../images/pexels.jpg" alt="Imagen 2">
               <p>vuelos baratos.com</p>
-              <button class="btn btn-success">Botón 2</button>
+              <button  type="button" class="btn btn-success">Botón 2</button>
             </div>
             <div class="panel-item">
               <img src="../images/pexels.jpg" alt="Imagen 2">
               <p>Celulares</p>
-              <button class="btn btn-success">Botón 2</button>
+              <button  type="button" class="btn btn-success">Botón 2</button>
             </div>
             <div class="panel-item">
               <img src="../images/pexels.jpg" alt="Imagen 2">
               <p>Mac Donals</p>
-              <button class="btn btn-success">Botón 2</button>
+              <button  type="button"class="btn btn-success">Botón 2</button>
             </div>
             <div class="panel-item">
               <img src="../images/pexels.jpg" alt="Imagen 2">
               <p>fundacion </p>
-              <button class="btn btn-success">Botón 2</button>
+              <button  type="button"class="btn btn-success">Botón 2</button>
             </div>
             <div class="panel-item">
               <img src="../images/pexels.jpg" alt="Imagen 2">
               <p>Paginas Web y Apps</p>
-              <button class="btn btn-success">Botón 2</button>
+              <button  type="button" class="btn btn-success">Botón 2</button>
             </div>
            </div>
       
@@ -177,7 +175,7 @@
       </div>
       
           <div class="bottom-panel">
-            <div  id="logo"><img id="imgLogo"  src="../images/logo.png" alt="logo" ></div>
+            <div  class="logo"><img class="imgLogo"  src="../images/logo.png" alt="logo" ></div>
             <br>
             <div class="panel-content">
               <h2>Delicias al Paladar </h2>
@@ -187,19 +185,18 @@
             </div>
           </div>
 
-<!-- Agrega esto al final de tu HTML, antes de cerrar el body -->
+<!-- 
 <div id="detalleProductoPanel" class="oculto">
   <div>
    <img id="detalleProductoImg" src="" alt="Detalle del Producto">
    <p id="detalleProductoTexto"></p>
-   <button onclick="reservar()">Ir al Pago</button>
+   <button  type="button" onclick="reservar()">Ir al Pago</button>
   </div>
 </div>
-
-
-<script defer type="module" src="prueba.js"></script>
+-->
 
 
 
   </body>
+  
 </html>
