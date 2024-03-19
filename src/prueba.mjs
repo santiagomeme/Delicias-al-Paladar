@@ -1,77 +1,74 @@
-import { firebaseConfig, db, auth } from './firebase-config.mjs';
-
 
 document.addEventListener('DOMContentLoaded', function () {
-  console.log(firebaseConfig);
 
 var productos = [{
     id: 1,
     nombre: "Gordon Blue",
     precio: 120000,
     detalle: "Gordon Blue Relleno de Jamon y Queso, Acompañadp de Ensalada, y un Acompañante",
-    imagen: "cenaGordonBlue.jpg"
+    imagen: "../images/cenaGordonBlue.jpg"
 
   }, {
     id: 2,
     nombre: "Filete de Pollo relleno ",
     precio: 6000,
     detalle: "Rellenos: Verduras Salteadas, Hawallano, Verduras Agridulces, Maduro y Queso, Acompañados de Salsa",
-    imagen: "filete-relleno.jpg"
+    imagen: "../images/filete-relleno.jpg"
 
   },{
     id: 3,
     nombre: "Cena con Gordon Blue ",
     detalle: "Gordon Blue Relleno de Jamon y Queso, Acompañadp de Ensalada, y un Acompañante",
-    imagen: "cenaGordonBlue2.jpg"
+    imagen: "../images/cenaGordonBlue2.jpg"
 
   }, {
     id: 4,
     nombre: "Cenas con Rollo e Pollo",
     precio: 100.000,
     detalle: "Rollo de Pollo Relleno de: Verduras Salteadas, Hawallano, Verduras Agridulces, Maduro y Queso, Acompañados de Salsa. Acompañadp de Ensalada, y un Acompañante para 10 Personas x $100.000",
-    imagen: "cenaRollo.jpg"
+    imagen: "../images/cenaRollo.jpg"
 
   }, {
     id: 5,
     nombre: "Lomo de Cerdo",
     precio: 12.000,
     detalle: "Lomo de Cerdo en Salsa, Acompañado de Ensalada y 1 Acompañante",
-    imagen: "cerdoSalsa.jpg"
+    imagen: "../images/cerdoSalsa.jpg"
 
   },{
     id: 6,
     nombre: "Comida Rapida",
     precio: 6000,
     detalle: "Hamburguesa Tradicional $ , super Cronch $ , Infantil $, Perros $ , Infantil $ , Snaks de Pollo $ , Lasagñas $ , Quesadillas $ , Alitas $  ",
-    imagen: "comidaRapida.jpg"
+    imagen: "../images/comidaRapida.jpg"
 
   }, {
     id: 7,
     nombre: "Cenas para Eventos",
     precio: 11.000,
     detalle: "Cenas para Eventos con una Proteina una Ensalada, y un Acompañante, Proteinas Pollo $11.000, Cerdo $12.000, Res $13.000",
-    imagen: "comiEventos.jpg"
+    imagen: "../images/comiEventos.jpg"
 
   }, {
     id: 8,
     nombre: "Comida para Eventos",
     precio: 11.000,
     detalle: "Cenas para Eventos con una Proteina una Ensalada, y un Acompañante, Proteinas Pollo $11.000, Cerdo $12.000, Res $13.000",
-    imagen: "comiEventos2.jpg"
+    imagen: "../images/comiEventos2.jpg"
 
   }, {
     id: 9,
-    nombre: "",
+    nombre:"Postres",
     precio: 3.500,
     detalle: "Postres y Mini Postres para Eventos",
-    imagen: "miniPostres.jpg"
+    imagen: "../images/miniPostres.jpg"
 
   }, {
     id: 10,
     nombre: "Rollo de Pollo Relleno",
     precio: 100.000,
     detalle: "Hawallano, Verduras, Agridulce. Acompañado de Ensalada y un Acompañante para 10 personas x $100.000",
-    imagen: "RolloPollo.jpg"
+    imagen: "../images/RolloPollo.jpg"
 
   }];
 
@@ -104,15 +101,15 @@ var productos = [{
     return`
       <div class="col">
         <div class="card">
-          <img
-          src="${producto.imagen}"
-            class="card-img-top"
-          />
+          <img src="${producto.imagen}" class="card-img-top"" class="card-img-top"/>
           <div class="card-body">
             <h5 class="card-title">${producto.nombre}</h5>
             <div id="detalle-${producto.id}" style="display: none;">
-            <p>Detalle:${producto.detalle}</p></div>               
+            <p class="card-text">Precio: ${producto.precio}</p>
+            <p>class="card-text"Detalle:${producto.detalle}</p></div>               
             <button id="btn-carrito-${producto.idCompra}" class="btn btn-danger">Quitar</button>
+            <button id="btn-detalle-carrito-${producto.idCompra}" class="btn btn-info">Detalles</button>
+
           </div>
         </div>
       </div>`;
@@ -128,21 +125,58 @@ var productos = [{
     catalogoNodo.innerHTML = catalogoHTML;
     botonesCatalogo();
   };
+
+
   const mostrarCarrito = () => {
+    const contenedorCarrito = document.getElementById("contenedorCarrito");
     const carritoNodo = document.getElementById("carrito");
     const precioNodo = document.getElementById("precioTotal");
   
     let carritoHTML = "";
     let precio = 0;
-     for (const producto of carrito) {
-      carritoHTML += productoCarritoHTML(producto);
-      precio += producto.precio;
+    for (const producto of carrito) {
+        carritoHTML += productoCarritoHTML(producto);
+        precio += producto.precio;
     }
   
-    precioNodo.innerHTML = precio;
+    precioNodo.textContent = precio;
     carritoNodo.innerHTML = carritoHTML;
-    botonesCarrito();
-  };
+
+    // Mostrar el contenedor del carrito
+    contenedorCarrito.style.display = "block";
+
+    botonesCarrito(); // Asegurarse de que los botones del carrito estén configurados correctamente
+};
+
+// Evento para mostrar el carrito al hacer clic en el botón
+document.getElementById("btnMostrarCarrito").addEventListener("click", mostrarCarrito);
+
+// Evento para ocultar el carrito al hacer clic fuera de él
+document.addEventListener("click", (event) => {
+    const contenedorCarrito = document.getElementById("contenedorCarrito");
+    const btnMostrarCarrito = document.getElementById("btnMostrarCarrito");
+
+    if (!contenedorCarrito.contains(event.target) && event.target !== btnMostrarCarrito) {
+        contenedorCarrito.style.display = "none";
+    }
+});
+
+
+ // const mostrarCarrito = () => {
+ //   const carritoNodo = document.getElementById("carrito");
+ //   const precioNodo = document.getElementById("precioTotal");
+ // 
+ //   let carritoHTML = "";
+ //   let precio = 0;
+ //    for (const producto of carrito) {
+ //     carritoHTML += productoCarritoHTML(producto);
+ //     precio += producto.precio;
+  //  }
+  
+  //  precioNodo.innerHTML = precio;
+  //  carritoNodo.innerHTML = carritoHTML;
+  //  botonesCarrito();
+  //};
   
   const botonesCatalogo = () => {
     for (const producto of productos) {
@@ -164,18 +198,21 @@ var productos = [{
   };
   
   const botonesCarrito = () => {
-    for (const producto of carrito) {
+    carrito.forEach(producto => {
       const botonId = `btn-carrito-${producto.idCompra}`;
       const botonNodo = document.getElementById(botonId);
   
-      botonNodo.addEventListener("click", () => {
+      botonNodo.addEventListener("click", (event) => {
+        event.stopPropagation(); // Evitar que el evento se propague al contenedor del carrito
         const index = carrito.findIndex((p) => p.idCompra == producto.idCompra);
         carrito.splice(index, 1);
         mostrarCarrito();
         
       });
-    }
+    })
   };
+
+
   mostrarCatalogo();
 console.log(productoCatalogoHTML(productos[0]));
   
@@ -229,14 +266,45 @@ function abrirPanelDetalles() {
   const detalleProductoPanel = document.getElementById("detalleProductoPanel");
   detalleProductoPanel.classList.remove("oculto");
     detalleProductoPanel.classList.add("mostrar");
+    console.log("funciona el boton abrir panel de detalles")
 }
+
+function cerrarPanelDetalles(productoId) {
+  const detalleNodo = document.getElementById(`detalle-${productoId}`);
+  detalleNodo.classList.remove("mostrar");
+}
+
+// Evento para cerrar el panel de detalles del producto al hacer clic fuera de él
+document.addEventListener("click", function(event) {
+  if (!event.target.closest(".detalle")) {
+      const detallesAbiertos = document.querySelectorAll(".detalle.mostrar");
+      detallesAbiertos.forEach(function(detalle) {
+          detalle.classList.remove("mostrar");
+      });
+  }
+});document.addEventListener("click", function(event) {
+  if (event.target.classList.contains("btn-detalle")) {
+      const productoId = event.target.dataset.productoId;
+      abrirPanelDetalles(productoId);
+  }
+});
+
+document.addEventListener("click", function(event) {
+  if (event.target.classList.contains("cerrar-detalle")) {
+      const productoId = event.target.dataset.productoId;
+      cerrarPanelDetalles(productoId);
+  }
+});
+
 
 const toggleDetalleVisibilidad = (productoId) => {
   const detalleId = `detalle-${productoId}`;
   const detalleNodo = document.getElementById(detalleId);
 // Alterna la visibilidad del detalle
   detalleNodo.classList.toggle("mostrar");
-  abrirPanelDetalles();
+  detalleNodo.classList.toggle("oculto"); // Agrega o elimina la clase 'oculto'
+  console.log("funciona el boton togle detalle bisibilidad")
+
 };
 
 
@@ -247,6 +315,7 @@ const botonesCatalogoDetalle = () => {
     const botonNodo = document.getElementById(botonId);
    botonNodo.addEventListener("click", () => {
       toggleDetalleVisibilidad(producto.id);
+      abrirPanelDetalles(); 
     });
   }
 };
@@ -254,18 +323,64 @@ const botonesCatalogoDetalle = () => {
 botonesCatalogoDetalle();
 
 
-// Evento para mostrar el carrito al hacer clic en el botón
-document.getElementById("btnMostrarCarrito").addEventListener("click", mostrarCarrito);
 
-// Evento para ocultar el carrito al hacer clic fuera de él
-document.addEventListener("click", (event) => {
-  const contenedorCarrito = document.getElementById("contenedorCarrito");
-  const btnMostrarCarrito = document.getElementById("btnMostrarCarrito");
 
-  if (!contenedorCarrito.contains(event.target) && event.target !== btnMostrarCarrito) {
-    contenedorCarrito.style.display = "none";
+
+
+
+
+
+var panelBusqueda = document.getElementById("panelBusqueda");
+var inputBusqueda = document.getElementById("inputBusqueda");
+var resultadoBusqueda = document.getElementById("resultadoBusqueda");
+
+// Evento al escribir en el campo de búsqueda
+inputBusqueda.addEventListener("input", function () {
+  // Obtén el término de búsqueda actual
+  var terminoBusqueda = inputBusqueda.value.toLowerCase();
+      // Realiza la búsqueda y muestra los resultados
+  var resultados = buscarProductos(terminoBusqueda);
+  mostrarResultados(resultados);
+});
+
+
+
+
+
+document.addEventListener("click", function (event) {
+  // Verifica si el clic no ocurrió dentro del panel de búsqueda o en el campo de entrada de búsqueda
+  if (!panelBusqueda.contains(event.target) && event.target !== inputBusqueda) {
+    panelBusqueda.style.display = "none";
   }
 });
+
+function buscarProductos(termino) {
+  // Filtra los productos que coinciden con el término de búsqueda
+  return productos.filter(function (producto) {
+    return producto.nombre.toLowerCase().includes(termino);
+  });
+}
+
+function mostrarResultados(resultados) {
+// Limpia el contenido actual del panel de búsqueda
+  panelBusqueda.innerHTML = "";
+  // Muestra los resultados en una lista
+  resultados.forEach(function (producto) {
+    var card = document.createElement("div");
+    card.classList.add("card"); // Agrega la clase "card" para estilos CSS
+    card.innerHTML = `
+      <img src="${producto.imagen}" class="card-img-top" alt="${producto.nombre}">
+      <div class="card-body">
+        <h5 class="card-title">${producto.nombre}</h5>
+        <p class="card-text">Precio: ${producto.precio}</p>
+        <p class="card-text">${producto.detalle}</p>
+      </div>
+    `;
+    panelBusqueda.appendChild(card);
+
+  });
+  panelBusqueda.style.display = "block";
+}
 
 
 
@@ -282,12 +397,11 @@ document.addEventListener("click", (event) => {
   }
 }
 
-//chat de wattsap
+//abrir chat de wattsap
 function abrirChatWhatsApp() {
-  // Reemplaza '123456789' con tu número de WhatsApp (con el código de país)
   console.log("Función abrirChatWhatsApp ejecutada");
 
-  var numeroWhatsApp = '57 3177505231';
+  var numeroWhatsApp = '573177505231';
 
   // Crea el enlace de Chat de WhatsApp
   var enlaceChatWhatsApp = 'https://wa.me/' + numeroWhatsApp + '?text=Hola%20Quisiera%20hacerte%20una%20consulta.';
@@ -322,9 +436,6 @@ function testAPI() {                      // Testing Graph API after login.  See
 }
 
 
-
-
-
 // Llamada a loginWithFacebook en respuesta a un evento, por ejemplo, clic en un botón de inicio de sesión
 document.getElementById('loginButton').addEventListener('click', function() {
   loginWithFacebook();
@@ -336,43 +447,6 @@ document.getElementById('logoutButton').addEventListener('click', function() {
 });
 
 
-
-var panelBusqueda = document.getElementById("panelBusqueda");
-var inputBusqueda = document.getElementById("inputBusqueda");
-var resultadoBusqueda = document.getElementById("resultadoBusqueda");
-
-// Evento al escribir en el campo de búsqueda
-inputBusqueda.addEventListener("input", function () {
-  // Obtén el término de búsqueda actual
-  var terminoBusqueda = inputBusqueda.value.toLowerCase();
-      // Realiza la búsqueda y muestra los resultados
-  var resultados = buscarProductos(terminoBusqueda);
-  mostrarResultados(resultados);
-});
-
-// Evento para cerrar el panel cuando se hace clic fuera de él
-document.addEventListener("click", function () {
-  panelBusqueda.style.display = "none";
-});
-
-function buscarProductos(termino) {
-  // Filtra los productos que coinciden con el término de búsqueda
-  return productos.filter(function (producto) {
-    return producto.nombre.toLowerCase().includes(termino);
-  });
-}
-
-function mostrarResultados(resultados) {
-  // Limpia el contenido actual del contenedor de resultados de búsqueda
-  resultadoBusqueda.innerHTML = "";
-
-  if (resultados.length > 0) {
-    panelBusqueda.style.display = "block";
-  } else {
-    panelBusqueda.style.display = "none";
-  }
-  
-}
 
 
 
