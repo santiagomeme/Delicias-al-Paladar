@@ -24,6 +24,7 @@
    
    
     
+    
 
    
  
@@ -59,30 +60,32 @@
 
 
 
-  
            
           <div id="top-panel">
-    
+            <h2 id="titulo1" class="cursiva sobreado">Delicias al Paladar</h2>
+            <button class="stilo" type="button" class="btn btn-primary" onclick="abrirChatWhatsApp()">Reservas santiago</button>
+
            <div   class="logo"><img class="imgLogo"  src="../images/logo.png" alt="logo" ></div>
            <input type="text" class="form-control" id="inputBusqueda" placeholder="Buscar platos">
-         <button id="btnMostrarCarrito" class="btn btn-primary">Mostrar Carrito</button>
-         <button type="button" class="btn btn-primary" onclick="abrirChatWhatsApp()">Reservas</button>
+         <button class="stilo" type="button" id="btnMostrarCarrito" class="btn btn-primary">Mostrar Carrito</button>
+         <button class="stilo" type="button" class="btn btn-primary" onclick="abrirChatWhatsApp()">Reservas</button>
            <span class="btn btn-primary" id="mostrarRegistroButton" >Registrase</span>
            <div id="user-info">
             ¡Bienvenido, <span id="user-email"></span>!
           </div>
-           
+
           </div>
          
            <div id="status"></div>
-      
       <!--codigo del contenedor de la caja de registro-->
       <h1 id="nombreUsuario"></h1>
       
       
-      
-      <h2 id="titulo1" class="cursiva sobreado">Delicias al Paladar</h2>
-      
+      <div id="detalleProductoPanel" class="detalle oculto">
+        <p>${producto.detalle}</p>
+
+      </div>
+
       
       
       <div id="panelBusqueda">
@@ -126,7 +129,6 @@
        <div  class="container-flex">
           <!--codigo de contenedor del catalogo y carrito-->
         <div  class="container-fluid">
-          <div id="resultadoBusqueda"></div>
             <div id="catalogo" class="row"></div>
             <div id="contenedorCarrito" >
           <h1 class="container1"> <span id="precioTotal"></span></h1>
@@ -158,16 +160,7 @@
               <p>Mac Donals</p>
               <button  type="button"class="btn btn-success">Botón 2</button>
             </div>
-            <div class="panel-item">
-              <img src="../images/pexels.jpg" alt="Imagen 2">
-              <p>fundacion </p>
-              <button  type="button"class="btn btn-success">Botón 2</button>
-            </div>
-            <div class="panel-item">
-              <img src="../images/pexels.jpg" alt="Imagen 2">
-              <p>Paginas Web y Apps</p>
-              <button  type="button" class="btn btn-success">Botón 2</button>
-            </div>
+           
            </div>
       
       
@@ -184,16 +177,6 @@
               </p>
             </div>
           </div>
-
-<!-- 
-<div id="detalleProductoPanel" class="oculto">
-  <div>
-   <img id="detalleProductoImg" src="" alt="Detalle del Producto">
-   <p id="detalleProductoTexto"></p>
-   <button  type="button" onclick="reservar()">Ir al Pago</button>
-  </div>
-</div>
--->
 
 
 

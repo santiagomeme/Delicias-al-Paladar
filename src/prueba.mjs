@@ -18,20 +18,21 @@ var productos = [{
   },{
     id: 3,
     nombre: "Cena con Gordon Blue ",
+    precio: 11000,
     detalle: "Gordon Blue Relleno de Jamon y Queso, Acompañadp de Ensalada, y un Acompañante",
     imagen: "../images/cenaGordonBlue2.jpg"
 
   }, {
     id: 4,
-    nombre: "Cenas con Rollo e Pollo",
-    precio: 100.000,
+    nombre: "Cenas con Rollo de Pollo",
+    precio: 100000,
     detalle: "Rollo de Pollo Relleno de: Verduras Salteadas, Hawallano, Verduras Agridulces, Maduro y Queso, Acompañados de Salsa. Acompañadp de Ensalada, y un Acompañante para 10 Personas x $100.000",
     imagen: "../images/cenaRollo.jpg"
 
   }, {
     id: 5,
     nombre: "Lomo de Cerdo",
-    precio: 12.000,
+    precio: 12000,
     detalle: "Lomo de Cerdo en Salsa, Acompañado de Ensalada y 1 Acompañante",
     imagen: "../images/cerdoSalsa.jpg"
 
@@ -45,28 +46,28 @@ var productos = [{
   }, {
     id: 7,
     nombre: "Cenas para Eventos",
-    precio: 11.000,
+    precio: 11000,
     detalle: "Cenas para Eventos con una Proteina una Ensalada, y un Acompañante, Proteinas Pollo $11.000, Cerdo $12.000, Res $13.000",
     imagen: "../images/comiEventos.jpg"
 
   }, {
     id: 8,
     nombre: "Comida para Eventos",
-    precio: 11.000,
+    precio: 11000,
     detalle: "Cenas para Eventos con una Proteina una Ensalada, y un Acompañante, Proteinas Pollo $11.000, Cerdo $12.000, Res $13.000",
     imagen: "../images/comiEventos2.jpg"
 
   }, {
     id: 9,
     nombre:"Postres",
-    precio: 3.500,
+    precio: 3500,
     detalle: "Postres y Mini Postres para Eventos",
     imagen: "../images/miniPostres.jpg"
 
   }, {
     id: 10,
     nombre: "Rollo de Pollo Relleno",
-    precio: 100.000,
+    precio: 100000,
     detalle: "Hawallano, Verduras, Agridulce. Acompañado de Ensalada y un Acompañante para 10 personas x $100.000",
     imagen: "../images/RolloPollo.jpg"
 
@@ -79,7 +80,7 @@ var productos = [{
 
   const productoCatalogoHTML = (producto) => {
     return`
-      <div class="col">
+      <div class="col" class="productoTam">
         <div class="card">
           <img
           src="${producto.imagen}"
@@ -106,11 +107,10 @@ var productos = [{
             <h5 class="card-title">${producto.nombre}</h5>
             <div id="detalle-${producto.id}" style="display: none;">
             <p class="card-text">Precio: ${producto.precio}</p>
-            <p>class="card-text"Detalle:${producto.detalle}</p></div>               
+            <p class="card-text">Detalle: ${producto.detalle}</p> <!-- Mostrar detalle del producto -->
             <button id="btn-carrito-${producto.idCompra}" class="btn btn-danger">Quitar</button>
             <button id="btn-detalle-carrito-${producto.idCompra}" class="btn btn-info">Detalles</button>
-
-          </div>
+           </div>
         </div>
       </div>`;
   };
@@ -194,9 +194,39 @@ document.addEventListener("click", (event) => {
         carrito.push(productoCarrito);
         mostrarCarrito();
       });
+
+    
+      const botonDetalleId = `btn-detalle-${producto.id}`; // Obtener el ID del botón de detalle
+      const botonDetalleNodo = document.getElementById(botonDetalleId); // Obtener el nodo del botón de detalle
+
+      // Agregar evento de clic al botón de detalle
+      botonDetalleNodo.addEventListener("click", () => {
+          const detalleNodo = document.getElementById(`detalle-${producto.id}`); // Obtener el nodo del detalle del producto
+
+         
+            // Verificar si el detalle está visible
+            const isVisible = detalleNodo.style.display === "block";
+
+            // Ocultar todos los detalles de productos
+            productos.forEach((p) => {
+                const detalle = document.getElementById(`detalle-${p.id}`);
+                detalle.style.display = "none";
+            });
+
+            // Mostrar u ocultar el detalle del producto según su estado actual
+            detalleNodo.style.display = isVisible ? "none" : "block";
+
+            // Evitar que el evento se propague al hacer clic en el botón de detalles
+            event.stopPropagation();
+      });
+
+
     }
   };
   
+
+
+
   const botonesCarrito = () => {
     carrito.forEach(producto => {
       const botonId = `btn-carrito-${producto.idCompra}`;
@@ -216,7 +246,29 @@ document.addEventListener("click", (event) => {
   mostrarCatalogo();
 console.log(productoCatalogoHTML(productos[0]));
   
-    
+    // Agregar un controlador de eventos al documento para ocultar todos los detalles cuando se hace clic fuera de ellos
+document.addEventListener("click", (event) => {
+  // Iterar sobre todos los detalles de productos
+  for (const producto of productos) {
+      const detalleNodo = document.getElementById(`detalle-${producto.id}`); // Obtener el nodo del detalle del producto
+
+      // Verificar si el clic no ocurrió dentro del detalle del producto
+      if (detalleNodo.style.display === "block" && !detalleNodo.contains(event.target)) {
+          detalleNodo.style.display = "none"; // Ocultar el detalle del producto
+      }
+  }
+
+  // Iterar sobre todos los detalles de productos en el carrito
+  for (const producto of carrito) {
+      const detalleNodo = document.getElementById(`detalle-${producto.id}`); // Obtener el nodo del detalle del producto
+
+      // Verificar si el clic no ocurrió dentro del detalle del producto
+      if (detalleNodo.style.display === "block" && !detalleNodo.contains(event.target)) {
+          detalleNodo.style.display = "none"; // Ocultar el detalle del producto
+      }
+  }
+});
+
 
 
 
@@ -262,65 +314,7 @@ document.addEventListener("click", function (event) {
 });
 
 
-function abrirPanelDetalles() {
-  const detalleProductoPanel = document.getElementById("detalleProductoPanel");
-  detalleProductoPanel.classList.remove("oculto");
-    detalleProductoPanel.classList.add("mostrar");
-    console.log("funciona el boton abrir panel de detalles")
-}
 
-function cerrarPanelDetalles(productoId) {
-  const detalleNodo = document.getElementById(`detalle-${productoId}`);
-  detalleNodo.classList.remove("mostrar");
-}
-
-// Evento para cerrar el panel de detalles del producto al hacer clic fuera de él
-document.addEventListener("click", function(event) {
-  if (!event.target.closest(".detalle")) {
-      const detallesAbiertos = document.querySelectorAll(".detalle.mostrar");
-      detallesAbiertos.forEach(function(detalle) {
-          detalle.classList.remove("mostrar");
-      });
-  }
-});document.addEventListener("click", function(event) {
-  if (event.target.classList.contains("btn-detalle")) {
-      const productoId = event.target.dataset.productoId;
-      abrirPanelDetalles(productoId);
-  }
-});
-
-document.addEventListener("click", function(event) {
-  if (event.target.classList.contains("cerrar-detalle")) {
-      const productoId = event.target.dataset.productoId;
-      cerrarPanelDetalles(productoId);
-  }
-});
-
-
-const toggleDetalleVisibilidad = (productoId) => {
-  const detalleId = `detalle-${productoId}`;
-  const detalleNodo = document.getElementById(detalleId);
-// Alterna la visibilidad del detalle
-  detalleNodo.classList.toggle("mostrar");
-  detalleNodo.classList.toggle("oculto"); // Agrega o elimina la clase 'oculto'
-  console.log("funciona el boton togle detalle bisibilidad")
-
-};
-
-
-// Llamar a ambas funciones para agregar los listeners
-const botonesCatalogoDetalle = () => {
-  for (const producto of productos) {
-    const botonId = `btn-detalle-${producto.id}`;
-    const botonNodo = document.getElementById(botonId);
-   botonNodo.addEventListener("click", () => {
-      toggleDetalleVisibilidad(producto.id);
-      abrirPanelDetalles(); 
-    });
-  }
-};
-
-botonesCatalogoDetalle();
 
 
 
@@ -437,7 +431,7 @@ function testAPI() {                      // Testing Graph API after login.  See
 
 
 // Llamada a loginWithFacebook en respuesta a un evento, por ejemplo, clic en un botón de inicio de sesión
-document.getElementById('loginButton').addEventListener('click', function() {
+document.getElementById('facebookSignInButton').addEventListener('click', function() {
   loginWithFacebook();
 });
 
@@ -466,7 +460,7 @@ function realizarPagoNequi() {
   }, 0);
 
   // Otros detalles para el pago con Nequi
-  var numeroTelefono = "3177505231";
+  var numeroTelefono = "573177505231";
   var referencia = "REFERENCIA";
 
   // Genera el enlace con los valores dinámicos para Nequi
