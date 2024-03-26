@@ -40,7 +40,7 @@ var productos = [{
     id: 6,
     nombre: "Comida Rapida",
     precio: 6000,
-    detalle: "Hamburguesa Tradicional $ , super Cronch $ , Infantil $, Perros $ , Infantil $ , Snaks de Pollo $ , Lasagñas $ , Quesadillas $ , Alitas $  ",
+    detalle: "Hamburguesa Tradicional $10000 , super Cronch 13000$ ,Hamburguesa Infantil $, Perros $ ,Perro Infantil $ , Snaks de Pollo $ 8000, Lasagñas $12000 , Quesadillas $8000 , Alitas $ 10000 ",
     imagen: "../images/comidaRapida.jpg"
 
   }, {
@@ -80,7 +80,7 @@ var productos = [{
 
   const productoCatalogoHTML = (producto) => {
     return`
-      <div class="col" class="productoTam">
+      <div class="col-md-3" class="productoTam">
         <div class="card">
           <img
           src="${producto.imagen}"
@@ -269,6 +269,14 @@ document.addEventListener("click", (event) => {
   }
 });
 
+document.getElementById('toggleTopPanel').addEventListener('click', function() {
+  var topPanel = document.getElementById('top-panel');
+  if (topPanel.style.display === 'none') {
+      topPanel.style.display = 'block'; // Muestra el top panel
+  } else {
+      topPanel.style.display = 'none'; // Oculta el top panel
+  }
+});
 
 
 
@@ -316,6 +324,36 @@ document.addEventListener("click", function (event) {
 
 
 
+var registroBox = document.querySelector('.registro-box');
+var offsetX, offsetY;
+
+registroBox.addEventListener('mousedown', function(event) {
+    // Calcular la distancia entre la esquina superior izquierda del cuadro de registro y la posición del mouse
+    offsetX = event.clientX - registroBox.getBoundingClientRect().left;
+    offsetY = event.clientY - registroBox.getBoundingClientRect().top;
+
+    // Agregar un controlador de eventos para el movimiento del mouse mientras se mantiene presionado
+    document.addEventListener('mousemove', onMouseMove);
+    
+    // Agregar un controlador de eventos para soltar el botón del mouse
+    document.addEventListener('mouseup', onMouseUp);
+});
+
+function onMouseMove(event) {
+    // Calcular la nueva posición del cuadro de registro basándose en la posición actual del mouse y las distancias calculadas
+    var newLeft = event.clientX - offsetX;
+    var newTop = event.clientY - offsetY;
+
+    // Establecer la nueva posición del cuadro de registro
+    registroBox.style.left = newLeft + 'px';
+    registroBox.style.top = newTop + 'px';
+}
+
+function onMouseUp() {
+    // Eliminar los controladores de eventos de movimiento del mouse y de soltar el botón del mouse
+    document.removeEventListener('mousemove', onMouseMove);
+    document.removeEventListener('mouseup', onMouseUp);
+}
 
 
 
@@ -446,71 +484,22 @@ document.getElementById('logoutButton').addEventListener('click', function() {
 
 
 
-//pago con Nequi
+document.getElementById('whatsappButton').addEventListener('click', function() {
+  var phoneNumber = '573177505231'; // Reemplaza con el número de teléfono al que deseas enviar el mensaje
+  var whatsappUrl = 'https://api.whatsapp.com/send?phone=' + phoneNumber;
 
-// Ejemplo utilizando addEventListener
-var btnNequi = document.getElementById("btnNequi"); // Reemplaza "btnNequi" con el ID real de tu botón de Nequi
-btnNequi.addEventListener("click", realizarPagoNequi);
+  // Intenta abrir la aplicación de WhatsApp
+  window.open(whatsappUrl, '_blank');
 
-// Función para realizar el pago con Nequi
-function realizarPagoNequi() {
-  // Calcula el total del carrito
-  totalCarrito= carrito.reduce(function (total, producto) {
-    return total + producto.precio;
-  }, 0);
-
-  // Otros detalles para el pago con Nequi
-  var numeroTelefono = "573177505231";
-  var referencia = "REFERENCIA";
-
-  // Genera el enlace con los valores dinámicos para Nequi
-  var enlaceNequi = "nequi://pay?phone=" + numeroTelefono + "&amount=" + totalCarrito + "&reference=" + referencia;
-
-  // Redirecciona al enlace de Nequi
-  window.location.href = enlaceNequi;
-}
-
-
-
-
-
-function verificarNequi() {
-  // Verifica si el usuario tiene Nequi instalado
-  if (usuarioTieneNequi()) {
-    // El usuario tiene Nequi, realiza el pago
-    realizarPagoNequi();
-  } else {
-    // El usuario no tiene Nequi, redirige para descargar
-    redirigirADescargaNequi();
-  }
-}
-
-
-
-
-    function usuarioTieneNequi() {
-      // Verifica si el navegador es un dispositivo móvil
-      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        // Intenta abrir un enlace que podría abrir Nequi (puedes personalizar este enlace)
-        var nequiLink = "nequi://";
-        var iframe = document.createElement("iframe");
-        iframe.style.display = "none";
-        iframe.src = nequiLink;
-        document.body.appendChild(iframe);
-      // Espera un tiempo y verifica si el navegador pudo abrir Nequi
-        setTimeout(function () {
-          document.body.removeChild(iframe);
-        }, 2000); // Espera 2 segundos
-      return true; // Devuelve true, asumiendo que el enlace se ha abierto correctamente
-      }
-    // Si no es un dispositivo móvil, no puedes verificar la instalación de la aplicación
-      return false;
+  // Verifica si el navegador admite el protocolo de WhatsApp
+  setTimeout(function() {
+    var isWhatsAppSupported = document.hasFocus();
+    if (!isWhatsAppSupported) {
+      // Si el navegador no admite el protocolo de WhatsApp, redirige al usuario a la tienda de aplicaciones para descargar WhatsApp
+      window.location.href = 'https://play.google.com/store/apps/details?id=com.whatsapp&hl=es&gl=US'; // URL de la tienda de aplicaciones de WhatsApp en Google Play Store
     }
-document.getElementById("btnNequi").addEventListener("click", verificarNequi);
-  botonesCatalogoDetalle();
-  console.log('La ventana cambió de tamaño');
-  
-
+  }, 1000); // Espera un segundo antes de verificar si la aplicación de WhatsApp se abrió correctamente
+});
 
 
 

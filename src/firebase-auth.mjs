@@ -39,6 +39,8 @@ document.getElementById("buttonRegistro").addEventListener("click", function () 
 });
 
 document.getElementById("buttonInicio").addEventListener("click", function () {
+  event.preventDefault();
+
   var correo = document.getElementById("correoInicio").value;
   var password = document.getElementById("passwordInicio").value;
 
@@ -69,7 +71,21 @@ document.getElementById("buttonInicio").addEventListener("click", function () {
   return false; // Impedir que se envíe el formulario si hay campos vacíos
 });
 
-
+// Agrega mensajes de registro para verificar el envío de correo de restablecimiento exitoso
+sendPasswordResetEmail(firebaseApp.auth(), correo)
+  .then(() => {
+    // Manejar el envío de correo de restablecimiento exitoso
+    console.log("Correo de restablecimiento enviado con éxito. Verifica tu bandeja de entrada.");
+    // Puedes realizar acciones adicionales si es necesario
+    // Por ejemplo, redirigir a otra página o mostrar un mensaje de éxito
+    alert("Correo de restablecimiento enviado con éxito. Verifica tu bandeja de entrada.");
+  })
+  .catch((error) => {
+    // Manejar errores durante el envío del correo de restablecimiento
+    console.error("Error al enviar el correo de restablecimiento:", error);
+    // Mostrar un mensaje de error al usuario o realizar otras acciones según sea necesario
+    alert("Error al enviar el correo de restablecimiento: " + error.message);
+  });
 // Restablecer contraseña
 export const resetPassword = (correo) => {
   return sendPasswordResetEmail(firebaseApp.auth(), correo)

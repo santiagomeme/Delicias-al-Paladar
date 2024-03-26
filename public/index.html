@@ -58,24 +58,25 @@
 
 
 
+    <button id="toggleTopPanel">Mostrar Menú</button>
 
 
            
           <div id="top-panel">
             <h2 id="titulo1" class="cursiva sobreado">Delicias al Paladar</h2>
-            <button class="stilo" type="button" class="btn btn-primary" onclick="abrirChatWhatsApp()">Reservas santiago</button>
-
            <div   class="logo"><img class="imgLogo"  src="../images/logo.png" alt="logo" ></div>
            <input type="text" class="form-control" id="inputBusqueda" placeholder="Buscar platos">
          <button class="stilo" type="button" id="btnMostrarCarrito" class="btn btn-primary">Mostrar Carrito</button>
-         <button class="stilo" type="button" class="btn btn-primary" onclick="abrirChatWhatsApp()">Reservas</button>
+         <button id="whatsappButton">Abrir WhatsApp</button>
+<button class="stilo" type="button" class="btn btn-primary" onclick="abrirChatWhatsApp()">Reservas</button>
            <span class="btn btn-primary" id="mostrarRegistroButton" >Registrase</span>
            <div id="user-info">
             ¡Bienvenido, <span id="user-email"></span>!
           </div>
 
           </div>
-         
+
+
            <div id="status"></div>
       <!--codigo del contenedor de la caja de registro-->
       <h1 id="nombreUsuario"></h1>
@@ -107,7 +108,9 @@
         <button id="buttonInicio" type="submit">Iniciar Sesión </button>
         <button id="googleSignInButton" type="button">Iniciar sesión con Google</button>
         <button id="facebookSignInButton" type="button">Iniciar sesión con Facebook</button>
-      <div id="fb-root"></div>
+        <button id="logoutButton" type="button">Cerrar sesión con Facebook</button>
+
+        <div id="fb-root"></div>
       <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
       <div class="fb-login-button" data-width="" data-size="" data-button-type="" data-layout="" data-auto-logout-link="true" data-use-continue-as="true"></div>
       

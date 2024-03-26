@@ -43,42 +43,36 @@ body{
   background: linear-gradient(to right, #ffffff, #000000);
 }
 
-
 .registro-box {
-position: absolute;
-top: 0;
-right: 0;
-width: 0px;
-height: 0px;
+position: fixed;
+left: 50%;
+top: 50%; /* Center vertically */
+max-height: 80vh; /* Limit height to 80% of viewport height */
+overflow-y: auto; /* Enable vertical scrolling if the content overflows */
+transform: translate(-50%, -50%);
+width: 250px;
+height: 500px;
 border-radius: 10px;
 display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
 z-index: 9999;
-display: none;
-opacity: 9.1; 
+background: linear-gradient(to right, #ffffff, #fffffff8, #ffffff);
+padding: 20px;
+box-shadow: 0 5px 10px rgba(100, 0, 255, 0.3);
+/*  cursor: move; Make the box draggable */
 
 }
 
-#formRegistro{
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  box-shadow: 0 5px 10px rgb(100,0, 255,300);
-  position: fixed;
-  background: linear-gradient(to right , #ffffff, #fffffff8, #ffffff);
-  top: 0;
-  right: 0;
-  padding: 2px;
-  width: 250px;
-  height: -300px;
-  transform: translateX(-50%); /* Centra horizontalmente */
-  align-items: center; /* Centra horizontalmente */
-  text-align: center; /* Alinea el texto al centro */
-  margin-top: 110px;
-
+#formRegistro {
+display: flex;
+flex-direction: column;
+text-align: center;
+align-items: center;
+overflow-y: auto; /* Enables vertical scrolling if the form is too large */
 }
+
 
 
 form.title {
@@ -163,8 +157,8 @@ background: linear-gradient(to right, #ffffff, #ffffff);
 }
 
 #top-panel {
-background: linear-gradient(to right ,  #ffffff, #ffffff, #ffffff);
-padding: 10px;
+background: rgba(255, 255, 255, 0.4); /* Color blanco con 80% de opacidad */
+padding: 2px 5px ;
 display: flex;
 justify-content: space-between;
 align-items: center; /* Agrega esto para centrar verticalmente */
@@ -174,9 +168,9 @@ top: 0;
 left: 0;
 width: 100%;
 z-index: 1000;
-border: none;
-border-color: #c9c9c9;
-box-shadow: 0px 2px 4px rgba(160, 65, 65, 0.1); /* Agrega un efecto de sombra */
+border:none;
+border-color: #cfcfcf;
+box-shadow: 0px 2px 4px rgba(7, 119, 54, 0.5); /* Agrega un efecto de sombra */
 
 }
 
@@ -188,7 +182,7 @@ border:none;
 
 
 #top-panel div {
-margin: 1px; /* Ajusta el margen según sea necesario */
+margin: 0; /* Ajusta el margen según sea necesario */
 }
 
 #top-panel span {
@@ -196,16 +190,34 @@ background-color: transparent; /* Fondo transparente */
 border: none; /* Sin borde */
 color: rgb(#3e3f3f);
 cursor: pointer; /* Cambia el cursor al pasar sobre el texto */
-font-size: 16px;
-margin: 5px; /* Elimina el margen predeterminado */
-padding: 5px; /* Elimina el relleno predeterminado */
+font-size: 14px;
+margin: 0px; /* Elimina el margen predeterminado */
+padding: 5px 10px; /* Elimina el relleno predeterminado */
 position: relative;
 
 }
 
 
 
+/* Media query para dispositivos móviles */
+@media (max-width: 768px) {
+#top-panel {
+flex-direction: column;
+align-items: center; /* Alinea los elementos a la izquierda */
+}
 
+#top-panel > * {
+margin: 5px 0; /* Ajusta el margen vertical */
+}
+
+.stilo {
+width: auto; /* Ajusta el ancho de los botones al 100% */
+}
+
+#top-panel .logo {
+order: -1; /* Cambia el orden de la imagen del logo */
+}
+}
 
 
 /* Estilos para dispositivos móviles */
@@ -214,25 +226,59 @@ position: relative;
 flex-direction: column;
 
 }
-
-#inputBusqueda {
-width: 100%;
-margin-top: 10px;
-}
-
 #logo img {
-width: 50%;
 margin-bottom: 10px;
 }
 }  
-#inputBusqueda {
-width: 100%;
-margin-top: 10px;
-}
-
 #logo img {
 width: 50%;
 margin-bottom: 10px;
+}
+
+#toggleTopPanel {
+position: fixed;
+top: 0;
+left: 0;
+display: none; /* Oculta el botón inicialmente */
+z-index: 1001; /* Asegura que el botón esté por encima del top panel */
+}
+
+@media only screen and (max-width: 600px) {
+#top-panel {
+display: none; /* Oculta el top panel en dispositivos móviles */
+}
+
+#toggleTopPanel {
+display: block; /* Muestra el botón en dispositivos móviles */
+}
+}
+
+/* Muestra el top panel en pantallas más grandes que 600px */
+@media only screen and (min-width: 601px) {
+#top-panel {
+flex-direction: row; /* Cambia la dirección del flujo de los elementos a una fila */
+
+display: flex;
+justify-content: space-between;
+align-items: center; /* Alinea verticalmente los elementos */
+padding: 2px 5px;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+z-index: 1000;
+border: none;
+border-color: #cfcfcf;
+box-shadow: 0px 2px 4px rgba(7, 119, 54, 0.5);
+}
+
+#inputBusqueda {
+width: 200px; /* Ancho automático para el input de búsqueda */
+}
+
+#titulo1 {
+font-size: 20px; /* Restaura el tamaño de fuente original para pantallas más grandes */
+}
 }
 
 
@@ -308,7 +354,7 @@ padding: 0;
 
 .bottom-panel {
 background-color: #f5f5f5; /* Color de fondo del panel */
-color: #008d8d; /* Color del texto */
+color: #0bcfcf; /* Color del texto */
 display: flex;
 align-items: center;
 justify-content: space-between;
@@ -373,8 +419,8 @@ margin-top: 0px;
 
 #titulo1{
 color:#ffc803;
-font-size: 35px;
-margin-top: 10px; /* Ajusta el margen superior según sea necesario */
+font-size: 30px;
+margin-top: 3px; /* Ajusta el margen superior según sea necesario */
 
 
 }
@@ -395,7 +441,7 @@ flex: 1; /* Ajusta el tamaño del contenedor flex */
 cursor: pointer;
 margin-left: 350px;
 margin-right: 2px;
-margin-top: -260px;
+margin-top: 200px;
 padding-top: 1px;
 color: black; /* Cambia el color del texto a negro */
 }
@@ -442,13 +488,12 @@ position: relative;
 
 #panelBusqueda {
 position: fixed;
-
 overflow-y: auto;  background-color: #fff;
 border: 3px solid #ccc;
 border-color: #00fff2;
 z-index: 1000;
 display: none;
-max-height: 300px; /* Establece la altura máxima para la lista de resultados */
+max-height: 400px; /* Establece la altura máxima para la lista de resultados */
 margin-top: 100px;
 padding-bottom: 00px;
 margin-left: 100px;
@@ -476,13 +521,13 @@ overflow-y: auto; /* Agrega una barra de desplazamiento vertical si es necesario
 
 #resultadoBusqueda{
 position: fixed;
-top: 50%;
+top: 70%;
 left: 50%;
 overflow-y: auto;  background-color: #fff;
 border: 3px solid #ccc;
 z-index: 1000;
 display: none;
-max-height: 1100px; /* Establece la altura máxima para la lista de resultados */
+max-height: 800px; /* Establece la altura máxima para la lista de resultados */
 padding-bottom: 0px;
 margin-left: 5px;
 padding-right: 5px;
@@ -496,7 +541,6 @@ transform: translate(-50%, -50%);
 }
 #inputBusqueda{
 height:50px;
-width: 300px;
 padding-left: 3px;
 padding-right: 3px;
 position: relative;
@@ -547,4 +591,6 @@ display: none;
 display: none;
 }
 
-
+.productoTam {
+min-width: 50%; /* Establecer el ancho mínimo como el 50% del ancho de la pantalla */
+}
