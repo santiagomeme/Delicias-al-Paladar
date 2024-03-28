@@ -364,7 +364,6 @@ function onMouseUp() {
 
 var panelBusqueda = document.getElementById("panelBusqueda");
 var inputBusqueda = document.getElementById("inputBusqueda");
-var resultadoBusqueda = document.getElementById("resultadoBusqueda");
 
 // Evento al escribir en el campo de búsqueda
 inputBusqueda.addEventListener("input", function () {
@@ -413,6 +412,43 @@ function mostrarResultados(resultados) {
   });
   panelBusqueda.style.display = "block";
 }
+
+// Función para hacer un elemento arrastrable
+function makeDraggable(element) {
+  let offsetX, offsetY;
+
+  element.addEventListener('mousedown', function(event) {
+      // Calcular la distancia entre la esquina superior izquierda del elemento y la posición del mouse
+      offsetX = event.clientX - element.getBoundingClientRect().left;
+      offsetY = event.clientY - element.getBoundingClientRect().top;
+
+      // Agregar un controlador de eventos para el movimiento del mouse mientras se mantiene presionado
+      document.addEventListener('mousemove', onMouseMove);
+      
+      // Agregar un controlador de eventos para soltar el botón del mouse
+      document.addEventListener('mouseup', onMouseUp);
+  });
+
+  function onMouseMove(event) {
+      // Calcular la nueva posición del elemento basándose en la posición actual del mouse y las distancias calculadas
+      var newLeft = event.clientX - offsetX;
+      var newTop = event.clientY - offsetY;
+
+      // Establecer la nueva posición del elemento
+      element.style.left = newLeft + 'px';
+      element.style.top = newTop + 'px';
+  }
+
+  function onMouseUp() {
+      // Eliminar los controladores de eventos de movimiento del mouse y de soltar el botón del mouse
+      document.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('mouseup', onMouseUp);
+  }
+}
+
+// Aplicar la función makeDraggable al panel de resultados
+var resultadoBusqueda = document.getElementById("resultadoBusqueda");
+makeDraggable(resultadoBusqueda);
 
 
 
@@ -500,6 +536,7 @@ document.getElementById('whatsappButton').addEventListener('click', function() {
     }
   }, 1000); // Espera un segundo antes de verificar si la aplicación de WhatsApp se abrió correctamente
 });
+
 
 
 

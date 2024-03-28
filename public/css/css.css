@@ -157,7 +157,7 @@ background: linear-gradient(to right, #ffffff, #ffffff);
 }
 
 #top-panel {
-background: rgba(255, 255, 255, 0.4); /* Color blanco con 80% de opacidad */
+background: rgba(255, 255, 255, 0.9); /* Color blanco con 80% de opacidad */
 padding: 2px 5px ;
 display: flex;
 justify-content: space-between;
@@ -170,7 +170,7 @@ width: 100%;
 z-index: 1000;
 border:none;
 border-color: #cfcfcf;
-box-shadow: 0px 2px 4px rgba(7, 119, 54, 0.5); /* Agrega un efecto de sombra */
+box-shadow: 0px 2px 4px rgba(7, 119, 54, 0.2); /* Agrega un efecto de sombra */
 
 }
 
@@ -241,6 +241,15 @@ top: 0;
 left: 0;
 display: none; /* Oculta el botón inicialmente */
 z-index: 1001; /* Asegura que el botón esté por encima del top panel */
+
+background-color: transparent; /* Fondo transparente */
+border: none; /* Sin borde */
+color: rgb(#3e3f3f);
+cursor: pointer; /* Cambia el cursor al pasar sobre el texto */
+font-size: 14px;
+margin: 0px; /* Elimina el margen predeterminado */
+padding: 5px 10px; /* Elimina el relleno predeterminado */
+
 }
 
 @media only screen and (max-width: 600px) {
@@ -269,7 +278,7 @@ width: 100%;
 z-index: 1000;
 border: none;
 border-color: #cfcfcf;
-box-shadow: 0px 2px 4px rgba(7, 119, 54, 0.5);
+box-shadow: 0px 2px 4px rgba(7, 119, 54, 0.2);
 }
 
 #inputBusqueda {
@@ -293,14 +302,15 @@ border-radius: 1px;
 border-style:none;
 border-color: #000000;
 box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
-padding-top: 100px;
+padding-top:1px;
 overflow-y: auto;
-color: white;
+color: rgb(160, 26, 26);
 max-width: 230px;
 margin-right:-40px; 
 z-index: 999; 
 position: relative;
-margin-top: 200px;
+margin-top: 120px;
+display: block; /* Asegura que el contenedor sea visible */
 
 }
 
@@ -320,7 +330,7 @@ margin-right: 5px;
 
 #catalogo{
 flex: 1; /* El catálogo ocupará todo el espacio disponible */
-margin-top: 200px;
+margin-top: 100px;
 margin-right: 5px;
 }
 
@@ -344,7 +354,7 @@ justify-content: space-between;
 
 }
 #catalogo .row {
-margin-left: 2px; /* Ajusta el valor según sea necesario */
+margin: 15px; /* Ajusta el valor según sea necesario */
 }
 /*panel inferior*/
 body {
@@ -382,7 +392,6 @@ flex-grow: 1;
 
 
 .logo{
-border-radius: 50%;
 height: 45px;
 width: 55px;
 border:none;
@@ -487,18 +496,20 @@ position: relative;
 
 
 #panelBusqueda {
-position: fixed;
+position: absolute;
 overflow-y: auto;  background-color: #fff;
 border: 3px solid #ccc;
 border-color: #00fff2;
 z-index: 1000;
 display: none;
-max-height: 400px; /* Establece la altura máxima para la lista de resultados */
+max-height: 300px; /* Establece la altura máxima para la lista de resultados */
+max-width: 400px; 
 margin-top: 100px;
-padding-bottom: 00px;
+padding: 10px;
+padding-bottom: 100px;
 margin-left: 100px;
 padding-right: 100px;
-margin-right: 100px;
+margin-right: 200px;
 margin-bottom: 100px;
 padding-top: 100px;
 padding-left: 100px;
@@ -506,7 +517,7 @@ margin: 0 auto; /* Centra horizontalmente */
 transform: translateX(-50%, -50%);
 background-color: rgb(255, 255, 255);
 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-margin-top: 200px;
+margin-top: 100px;
 
 
 }
@@ -517,17 +528,19 @@ margin-top: 200px;
 #panelBusqueda ul {
 max-height: 300px; /* Establece la altura máxima para la lista de resultados */
 overflow-y: auto; /* Agrega una barra de desplazamiento vertical si es necesario */
+max-width: 300px;
 }
 
 #resultadoBusqueda{
-position: fixed;
+position: absolute;
 top: 70%;
 left: 50%;
 overflow-y: auto;  background-color: #fff;
 border: 3px solid #ccc;
 z-index: 1000;
 display: none;
-max-height: 800px; /* Establece la altura máxima para la lista de resultados */
+max-height: 300px; /* Establece la altura máxima para la lista de resultados */
+max-width: 400px;
 padding-bottom: 0px;
 margin-left: 5px;
 padding-right: 5px;
@@ -544,7 +557,8 @@ height:50px;
 padding-left: 3px;
 padding-right: 3px;
 position: relative;
-
+width: 150px; /* Ajusta el ancho del botón de búsqueda */
+padding: 5px; /* Ajusta el espacio interior del botón de búsqueda */
 } 
 
 
@@ -592,5 +606,50 @@ display: none;
 }
 
 .productoTam {
-min-width: 50%; /* Establecer el ancho mínimo como el 50% del ancho de la pantalla */
+min-width: 30%; /* Establecer el ancho mínimo como el 50% del ancho de la pantalla */
+}
+
+#imgLogoPrinci{
+padding-top: 5px;
+padding-bottom: 10px;
+justify-content: center;
+position:relative;
+display: flex;
+width: 100%;
+
+}
+.imgLogo{
+position: relative;
+
+}
+
+#imgDecor {
+position: relative;
+width: 100%; /* Ajusta el ancho según tus necesidades */
+height: 50px; /* Ajusta la altura según tus necesidades */
+background-image: url("../images/imgDecorP.jpg"); /* Ruta de tu imagen */
+background-size: cover; /* Ajusta el tamaño para cubrir todo el contenedor */
+background-position: center; /* Centra la imagen */
+opacity: 0.5; /* Cambia este valor para ajustar la transparencia (0.0 - 1.0) */
+background-position: center; /* Centra la imagen horizontalmente */
+
+}
+
+/* Estilos adicionales para el contenedor si es necesario */
+.imgDecor {
+width: 100%;
+height:auto;
+margin-top: 30px;
+}
+
+
+#bannerCookies{
+display: none;
+}
+
+
+
+.adsbygoogle {
+/* Estilos para el anuncio de AdSense */
+display: block; /* Asegura que el anuncio sea visible */
 }
