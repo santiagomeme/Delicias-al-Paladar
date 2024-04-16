@@ -1,130 +1,145 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 
-// Inicializa Firebase con la configuración
+import { firebaseConfig } from './firebase-config.mjs';
+import 'firebase/auth';
+import firebaseui from 'firebaseui';
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getFirestore } from 'firebase/firestore'; 
+
+const auth = getAuth();
+const db = getFirestore();
+
 firebase.initializeApp(firebaseConfig);
 
-// Ahora puedes usar las funcionalidades de autenticación de Firebase en este archivo
-const auth = firebase.auth();
 
 
-document.getElementById("buttonRegistro").addEventListener("click", function () {
-  var correo = document.getElementById("correoRegistro").value;
-  var password = document.getElementById("passwordRegistro").value;
+const provider = new GoogleAuthProvider();
+provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
 
-  // Realizar la validación básica
-  if (!correo || !password) {
-    alert("Por favor, completa todos los campos.");
-    return false;
-  }
 
-  // Lógica para registrar un nuevo usuario
-  firebase.auth().createUserWithEmailAndPassword(correo, password)
-    .then((userCredential) => {
-      // Manejar el registro exitoso
-      var user = userCredential.user;
-      console.log("Usuario registrado:", user);
-          // Mostrar información del usuario
-      mostrarCorreoUsuario(correo);
+const ui = new firebaseui.auth.AuthUI(firebase.auth());
 
-    })
-    .catch((error) => {
-      // Manejar errores durante el registro
-      var errorMessage = error.message;
-      console.error("Error de registro:", errorMessage);
-      // Mostrar un mensaje de error al usuario o realizar otras acciones según sea necesario
-      alert("Error de registro: " + errorMessage);
-    });
+var uiConfig = {
+  callbacks: {
+    signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+      // User successfully signed in.
+      // Return type determines whether we continue the redirect automatically
+      // or whether we leave that to developer to handle.
+      return true;
+    },
+    uiShown: function() {
+      // The widget is rendered.
+      // Hide the loader.
+      document.getElementById('loader').style.display = 'none';
+    }
+  },
+  // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+  signInFlow: 'popup',
+  signInSuccessUrl: 'https://delicias-al-paladar-689f1.web.app/?',
+  signInOptions: [
+    // Leave the lines as is for the providers you want to offer your users.
+    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+    firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+    firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+    firebase.auth.GithubAuthProvider.PROVIDER_ID,
+    firebase.auth.EmailAuthProvider.PROVIDER_ID,
+    firebase.auth.PhoneAuthProvider.PROVIDER_ID
+  ],
+  // Terms of service url.
+  tosUrl: 'https://delicias-al-paladar-689f1.web.app/?condicioneServicios',
+  // Privacy policy url.
+  privacyPolicyUrl: 'https://delicias-al-paladar-689f1.web.app/?Politicas'
+};
 
-  return false; // Impedir que se envíe el formulario si hay campos vacíos
+
+ui.start('#firebaseui-auth-container', {
+  signInOptions: [
+    {
+      provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+      scopes: [
+        'https://www.googleapis.com/auth/contacts.readonly'
+      ],
+      customParameters: {
+        // Forces account selection even when one account
+        // is available.
+        prompt: 'select_account'
+      }
+    },
+    {
+      provider: firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+      scopes: [
+        'public_profile',
+        'email',
+        'user_likes',
+        'user_friends'
+      ],
+      customParameters: {
+        // Forces password re-entry.
+        auth_type: 'reauthenticate'
+      }
+    },
+    firebase.auth.EmailAuthProvider.PROVIDER_ID // Other providers don't need to be given as object.
+  ]
 });
 
-document.getElementById("buttonInicio").addEventListener("click", function () {
-  event.preventDefault();
+// Is there an email link sign-in?
+if (ui.isPendingRedirect()) {
+  ui.start('#firebaseui-auth-container', uiConfig);
+}
+// This can also be done via:
+if (firebase.auth().isSignInWithEmailLink(window.location.href)) {
+  ui.start('#firebaseui-auth-container', uiConfig);
+}
 
-  var correo = document.getElementById("correoInicio").value;
-  var password = document.getElementById("passwordInicio").value;
 
-  // Realizar la validación básica
-  if (!correo || !password) {
-    alert("Por favor, completa todos los campos.");
-    return false;
-  }
 
-  // Lógica para iniciar sesión
-  firebase.auth().signInWithEmailAndPassword(correo, password)
-    .then((userCredential) => {
-      // Manejar el inicio de sesión exitoso
-      var user = userCredential.user;
-      console.log("Inicio de sesión exitoso:", user);
-      // Mostrar información del usuario
-    mostrarCorreoUsuario(correo);
-
-    })
-    .catch((error) => {
-      // Manejar errores durante el inicio de sesión
-      var errorMessage = error.message;
-      console.error("Error de inicio de sesión:", errorMessage);
-      // Mostrar un mensaje de error al usuario o realizar otras acciones según sea necesario
-      alert("Error de inicio de sesión: " + errorMessage);
-    });
-
-  return false; // Impedir que se envíe el formulario si hay campos vacíos
-});
-
-// Agrega mensajes de registro para verificar el envío de correo de restablecimiento exitoso
-sendPasswordResetEmail(firebaseApp.auth(), correo)
-  .then(() => {
-    // Manejar el envío de correo de restablecimiento exitoso
-    console.log("Correo de restablecimiento enviado con éxito. Verifica tu bandeja de entrada.");
-    // Puedes realizar acciones adicionales si es necesario
-    // Por ejemplo, redirigir a otra página o mostrar un mensaje de éxito
-    alert("Correo de restablecimiento enviado con éxito. Verifica tu bandeja de entrada.");
-  })
-  .catch((error) => {
-    // Manejar errores durante el envío del correo de restablecimiento
-    console.error("Error al enviar el correo de restablecimiento:", error);
-    // Mostrar un mensaje de error al usuario o realizar otras acciones según sea necesario
-    alert("Error al enviar el correo de restablecimiento: " + error.message);
+const initApp = function() {
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+      var displayName = user.displayName;
+      var email = user.email;
+      var emailVerified = user.emailVerified;
+      var photoURL = user.photoURL;
+      var uid = user.uid;
+      var phoneNumber = user.phoneNumber;
+      var providerData = user.providerData;
+      user.getIdToken().then(function(accessToken) {
+        document.getElementById('sign-in-status').textContent = 'Signed in';
+        document.getElementById('sign-in').textContent = 'Sign out';
+        document.getElementById('account-details').textContent = JSON.stringify({
+          displayName: displayName,
+          email: email,
+          emailVerified: emailVerified,
+          phoneNumber: phoneNumber,
+          photoURL: photoURL,
+          uid: uid,
+          accessToken: accessToken,
+          providerData: providerData
+        }, null, '  ');
+      });
+    } else {
+      // User is signed out.
+      document.getElementById('sign-in-status').textContent = 'Signed out';
+      document.getElementById('sign-in').textContent = 'Sign in';
+      document.getElementById('account-details').textContent = 'null';
+    }
+  }, function(error) {
+    console.log(error);
   });
-// Restablecer contraseña
-export const resetPassword = (correo) => {
-  return sendPasswordResetEmail(firebaseApp.auth(), correo)
-    .then(() => {
-      // Manejar el envío de correo de restablecimiento exitoso
-      console.log("Correo de restablecimiento enviado con éxito. Verifica tu bandeja de entrada.");
-      // Puedes realizar acciones adicionales si es necesario
-      // Por ejemplo, redirigir a otra página o mostrar un mensaje de éxito
-      alert("Correo de restablecimiento enviado con éxito. Verifica tu bandeja de entrada.");
-    })
-    .catch((error) => {
-      // Manejar errores durante el envío del correo de restablecimiento
-      console.error("Error al enviar el correo de restablecimiento:", error);
-      // Mostrar un mensaje de error al usuario o realizar otras acciones según sea necesario
-      alert("Error al enviar el correo de restablecimiento: " + error.message);
-    });
 };
 
-// Restablecer los campos del formulario
-export const resetForm = () => {
-  document.getElementById("correoRegistro").value = "";
-  document.getElementById("passwordRegistro").value = "";
-  return false; // Impedir que se envíe el formulario si hay campos vacíos
-};
+window.addEventListener('load', function() {
+  initApp()
+});
 
-// Función para mostrar el correo del usuario
-function mostrarCorreoUsuario(correo) {
-  document.getElementById("user-email").textContent = correo;
-  document.getElementById("user-info").style.display = "block";
-}
-
-// Función para ocultar el div de información del usuario
-function ocultarInfoUsuario() {
-  document.getElementById("user-info").style.display = "none";
-}
 
 
 
 export default {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
+  auth,
+  db
 };
+
+
+
+

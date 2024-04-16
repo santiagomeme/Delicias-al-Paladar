@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function () {
 
 var productos = [{
@@ -19,7 +18,7 @@ var productos = [{
     id: 3,
     nombre: "Cena con Gordon Blue ",
     precio: 11000,
-    detalle: "Gordon Blue Relleno de Jamon y Queso, Acompañadp de Ensalada, y un Acompañante",
+    detalle: "Gordon Blue Relleno de Jamon y Queso, Acompañado de Ensalada, y un Acompañante",
     imagen: "../images/cenaGordonBlue2.jpg"
 
   }, {
@@ -65,13 +64,49 @@ var productos = [{
     imagen: "../images/miniPostres.jpg"
 
   }, {
-    id: 10,
-    nombre: "Rollo de Pollo Relleno",
+    id: 11,
+    nombre: "Arroz Marinero",
     precio: 100000,
-    detalle: "Hawallano, Verduras, Agridulce. Acompañado de Ensalada y un Acompañante para 10 personas x $100.000",
+    detalle: "Arroz Marinero Acompañado de Tostadas de Platano, o Papas a la Francesa  para 5 Personas x $100.000",
     imagen: "../images/RolloPollo.jpg"
 
-  }];
+  }, {
+    id: 12,
+    nombre: "Picada Marinera",
+    precio: 100000,
+    detalle: "Picada Marinera con Camaron, Pulpo, Calamar, Cangrejo, Pezcado Arroz Coco y 1 Acompñanate o una Ensalada Para  personas 5 x $150.000",
+    imagen: "../images/PicadaMarinera.jpg"
+
+  }, {
+    id: 13,
+    nombre: "Cazuela de Mariscos o Camaron",
+    precio: 135000,
+    detalle: "Cazuela de Mariscos o Camaron Grande Acompañada de Arroz Coco, Tostadas de Platano o Papas a la Francesa para 5 Personas x $135.000",
+    imagen: "../images/RolloPollo.jpg"
+
+  }, {
+    id: 14,
+    nombre: "Pollo Relleno",
+    precio: 120000,
+    detalle: "Hawallano, Verduras, Agridulce. Acompañado de Ensalada y un Acompañante para 10 personas x $100.000",
+    imagen: "../images/PolloRelleno.jpg"
+
+  }, {
+    id: 15,
+    nombre: "Pernil de Pollo",
+    precio: 11000,
+    detalle: "Hawallano, Verduras, Agridulce. Acompañado de Ensalada y un Acompañante para 10 personas x $100.000",
+    imagen: "../images/PernilPollo.jpg"
+
+  }, {
+    id: 16,
+    nombre: "Pechuga Rellena",
+    precio: 100000,
+    detalle: "Hawallano, Verduras, Agridulce. Acompañado de Ensalada y un Acompañante para 10 personas x $100.000",
+    imagen: "../images/PechugaRellena.jpg"
+
+  }
+];
 
 
 
@@ -278,9 +313,6 @@ document.getElementById('toggleTopPanel').addEventListener('click', function() {
   }
 });
 
-
-
-
 // Obtiene el botón y el cuadro de registro
 var mostrarRegistro = document.getElementById("mostrarRegistro");
 var registroBox = document.getElementById("registroBox");
@@ -312,7 +344,6 @@ if (mostrarRegistroButton && registroBox) {
     }
   });
 }
-
 // Agrega un event listener al documento para detectar clics en cualquier lugar
 document.addEventListener("click", function (event) {
   // Verifica si el clic fue fuera del registroBox
@@ -536,6 +567,8 @@ document.getElementById('whatsappButton').addEventListener('click', function() {
     }
   }, 1000); // Espera un segundo antes de verificar si la aplicación de WhatsApp se abrió correctamente
 });
+
+
 
 
 

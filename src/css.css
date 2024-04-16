@@ -52,6 +52,7 @@
             transform: translate(-50%, -50%);
             width: 250px;
             height: 500px;
+            margin-top: 200px;
             border-radius: 10px;
             display: flex;
             flex-direction: column;
@@ -66,12 +67,13 @@
         }
         
         #formRegistro {
-            display: flex;
+            display: flex!important;
             flex-direction: column;
             text-align: center;
             align-items: center;
             overflow-y: auto; /* Enables vertical scrolling if the form is too large */
-        }
+       
+          }
         
         
      
@@ -295,9 +297,9 @@
 #right-panel {
  /* position: fixed;*/
   right: 0;
-  width: 230px!important;
-  height: 100%;
-  background: rgb(255, 255, 255);
+  width: 250px!important;
+  height: 1000px;
+  background: rgb(216, 216, 216);
   border-radius: 1px;
   border-style:none;
   border-color: #000000;
@@ -305,8 +307,8 @@
   padding-top:1px;
   overflow-y: auto;
   color: rgb(160, 26, 26);
-  max-width: 230px;
-  margin-right:-40px; 
+  max-width: 250px;
+  margin-right:1px; 
   z-index: 999; 
   position: relative;
   margin-top: 120px;
@@ -345,7 +347,6 @@
     
   
   #container {
-    padding-right: -100%;
     margin: 0 auto; /* Ajusta el margen derecho para dejar espacio al panel derecho */
     max-width: 1200px; ; /* Resta el ancho del panel derecho al 100% del ancho total */
     display: flex;
@@ -370,9 +371,11 @@ body {
   justify-content: space-between;
   bottom: 0;
   padding: 50px;
-  position: relative;
+  margin-top: 200px;
+  margin-bottom: 0px;
+  position:relative;
   width: 100%; /* Ajusta el ancho al 100% de la ventana del navegador */
-
+  height: 400px;
 }
 
 .panel-image {
@@ -625,8 +628,8 @@ padding: 5px; /* Ajusta el espacio interior del botón de búsqueda */
 
 #imgDecor {
   position: relative;
-  width: 100%; /* Ajusta el ancho según tus necesidades */
-  height: 50px; /* Ajusta la altura según tus necesidades */
+  width: auto; /* Ajusta el ancho según tus necesidades */
+  height: 400px; /* Ajusta la altura según tus necesidades */
   background-image: url("../images/imgDecorP.jpg"); /* Ruta de tu imagen */
   background-size: cover; /* Ajusta el tamaño para cubrir todo el contenedor */
   background-position: center; /* Centra la imagen */
@@ -635,12 +638,7 @@ padding: 5px; /* Ajusta el espacio interior del botón de búsqueda */
 
 }
 
-/* Estilos adicionales para el contenedor si es necesario */
-.imgDecor {
-  width: 100%;
-  height:auto;
-  margin-top: 30px;
-}
+
 
 
 #bannerCookies{
@@ -652,4 +650,235 @@ padding: 5px; /* Ajusta el espacio interior del botón de búsqueda */
 .adsbygoogle {
   /* Estilos para el anuncio de AdSense */
   display: block; /* Asegura que el anuncio sea visible */
+}
+
+
+/* Estilos para el contenedor del anuncio */
+#anuncio-container {
+  display: block;
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
+  max-width: 1%; /* Ajusta el ancho máximo al tamaño máximo del contenedor */
+  height: auto; /* Asegura una altura variable para adaptarse al contenido */
+  text-align: center; /* Centra el contenido horizontalmente */
+  margin-right: 20px;
+
+}
+#anuncio-container2 {
+  display: block;
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
+  max-width: 1%; /* Ajusta el ancho máximo al tamaño máximo del contenedor */
+  height: auto; /* Asegura una altura variable para adaptarse al contenido */
+  text-align: center; /* Centra el contenido horizontalmente */
+  margin-right: 20px;
+
+}
+#anuncio-container {
+  display: block;
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
+  max-width: 1%; /* Ajusta el ancho máximo al tamaño máximo del contenedor */
+  height: auto; /* Asegura una altura variable para adaptarse al contenido */
+  text-align: center; /* Centra el contenido horizontalmente */
+  margin-right: 20px;
+}
+#anuncio-container0 {
+  display: block;
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
+  max-width: 1%; /* Ajusta el ancho máximo al tamaño máximo del contenedor */
+  height: auto; /* Asegura una altura variable para adaptarse al contenido */
+  text-align: center; /* Centra el contenido horizontalmente */
+  margin-right: 20px;
+}
+.texto-sofisticado {
+  font-family: "Montserrat", sans-serif; /* Cambia la fuente por una más sofisticada */
+  font-size: 18px; /* Ajusta el tamaño de la fuente */
+  line-height: 1.5; /* Ajusta el espaciado entre líneas */
+  letter-spacing: 0.5px; /* Ajusta el espaciado entre letras */
+  text-align: center; /* Centra el texto horizontalmente */
+  color: #333; /* Cambia el color del texto */
+  border-color: #0bcfcf;
+  border-style: solid;
+  margin-top:5px;
+  padding-top: 5px;
+  width: 100%;
+  height: 10%;
+  justify-content: center;
+}
+.ad-container {
+  width: 300px; /* Ajusta el ancho según sea necesario */
+  height: 250px; /* Ajusta la altura según sea necesario */
+  margin-bottom: 5px; /* Espacio adicional opcional entre anuncios */
+}
+
+.submenu {
+  display: none;
+  margin-left: 10px;
+}
+
+.submenu-btn {
+  margin-left: 10px;
+}
+
+.show {
+  display: block !important;
+}
+
+.lora-uniquifier {
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+}
+
+.opcionesProteina{
+  font-family: "Montserrat", sans-serif; /* Cambia la fuente por una más sofisticada */
+  font-size: 18px; /* Ajusta el tamaño de la fuente */
+  line-height: 1.5; /* Ajusta el espaciado entre líneas */
+  letter-spacing: 0.5px; /* Ajusta el espaciado entre letras */
+  text-align: center; /* Centra el texto horizontalmente */
+  color: #333; /* Cambia el color del texto */
+  border-color: #deffff;
+  border-style: solid;
+  margin-top: 10px;
+  padding-top: 20px;
+  height: 800px;
+  justify-content: center;
+  display: flex; /* Usamos flexbox para alinear los elementos en línea */
+  width:100%;
+   /* Para que cada opción ocupe 1/3 del contenedor */
+
+}
+
+.opcionesProteina > * {
+  flex: 1; /* Todos los elementos hijos ocupan la misma cantidad de espacio */
+  margin-right: 10px; /* Espacio entre las subcategorías */
+}
+
+.opcionesProteina > *:last-child {
+  margin-right: 0; /* Elimina el margen derecho del último elemento */
+}
+
+.opcioneSalsas{
+  font-family: "Montserrat", sans-serif; /* Cambia la fuente por una más sofisticada */
+  font-size: 18px; /* Ajusta el tamaño de la fuente */
+  line-height: 1.5; /* Ajusta el espaciado entre líneas */
+  letter-spacing: 0.5px; /* Ajusta el espaciado entre letras */
+  text-align: center; /* Centra el texto horizontalmente */
+  color: #333; /* Cambia el color del texto */
+  border-color: #deffff;
+  border-style: solid;
+  margin-top: 10px;
+  padding-top: 20px;
+  height: 450px;
+  justify-content: center;
+  display: flex; /* Usamos flexbox para alinear los elementos en línea */
+  width: (calc.33% - 20px); /* Para que cada opción ocupe 1/3 del contenedor */
+
+
+}
+.opcioneSalsas > * {
+  flex: 1; /* Todos los elementos hijos ocupan la misma cantidad de espacio */
+  margin-right: 10px; /* Espacio entre las subcategorías */
+}
+
+.opcioneSalsas > *:last-child {
+  margin-right: 0; /* Elimina el margen derecho del último elemento */
+}
+
+
+.opcionAcompa{
+  font-family: "Montserrat", sans-serif; /* Cambia la fuente por una más sofisticada */
+  font-size: 18px; /* Ajusta el tamaño de la fuente */
+  line-height: 1.5; /* Ajusta el espaciado entre líneas */
+  letter-spacing: 0.5px; /* Ajusta el espaciado entre letras */
+  text-align: center; /* Centra el texto horizontalmente */
+  color: #333; /* Cambia el color del texto */
+  border-color: #deffff;
+  border-style: solid;
+  margin-top: 10px;
+  padding-top: 20px;
+  height: 650px;
+  justify-content: center;
+  display: flex; /* Usamos flexbox para alinear los elementos en línea */
+  width: (calc.33% - 20px); /* Para que cada opción ocupe 1/3 del contenedor */
+
+}
+.opcionAcompa > * {
+  flex: 1; /* Todos los elementos hijos ocupan la misma cantidad de espacio */
+  margin-right: 10px; /* Espacio entre las subcategorías */
+}
+
+.opcionAcompa > *:last-child {
+  margin-right: 0; /* Elimina el margen derecho del último elemento */
+}
+.opcionesEnsalada{
+  font-family: "Montserrat", sans-serif; /* Cambia la fuente por una más sofisticada */
+  font-size: 18px; /* Ajusta el tamaño de la fuente */
+  line-height: 1.5; /* Ajusta el espaciado entre líneas */
+  letter-spacing: 0.5px; /* Ajusta el espaciado entre letras */
+  text-align: center; /* Centra el texto horizontalmente */
+  color: #333; /* Cambia el color del texto */
+  border-color: #deffff;
+  border-style: solid;
+  margin-top: 10px;
+  padding-top: 20px;
+  height: 500px;
+  justify-content: center;
+  display: flex; /* Usamos flexbox para alinear los elementos en línea */
+  width: (calc.33% - 20px); /* Para que cada opción ocupe 1/3 del contenedor */
+
+
+}
+.opcionesEnsalada > * {
+  flex: 1; /* Todos los elementos hijos ocupan la misma cantidad de espacio */
+  margin-right: 10px; /* Espacio entre las subcategorías */
+}
+
+.opcioneSalsas > *:last-child {
+  margin-right: 0; /* Elimina el margen derecho del último elemento */
+}
+
+
+
+.opciones-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+ 
+}
+
+.opciones {
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  text-align: center;
+  color: #333;
+  border: 2px solid #e4ffff;
+  padding: 1px;
+  width: (calc.33% - 20px); /* Para que cada opción ocupe 1/3 del contenedor */
+  margin-bottom: 20px;
+    }
+
+/* Media query para ajustar el diseño en pantallas pequeñas */
+@media screen and (max-width: 768px) {
+  .opciones {
+      width: calc(50% - 20px); /* Para que cada opción ocupe 1/2 del contenedor en pantallas pequeñas */
+  }
+}
+
+/* Media query para ajustar el diseño en pantallas aún más pequeñas */
+@media screen and (max-width: 480px) {
+  .opciones {
+      width: 100%; /* Para que cada opción ocupe el 100% del contenedor en pantallas muy pequeñas */
+  }
+}
+.opciones {
+  display: flex; /* Utilizamos flexbox para alinear los elementos */
+}
+
+.opcion {
+  margin-right: 10px; /* Espacio entre las opciones */
+}
+h2{
+  color: #ffc400;
 }

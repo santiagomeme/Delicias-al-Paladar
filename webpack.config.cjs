@@ -5,7 +5,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports={
   entry: './src/prueba.mjs',
   output: {
-    filename: './public/prueba.mjs',
+    filename: 'prueba.mjs',
     path: path.resolve(__dirname, 'public'),
   },
   devServer: {
@@ -13,7 +13,11 @@ module.exports={
     port: 8080,
   },
   resolve: {
-    extensions: ['.js', '.mjs'],
+    extensions: ['.js', '.mjs', '.cjs', '.json', '.css'],
+    alias: {
+   
+      'firebaseui': path.resolve(__dirname, 'node_modules/firebaseui/dist/firebaseui.js')
+    }
   },
   module: {
     rules: [
@@ -25,6 +29,7 @@ module.exports={
             loader: 'html-loader',
             options: { minimize: true },
           },
+         
         ],
       },
       {
@@ -34,26 +39,38 @@ module.exports={
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
+        generator: {
+          filename: 'images/[name][ext][query]'
+        }
       },
+      {
+        test: /firebaseui/,
+        use: 'script-loader'
+      }
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
-      filename: './public/index.html',
+      filename: 'index.html',
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/politicas.html',
+      filename: 'politicas.html',
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/condicioneServicios.html',
+      filename: 'condicioneServicios.html',
     }),
     new CopyWebpackPlugin({
       patterns: [
         { from: 'src/images', to: 'public/images' },
-        { from: '.github/workflows', to: 'public/.github/workflows' },
-        { from: path.resolve(__dirname, 'src/css'), to: 'css' },
-        { from: 'src/index.html', to: 'index.html' },
-
-
-        // Puedes agregar más reglas para otras carpetas o archivos
+        { from: '.github/workflows', to: 'public/.github/workflows' }
+      
       ],
     }),
   ],
-  mode: 'development',
+  mode: 'production',
 
+  
 };

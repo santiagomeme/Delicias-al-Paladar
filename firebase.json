@@ -23,7 +23,7 @@
         ]
       }
     ],  "dependencies": {
-      "firebase": "^9.0.0"
+      "firebase": "^10.10.0"
     }
   }
 }

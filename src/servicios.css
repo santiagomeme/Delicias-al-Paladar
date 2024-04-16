@@ -31,4 +31,7 @@ footer {
     text-align: center;
 }
 
-/* Agrega estilos adicionales según sea necesario */
+.logo{
+    text-align: center; /* Centra el texto horizontalmente */
+
+}
