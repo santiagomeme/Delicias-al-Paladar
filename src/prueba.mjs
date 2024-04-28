@@ -5,107 +5,122 @@ var productos = [{
     nombre: "Gordon Blue",
     precio: 120000,
     detalle: "Gordon Blue Relleno de Jamon y Queso, Acompañadp de Ensalada, y un Acompañante",
-    imagen: "../images/cenaGordonBlue.jpg"
+    imagen: "images/cenaGordonBlue.jpg"
 
   }, {
     id: 2,
     nombre: "Filete de Pollo relleno ",
     precio: 6000,
     detalle: "Rellenos: Verduras Salteadas, Hawallano, Verduras Agridulces, Maduro y Queso, Acompañados de Salsa",
-    imagen: "../images/filete-relleno.jpg"
+    imagen: "images/filete-relleno.jpg"
 
   },{
     id: 3,
     nombre: "Cena con Gordon Blue ",
     precio: 11000,
     detalle: "Gordon Blue Relleno de Jamon y Queso, Acompañado de Ensalada, y un Acompañante",
-    imagen: "../images/cenaGordonBlue2.jpg"
+    imagen: "images/cenaGordonBlue2.jpg"
 
   }, {
     id: 4,
     nombre: "Cenas con Rollo de Pollo",
     precio: 100000,
     detalle: "Rollo de Pollo Relleno de: Verduras Salteadas, Hawallano, Verduras Agridulces, Maduro y Queso, Acompañados de Salsa. Acompañadp de Ensalada, y un Acompañante para 10 Personas x $100.000",
-    imagen: "../images/cenaRollo.jpg"
+    imagen: "images/cenaRollo.jpg"
 
   }, {
     id: 5,
     nombre: "Lomo de Cerdo",
     precio: 12000,
-    detalle: "Lomo de Cerdo en Salsa, Acompañado de Ensalada y 1 Acompañante",
-    imagen: "../images/cerdoSalsa.jpg"
+    detalle: "Lomo de Cerdo al Horno Bañado en Salsa, Acompañado de Ensalada y 1 Acompañante",
+    imagen: "images/cerdoSalsa.jpg"
 
   },{
     id: 6,
     nombre: "Comida Rapida",
     precio: 6000,
     detalle: "Hamburguesa Tradicional $10000 , super Cronch 13000$ ,Hamburguesa Infantil $, Perros $ ,Perro Infantil $ , Snaks de Pollo $ 8000, Lasagñas $12000 , Quesadillas $8000 , Alitas $ 10000 ",
-    imagen: "../images/comidaRapida.jpg"
+    imagen: "images/comidaRapida.jpg"
 
   }, {
     id: 7,
     nombre: "Cenas para Eventos",
     precio: 11000,
     detalle: "Cenas para Eventos con una Proteina una Ensalada, y un Acompañante, Proteinas Pollo $11.000, Cerdo $12.000, Res $13.000",
-    imagen: "../images/comiEventos.jpg"
+    imagen: "images/comiEventos1.jpg"
 
   }, {
     id: 8,
-    nombre: "Comida para Eventos",
+    nombre: "Chuleta de Pollo",
     precio: 11000,
-    detalle: "Cenas para Eventos con una Proteina una Ensalada, y un Acompañante, Proteinas Pollo $11.000, Cerdo $12.000, Res $13.000",
-    imagen: "../images/comiEventos2.jpg"
+    detalle: "Chuleta de Pollo Acompañada de ensalada y un Acompañante x $11.000.",
+    imagen: "images/chuletaPollo.jpg"
 
   }, {
     id: 9,
     nombre:"Postres",
     precio: 3500,
-    detalle: "Postres y Mini Postres para Eventos",
-    imagen: "../images/miniPostres.jpg"
+    detalle: "Postres de Diferentes Sabores y Mini Postres",
+    imagen: "images/miniPostres.jpg"
 
   }, {
     id: 11,
     nombre: "Arroz Marinero",
     precio: 100000,
-    detalle: "Arroz Marinero Acompañado de Tostadas de Platano, o Papas a la Francesa  para 5 Personas x $100.000",
-    imagen: "../images/RolloPollo.jpg"
+    detalle: "Arroz Marinero Compuesto de Camaron, Calamar, Pulpo, Pescado y Cangrejo,  Acompañado de Tostadas de Platano o Papas a la Francesa y Aji, para 5 Personas x $100.000",
+    imagen: "images/ArrozMar.jpg"
 
   }, {
     id: 12,
     nombre: "Picada Marinera",
     precio: 100000,
-    detalle: "Picada Marinera con Camaron, Pulpo, Calamar, Cangrejo, Pezcado Arroz Coco y 1 Acompñanate o una Ensalada Para  personas 5 x $150.000",
-    imagen: "../images/PicadaMarinera.jpg"
+    detalle: "Camaron, Calamar, Cangrejo Apanados Acompañados de Papas a la Francesa con Salsas y Ajies",
+    imagen: "images/PicadaMarinera.jpg"
 
   }, {
     id: 13,
     nombre: "Cazuela de Mariscos o Camaron",
-    precio: 135000,
+    precio: 120000,
     detalle: "Cazuela de Mariscos o Camaron Grande Acompañada de Arroz Coco, Tostadas de Platano o Papas a la Francesa para 5 Personas x $135.000",
-    imagen: "../images/RolloPollo.jpg"
+    imagen: "images/Cazuela.jpg"
 
   }, {
     id: 14,
     nombre: "Pollo Relleno",
     precio: 120000,
-    detalle: "Hawallano, Verduras, Agridulce. Acompañado de Ensalada y un Acompañante para 10 personas x $100.000",
-    imagen: "../images/PolloRelleno.jpg"
+    detalle: "Rellenos: Hawallano, Verduras, Agridulce. Acompañado de Ensalada y un Acompañante para 10 personas x $120.000",
+    imagen: "images/PolloRelleno.jpg"
 
   }, {
     id: 15,
     nombre: "Pernil de Pollo",
     precio: 11000,
-    detalle: "Hawallano, Verduras, Agridulce. Acompañado de Ensalada y un Acompañante para 10 personas x $100.000",
-    imagen: "../images/PernilPollo.jpg"
+    detalle: "Pernil de Pollo al Horno en Salsa o en Verduras. Acompañado de Ensalada y un Acompañante  x $11.000",
+    imagen: "images/PernilPollo.jpg"
 
   }, {
     id: 16,
     nombre: "Pechuga Rellena",
-    precio: 100000,
-    detalle: "Hawallano, Verduras, Agridulce. Acompañado de Ensalada y un Acompañante para 10 personas x $100.000",
-    imagen: "../images/PechugaRellena.jpg"
+    precio: 11000,
+    detalle: "Rellenos:Hawallano, Verduras, Agridulce. Queso y Espinaca. Acompañada de ensalada y un acompañante.",
+    imagen: "images/PechugaRellena.jpg"
+
+  }, {
+    id: 17,
+    nombre: "Chuleta de Pescado",
+    precio: 14500,
+    detalle: "Chuleta de Filete de Tilapia Acompañada de Ensalada y un Acompañante x $14.500",
+    imagen: "images/ChulePez.jpg"
+
+  }, {
+    id: 18,
+  nombre: "Comida para Eventos",
+  precio: 11000,
+  detalle: "Cenas para Eventos con una Proteina una Ensalada, y un Acompañante, Proteinas Pollo $11.000, Cerdo $12.000, Res $13.000",
+  imagen: "images/comiEventos2.jpg"
 
   }
+
 ];
 
 
@@ -123,9 +138,9 @@ var productos = [{
           />
           <div class="card-body">
             <h5 class="card-title">${producto.nombre}</h5>
-            <p class="card-text">Precio: ${producto.precio}</p>
+            <p class="card-text">Precio:$ ${producto.precio}</p>
             <div id="detalle-${producto.id}" class="detalle" style="display: none;">
-            <p>Detalle: ${producto.detalle}</p></div>            
+            <p>Detalle del Producto: ${producto.detalle}</p></div>            
             <button id="btn-catalogo-${producto.id}" class="btn btn-success">Agregar</button>
             <button id="btn-detalle-${producto.id}" class="btn btn-info">Detalles</button>
 
@@ -134,21 +149,23 @@ var productos = [{
       </div>`;
   };
   const productoCarritoHTML = (producto) => {
+    console.log("Valor de producto.imagen:", producto.imagen); // Agregar este console.log
     return`
       <div class="col">
         <div class="card">
-          <img src="${producto.imagen}" class="card-img-top"" class="card-img-top"/>
+          <img src="${producto.imagen}" class="card-img-top"/>
           <div class="card-body">
             <h5 class="card-title">${producto.nombre}</h5>
             <div id="detalle-${producto.id}" style="display: none;">
-            <p class="card-text">Precio: ${producto.precio}</p>
-            <p class="card-text">Detalle: ${producto.detalle}</p> <!-- Mostrar detalle del producto -->
+            <p class="card-text">Precio:$ ${producto.precio}</p>
+            <p class="card-text">Detalles del Producto: ${producto.detalle}</p>   </div> <!-- Mostrar detalle del producto -->
             <button id="btn-carrito-${producto.idCompra}" class="btn btn-danger">Quitar</button>
             <button id="btn-detalle-carrito-${producto.idCompra}" class="btn btn-info">Detalles</button>
            </div>
         </div>
       </div>`;
   };
+
   const mostrarCatalogo = () => {
     const catalogoNodo = document.getElementById("catalogo");
     let catalogoHTML = "";
@@ -197,22 +214,7 @@ document.addEventListener("click", (event) => {
 });
 
 
- // const mostrarCarrito = () => {
- //   const carritoNodo = document.getElementById("carrito");
- //   const precioNodo = document.getElementById("precioTotal");
- // 
- //   let carritoHTML = "";
- //   let precio = 0;
- //    for (const producto of carrito) {
- //     carritoHTML += productoCarritoHTML(producto);
- //     precio += producto.precio;
-  //  }
-  
-  //  precioNodo.innerHTML = precio;
-  //  carritoNodo.innerHTML = carritoHTML;
-  //  botonesCarrito();
-  //};
-  
+
   const botonesCatalogo = () => {
     for (const producto of productos) {
       const botonId = `btn-catalogo-${producto.id}`;
@@ -227,6 +229,7 @@ document.addEventListener("click", (event) => {
   
         contadorCarrito += 1;
         carrito.push(productoCarrito);
+        console.log("Producto agregado al carrito:", productoCarrito);
         mostrarCarrito();
       });
 
@@ -484,73 +487,6 @@ makeDraggable(resultadoBusqueda);
 
 
 
-
- function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
-  console.log('statusChangeCallback');
-  console.log(response);                   // The current login status of the person.
-  if (response.status === 'connected') {   // Logged into your webpage and Facebook.
-    testAPI();  
-  } else {                                 // Not logged into your webpage or we are unable to tell.
-    document.getElementById('status').innerHTML = 'Please log ' +
-      'into this webpage.';
-  }
-}
-
-//abrir chat de wattsap
-function abrirChatWhatsApp() {
-  console.log("Función abrirChatWhatsApp ejecutada");
-
-  var numeroWhatsApp = '573177505231';
-
-  // Crea el enlace de Chat de WhatsApp
-  var enlaceChatWhatsApp = 'https://wa.me/' + numeroWhatsApp + '?text=Hola%20Quisiera%20hacerte%20una%20consulta.';
-
-  // Abre el enlace en una nueva ventana o pestaña
-  window.open(enlaceChatWhatsApp);
-}
-
-
-function checkLoginState() {
-  FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-  });
-}
-
-
-
-
-function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
-  console.log('Welcome!  Fetching your information.... ');
-  FB.api('/me', function(response) {
-    console.log('Successful login for: ' + response.name);
-    document.getElementById('status').innerHTML =
-      'Thanks for logging in, ' + response.name + '!';
-
-      
-        // Mostrar el nombre del usuario en un div
-        document.getElementById('user-info').innerHTML =
-            'Welcome, ' + response.name + '!';
-
-  });
-}
-
-
-// Llamada a loginWithFacebook en respuesta a un evento, por ejemplo, clic en un botón de inicio de sesión
-document.getElementById('facebookSignInButton').addEventListener('click', function() {
-  loginWithFacebook();
-});
-
-// Llamada a logoutIfConnected en respuesta a un evento, por ejemplo, clic en un botón de cierre de sesión
-document.getElementById('logoutButton').addEventListener('click', function() {
-  logoutIfConnected();
-});
-
-
-
-
-
-
-
 document.getElementById('whatsappButton').addEventListener('click', function() {
   var phoneNumber = '573177505231'; // Reemplaza con el número de teléfono al que deseas enviar el mensaje
   var whatsappUrl = 'https://api.whatsapp.com/send?phone=' + phoneNumber;
@@ -572,8 +508,40 @@ document.getElementById('whatsappButton').addEventListener('click', function() {
 
 
 
+//abrir chat de wattsap
+function abrirChatWhatsApp() {
+  console.log("Función abrirChatWhatsApp ejecutada");
+
+  var numeroWhatsApp = '573177505231';
+
+  // Crea el enlace de Chat de WhatsApp
+  var enlaceChatWhatsApp = 'https://wa.me/' + numeroWhatsApp + '?text=Hola%20Quisiera%20hacerte%20una%20consulta.';
+
+  // Abre el enlace en una nueva ventana o pestaña
+  window.open(enlaceChatWhatsApp);
+}
+
+
+
 
 //window.addEventListener('resize', onResize);
 //});
 
 })
+
+ // const mostrarCarrito = () => {
+ //   const carritoNodo = document.getElementById("carrito");
+ //   const precioNodo = document.getElementById("precioTotal");
+ // 
+ //   let carritoHTML = "";
+ //   let precio = 0;
+ //    for (const producto of carrito) {
+ //     carritoHTML += productoCarritoHTML(producto);
+ //     precio += producto.precio;
+  //  }
+  
+  //  precioNodo.innerHTML = precio;
+  //  carritoNodo.innerHTML = carritoHTML;
+  //  botonesCarrito();
+  //};
+  

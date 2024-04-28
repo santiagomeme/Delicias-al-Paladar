@@ -4,8 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Permissions-Policy" content="ambient-light-sensor 'self';">
+    <meta name="description" content="Encuentra los mejores servicios de venta de comidas para eventos en Cali, Colombia. Ofrecemos una amplia variedad de opciones gastronómicas para bodas, fiestas de cumpleaños, reuniones corporativas y más. ¡Haz que tu evento sea memorable con nuestra deliciosa comida!">
 
-    <title>Delicias al Paladar</title>
+    <title>Venta de Comidas para Eventos en Cali, Colombia | [Delicias al Paladar]</title>
 
     <link rel="stylesheet" type="text/css" href="css.css">
 
@@ -27,9 +28,21 @@
           xfbml            : true,
           version          : 'v19.0'
         });
-      };
-
-
+      
+ // Agregar el botón de inicio de sesión con Facebook
+ FB.getLoginStatus(function(response) {
+                if (response.status === 'connected') {
+                    // El usuario está conectado a Facebook
+                    console.log('El usuario está conectado');
+                } else {
+                    // El usuario no está conectado a Facebook
+                    console.log('El usuario no está conectado');
+                    var facebookLoginContainer = document.getElementById('facebookLoginContainer');
+                    facebookLoginContainer.innerHTML = '<div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="rounded" data-auto-logout-link="false" data-use-continue-as="true"></div>';
+                    FB.XFBML.parse(facebookLoginContainer);
+                }
+            });
+          };
       (function(d, s, id){
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) {return;}
@@ -41,6 +54,8 @@
 
 
     </script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9525189569425365"
      crossorigin="anonymous"></script>
@@ -88,17 +103,19 @@
   <script src="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.js"></script>
     <script defer type="module" src="prueba.mjs"></script>
 
+    <meta name="google-site-verification" content="F1QagEOf8Pnw3tNH3gHB4yUOOxPw_R9wsE4RSdvwvJc" />
+
   </head>
   <body>
  
 
-<button type="button"  id="toggleTopPanel">Menú</button>
+<button type="button" class="btnMenu" id="toggleTopPanel">...</button>
 
 
            
           <div id="top-panel">
             <h2 id="titulo1" class="cursiva sobreado">Delicias al Paladar</h2>
-           <div   class="logo"><img class="imgLogo"  src="../images/logo.jpg" alt="logo" ></div>
+           <div class="logo"><img class="imgLogo"  src="images/logo.jpg" alt="logo" ></div>
            <input type="text" class="form-control" id="inputBusqueda" placeholder="Buscar platos">
          <button class="stilo" type="button" id="btnMostrarCarrito" class="btn btn-primary">Carrito</button>
        <!--  <button id="whatsappButton"> WhatsApp</button>-->
@@ -109,6 +126,7 @@
           </div>
 
           </div>
+          <div class="imgDecorP"><img class="imgDecorP"  src="images/resChimi.jpg" alt="imajen decorativa de comida" ></div>
 
 
            <div id="status"></div>
@@ -129,41 +147,47 @@
         </div>
     </div>
 
-      
-      <div  class="registro-box" id="registroBox" >
-        <div  id="firebaseui-auth-container" >
-      <div id="loader">Loading...</div>
-        <!-- Contenido del formulario de registro -->
-      <form id="formRegistro" class="form"  id="formularioRegistro" onsubmit="return validarInicioSesion()">
-      <label for="correoRegistro">Correo Electrónico:</label>
-        <input type="email" id="correoRegistro" placeholder="Correo Electrónico" required>
-        <label for="passwordRegistro">Contraseña:</label>
-        <input type="password" id="passwordRegistro" placeholder="Contraseña" required>
-        <p>Al enviar este formulario, aceptas nuestra <a href="/politica-de-privacidad">política de privacidad</a>.</p>
-        <button id="buttonRegistro" type="submit">Registrarse</button>
-        <button id="buttonInicio" type="submit">Iniciar Sesión </button>
-        <button id="googleSignInButton" type="button">Iniciar sesión con Google</button>
-        <button id="facebookSignInButton" type="button">Iniciar sesión con Facebook</button>
-        <button id="logoutButton" type="button">Cerrar sesión con Facebook</button>
 
-        <div id="fb-root"></div>
-      <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
-      <div class="fb-login-button" data-width="" data-size="" data-button-type="" data-layout="" data-auto-logout-link="true" data-use-continue-as="true"></div>
-      
-     
-     <fb:login-button          class="fb-login-button" data-width="" data-size="" data-button-type="" data-layout="" data-auto-logout-link="true" data-use-continue-as="true"
-        scope="public_profile,email" onlogin="checkLoginState()">
-         </fb:login-button>
+<div class="registro-box" id="registroBox">
+  <div class="auth-container">
+      <!-- Formulario de Registro e Inicio de Sesión -->
+      <form id="authForm" class="form"  id="formRegistro"  onsubmit="return validarRegistro()"  >
+          <label for="correo">Correo Electrónico:</label>
+          <input type="email" id="correo" placeholder="Correo Electrónico" required>
+          <label for="password">Contraseña:</label>
+          <input type="password" id="password" placeholder="Contraseña" required>
 
-         <fb:logoutButton         class="fb-login-button" data-width="" data-size="" data-button-type="" data-layout="" data-auto-logout-link="true" data-use-continue-as="true"
-         scope="public_profile,email" onlogin="checkLoginState()">
-          </fb:logoutButton>
-
+          <button id="authButton" type="submit">Registrarse</button>
+          <p id="switchAuthText">¿Ya tienes una cuenta? <a href="#" id="switchAuthLink">Inicia sesión aquí</a>.</p>
       </form>
-    </div>
+
+      <!-- Contenedor para Firebase UI -->
+      <div id="firebaseui-auth-container">
+          <!-- Aquí se mostrará el widget de inicio de sesión de Firebase UI -->
       </div>
-      
-  
+      <!-- Botones de Inicio de Sesión con Google y Facebook -->
+<button class="btnGoogle" type="button" id="googleSignInButton" onclick="iniciarSesionConGoogle()">Iniciar sesión con Google</button>
+<button class="btnFacebook" type="button" id="facebookSignInButton" onclick="iniciarSesionConFacebook()">Iniciar sesión con Facebook</button>
+
+      <div id="facebookLoginContainer"><div id="facebookLoginContainer">
+        <!-- Contenido del botón de inicio de sesión con Facebook -->
+        <div class="fb-login-button" data-width="" data-size="" data-button-type="" data-layout="" data-auto-logout-link="true" data-use-continue-as="true"></div>
+        
+        <!-- Script para cargar el SDK de Facebook -->
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+      </div>
+      </div>
+        <p>Al enviar este formulario, aceptas nuestra <a href="/politica-de-privacidad">política de privacidad</a>.</p>
+        <div id="loader">Loading...</div>
+  </div>
+</div>
+
+
+
+
+
+
       <!--<img id="mostrarRegistro" src="../images/iconUser.png" alt="Registrarse" onclick="mostrarRegistro()">-->
       <div id="container"> 
        <div  class="container-flex">
@@ -172,7 +196,7 @@
             <div id="catalogo" class="row"></div>
             <div id="contenedorCarrito" >
           <h1 class="container1"> <span id="precioTotal"></span></h1>
-          <div id="carrito" class="row" ></div>
+          <div id="carrito" class="row"  class="carrito"></div>
           <!-- Añade esto al final de tu carrito -->
           </div>
 
@@ -180,73 +204,23 @@
       </div>
       
 
-      
-        <div id="right-panel">
-          <div>
-          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9525189569425365"
-          crossorigin="anonymous"></script>
-     <!-- anuncio1 -->
-     <ins class="adsbygoogle"
-          data-ad-client="ca-pub-9525189569425365"
-          data-ad-slot="7267754881"
-          data-ad-format="auto"
-          data-full-width-responsive="true"></ins>
-     <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-     </script>
-    </div>
-            <div id="anuncio-container">
-              <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9525189569425365"
-              crossorigin="anonymous"></script>
-         <ins class="adsbygoogle"
-              data-ad-format="fluid"
-              data-ad-layout-key="+2h+qb-1l+4c+93"
-              data-ad-client="ca-pub-9525189569425365"
-              data-ad-slot="4711859833"></ins>
-         <script>
-              (adsbygoogle = window.adsbygoogle || []).push({});
-         </script>
-      </div>
 
-
-    <div id="anuncio-container2">
-     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9525189569425365"
-      crossorigin="anonymous"></script>
- <ins class="adsbygoogle"
-      data-ad-layout="in-article"
-      data-ad-format="fluid"
-      data-ad-client="ca-pub-9525189569425365"
-      data-ad-slot="3462674576"></ins>
- <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
- </script>
-</div>
-
-
-<div id="anuncio-container3">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9525189569425365"
-  crossorigin="anonymous"></script>
-<ins class="adsbygoogle"
-  data-ad-format="autorelaxed"
-  data-ad-client="ca-pub-9525189569425365"
-  data-ad-slot="1343460463"></ins>
-<script>
-  (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-</div>  
-</div>
 
 <div class="texto-sofisticado" class="lora-uniquifier">
-  <p>Arma platos al gusto, eligiendo la proteina que quieras y 2 o mas acompañantes</p>
+  <p>Arma platos al gusto, eligiendo la proteina la Ensalada y el Acompañante que desees</p>
+</div>
+<div class="text2" class="lora-uniquifier">
+  <p>Precio por plato para 1 Proteina 1 ensalada 1 acompañante</p>
+  <p>Pollo:$11.000, Cerdo:$12.000, Res:$13.000, Camaron:$18.000</p>
 </div>
 
-<div class="opciones-container">
-  <h1 >Proteinas</h1>
-<div class="opcionesProteina">
 
+<div class="imgDecorP"><img class="imgDecorP"  src="../images/imgDecorP.jpg" alt="Imagen de Plato decorativo"></div>
+<div><h1>Proteinas</h1></div>
+
+<div class="opcionesProteina">
     <ul > 
-      <li><h2 >Pollo</h2></li>
+      <li><h3 >Pollo</h3></li>
       <li>Rollo de Pollo</li>
       <li>Pollo relleno</li>
       <li>Gordon Blue</li>
@@ -259,7 +233,7 @@
       <li>Sudado de Pollo</li>
   </ul>
 <ul>  
-  <li> <h2>Carnes Rojas</h2></li>
+  <li> <h3>Carnes Rojas</h3></li>
   <li>Lomo de Cerdo al Horno</li>
   <li>Res en Chimichurry</li>
   <li>Res en Bisteck</li>
@@ -267,7 +241,7 @@
 
 </ul>
   <ul>  
-    <li><h2>Arroces</h2>    </li>
+    <li><h3>Arroces</h3>    </li>
       <li>Arroz Chaufa</li>
       <li>Arroz con Pollo</li>
       <li>Arroz Mixto</li>
@@ -276,7 +250,7 @@
       <li>Rissotto</li>
 </ul>
 <ul>  
-  <li><h2>Pezcados</h2></li>
+  <li><h3>Comida de Mar</h3></li>
   <li>Chuleta de Pezcado</li>
   <li>Camarones al Ajillo</li>
   <li>Ceviche de Camaron</li>
@@ -296,12 +270,11 @@
 
 </ul>
 </div>
-</div>
-<div class="opciones-container">
-<div class="opciones-container">
-<div   class="opcioneSalsas">
-    <ul >
-      <li><h2>Salsas</h2></li>
+
+
+   <div class="opcioneSalsas">
+   <ul>
+   <li><h2>Salsas</h2></li>
       <li>Ajillo</li>
       <li>Chanpigñon</li>
       <li>Vino Blanco</li>
@@ -316,10 +289,11 @@
       <li>TeriyakyEncebollado</li>
       <li>Pimienta</li>
    </ul
-</div>
+  </div>
 </div>
 
-<div class="opcionAcompa">
+
+  <div class="opcionAcompa" >
 <ul>
   <li><h2>Acompañantes</h2></li>
   <li>Crocqueta de Espinaca</li>
@@ -345,9 +319,29 @@
   <li>Chips de Platano</li>
   <li>Torta de Verduras</li>
 
-</ul
+</ul>
 </div>
-</div>
+
+<div class="opcionesRapida">
+  <ul>
+    <li><h2>Comida Rapida</h2></li>
+    <li>Alitas Picandulce</li>
+    <li>lasagña</li>
+    <li>Hambueguesa de pollo y Res</li>
+    <li>Cocretas de Pollo</li>
+    <li>Snacks de Pollo</li>
+    <li>Perros</li>     
+    <li>Quesadillas </li>
+    <li>Pollo a la Naranja al wok </li>
+    <li>Colitas</li>
+    <li>Creeps</li>
+    <li>Tacos</li>
+    <li>Burritos</li>
+    <li>Maicitos Gratinados</li>
+  </ul>
+  </div>
+
+
 
   <div class="opcionesEnsalada">
   <ul>
@@ -359,19 +353,80 @@
     <li>Remolacha, Zanahoria, Cebolla, Aderezo</li>
     <li>Cebolla, Cilantro, Tomate, Limon o Vinagreta</li>     
     <li>Lechuga, Fresa,Zanahoria, Calabazin Aarillo, Calado de Mango, </li>
-  </ul
-  </div>
-  
-  </div>
+  </ul>
 
+</div>
+
+
+
+
+      
+     
+<div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9525189569425365"
+  crossorigin="anonymous"></script>
+<!-- anuncio1 -->
+<ins class="adsbygoogle"
+  data-ad-client="ca-pub-9525189569425365"
+  data-ad-slot="7267754881"
+  data-ad-format="auto"
+  data-full-width-responsive="true"></ins>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+    <div id="anuncio-container">
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9525189569425365"
+      crossorigin="anonymous"></script>
+ <ins class="adsbygoogle"
+      data-ad-format="fluid"
+      data-ad-layout-key="+2h+qb-1l+4c+93"
+      data-ad-client="ca-pub-9525189569425365"
+      data-ad-slot="4711859833"></ins>
+ <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+ </script>
+</div>
+
+
+<div id="anuncio-container2">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9525189569425365"
+crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+data-ad-layout="in-article"
+data-ad-format="fluid"
+data-ad-client="ca-pub-9525189569425365"
+data-ad-slot="3462674576"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+
+<div id="anuncio-container3">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9525189569425365"
+crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+data-ad-format="autorelaxed"
+data-ad-client="ca-pub-9525189569425365"
+data-ad-slot="1343460463"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>  
+
+
+ 
+</div>  
+</div>  
+</div>  
+        
           <div class="bottom-panel">
             <div  class="logo"><img class="imgLogo"  src="../images/logo.jpg" alt="logo" ></div>
             <br>
             <div class="panel-content">
-              <h2>Delicias al Paladar </h2>
-              <p>Comida gastronomica y Cathering.
-                Cali Colombia.
-              </p>
+             <div ><h1 class="cursiva sobreado">Delicias al Paladar </h1></div>
+              <p class="parB"  >Comida Gourmet para Eventos. Cali Colombia. </p>
             </div>
             <div id="menu">
               <ul>
@@ -379,19 +434,20 @@
                 <li><a href="condicioneServicios.html">Condiciones de Servicios</a></li>
               </ul>
             </div>
-          </div>
-
-
+         </div>
 
 
 
 
             <div id="bannerCookies">
             Este sitio web utiliza cookies para mejorar la experiencia del usuario. Al continuar navegando por el sitio, aceptas el uso de cookies de acuerdo con nuestra <a href="/politica-de-cookies">política de cookies</a>.
-            <button type="button" onclick="aceptarCookies()">Aceptar</button>
-            <button type="button" onclick="rechazarCookies()">Rechazar</button>
+            <button type="button" onclick="aceptarCookies()">Aceptar Cookies</button>
+            <button type="button" onclick="rechazarCookies()">Rechazar Cookies</button>
           </div>
 
+
+
+          
   </body>
   
 </html>
