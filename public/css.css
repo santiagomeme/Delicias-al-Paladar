@@ -497,16 +497,24 @@ padding: 0; /* Ajustar el relleno según sea necesario */
 height: 45px;
 width: 45px;
 border:none;
-background-color:transparent;
+background-color:#ffffff;
 position:relative;
 align-items: center;
 display: flex;
 justify-content: center;
-/*opacity: 0.1;  Cambia este valor para ajustar la transparencia (0.0 - 1.0) */
 
 }
 
-
+.logoBottonP{
+background-color:#f5f5f5;
+height: 45px;
+width: 45px;
+border:none;
+position:relative;
+align-items: center;
+display: flex;
+justify-content: center;
+}
 
 #RegistroLogo{
 border-radius: 50%;
@@ -832,24 +840,19 @@ font-style: normal;
 .parB{
 color: #000;
 }
-/* Define un contenedor que utiliza flexbox */
-.opcionesProteina {
-font-family: "Montserrat", sans-serif;
-font-size: 18px;
-line-height: 1.5;
-letter-spacing: 0.5px;
-text-align: center;
-color: #333;
-border-color: #000000;
-border-style:none;
-height: auto;
-justify-content: center;
-display: flex;
-width: 100%;
-background-color: #ffffff;
-margin-bottom: 40px;
-border: #000;
+/* Incluye aquí el CSS actualizado */
+#opcionesProteina,
+#opcionesSalsas, /* Corregido el ID */
+#opcionesAcompa, /* Corregido el ID */
+#opcionesRapida,
+#opcionesEnsalada {
+display: none; /* Oculta inicialmente */
 }
+
+.opcionesProteina,
+.opcionesSalsas, /* Corregido el selector */
+.opcionesAcompa, /* Corregido el selector */
+.opcionesRapida,
 .opcionesEnsalada {
 font-family: "Montserrat", sans-serif;
 font-size: 18px;
@@ -858,86 +861,18 @@ letter-spacing: 0.5px;
 text-align: center;
 color: #333;
 border-color: #000000;
-border-style:none;
+border-style: none;
 height: auto;
 justify-content: center;
-display: flex;
-width: 100%;
-background-color: #ffffff;
-margin-bottom: 30px;
-border: #000;
-
-}
-.opcionesRapida {
-font-family: "Montserrat", sans-serif;
-font-size: 18px;
-line-height: 1.5;
-letter-spacing: 0.5px;
-text-align: center;
-color: #333;
-border-color: #000000;
-border-style:none;
-height: auto;
-justify-content: center;
-display: flex;
-width: 100%;
-background-color: #ffffff;
-margin-bottom: 30px;
-border: #000;
-}
-.opcionAcompa {
-font-family: "Montserrat", sans-serif;
-font-size: 18px;
-line-height: 1.5;
-letter-spacing: 0.5px;
-text-align: center;
-color: #333;
-border-color: #000000;
-border-style:none;
-height: auto;
-justify-content: center;
-display: flex;
 width: 100%;
 background-color: #ffffff;
 margin-bottom: 30px;
 border: #000;
 }
 
-.opcioneSalsas {
-font-family: "Montserrat", sans-serif;
-font-size: 18px;
-line-height: 1.5;
-letter-spacing: 0.5px;
-text-align: center;
-color: #333;
-border-color: #000000;
-border-style:none;
-height: auto;
-justify-content: center;
-display: flex;
-width: 100%;
-background-color: #ffffff;
-margin-bottom: 40px;
-border: #000;
-}
-
-.opcionesProteina > ul {
-list-style: none;
+ul {
+list-style-type: none; /* Elimina los puntos de la lista */
 padding: 0;
-}
-
-.opcionesProteina > ul > li {
-margin-bottom: 10px;
-
-}
-.opciones > ul {
-list-style: none;
-padding: 0;
-}
-
-.opciones> ul > li {
-margin-bottom: 10px;
-
 }
 
 /* Media query para ajustar el diseño en pantallas pequeñas */
@@ -1025,4 +960,135 @@ border-color: #b4b4b4!important;
 .opcionesRapida ul,
 .opcionesEnsalada ul {
 list-style-type: none; /* Elimina los puntos de la lista */
+}
+
+
+#contenedorBlog {
+display: none;
+}
+#contenedorBlog.mostrado {
+display: block;
+}
+
+body {
+font-family: 'Arial', sans-serif;
+background-color: #f4f4f9;
+margin: 0;
+padding: 20px;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+.menu-button {
+padding: 10px 20px;
+background-color: #007BFF;
+color: white;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+font-size: 16px;
+transition: background-color 0.3s ease, transform 0.2s ease;
+margin-bottom: 10px;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.menu-button:hover {
+background-color: #0056b3;
+transform: translateY(-2px);
+}
+.menu-button:active {
+background-color: #003f7f;
+transform: translateY(0);
+}
+.hidden-content {
+display: none;
+width: 90%;
+max-width: 600px;
+padding: 20px;
+border: 1px solid #ccc;
+border-radius: 10px;
+background: #fff;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+margin-top: 20px;
+}
+
+.button {
+padding: 10px 20px;
+background-color: #007BFF;
+color: white;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+font-size: 16px;
+transition: background-color 0.3s ease, transform 0.2s ease;
+margin-bottom: 10px;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.button:hover {
+background-color: #0056b3;
+transform: translateY(-2px);
+}
+.button:active {
+background-color: #003f7f;
+transform: translateY(0);
+}
+#blog {
+display: none;
+width: 90%;
+max-width: 600px;
+padding: 20px;
+border: 1px solid #ccc;
+border-radius: 10px;
+background: #fff;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+margin-top: 20px;
+}
+#blog h2 {
+text-align: center;
+color: #333;
+}
+#blogForm {
+display: flex;
+flex-direction: column;
+}
+#blogForm input, #blogForm textarea {
+padding: 10px;
+margin-bottom: 10px;
+border: 1px solid #ccc;
+border-radius: 5px;
+font-size: 14px;
+}
+#blogForm button {
+padding: 10px 20px;
+background-color: #28a745;
+color: white;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+font-size: 16px;
+transition: background-color 0.3s ease, transform 0.2s ease;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+#blogForm button:hover {
+background-color: #218838;
+transform: translateY(-2px);
+}
+#blogForm button:active {
+background-color: #1e7e34;
+transform: translateY(0);
+}
+#blogPosts {
+margin-top: 20px;
+}
+.blogPost {
+border-bottom: 1px solid #ccc;
+padding-bottom: 10px;
+margin-bottom: 10px;
+}
+.blogPost h3 {
+margin: 0;
+color: #007BFF;
+}
+.blogPost p {
+margin: 5px 0 0 0;
+color: #555;
 }

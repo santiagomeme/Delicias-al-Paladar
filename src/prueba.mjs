@@ -3,14 +3,14 @@ document.addEventListener('DOMContentLoaded', function () {
 var productos = [{
     id: 1,
     nombre: "Gordon Blue",
-    precio: 120000,
+    precio: 11000,
     detalle: "Gordon Blue Relleno de Jamon y Queso, Acompañadp de Ensalada, y un Acompañante",
     imagen: "images/cenaGordonBlue.jpg"
 
   }, {
     id: 2,
     nombre: "Filete de Pollo relleno ",
-    precio: 6000,
+    precio: 11000,
     detalle: "Rellenos: Verduras Salteadas, Hawallano, Verduras Agridulces, Maduro y Queso, Acompañados de Salsa",
     imagen: "images/filete-relleno.jpg"
 
@@ -113,7 +113,7 @@ var productos = [{
     imagen: "images/ChulePez.jpg"
 
   }, {
-    id: 18,
+  id: 18,
   nombre: "Comida para Eventos",
   precio: 11000,
   detalle: "Cenas para Eventos con una Proteina una Ensalada, y un Acompañante, Proteinas Pollo $11.000, Cerdo $12.000, Res $13.000",
@@ -214,6 +214,18 @@ document.addEventListener("click", (event) => {
 });
 
 
+function toggleVisibility(id) {
+  var element = document.getElementById(id);
+  if (element.style.display === "none") {
+      element.style.display = "block";
+  } else {
+      element.style.display = "none";
+  }
+}
+
+// Hacer que la función esté disponible globalmente
+window.toggleVisibility = toggleVisibility;
+
 
   const botonesCatalogo = () => {
     for (const producto of productos) {
@@ -284,6 +296,13 @@ document.addEventListener("click", (event) => {
   mostrarCatalogo();
 console.log(productoCatalogoHTML(productos[0]));
   
+
+
+
+
+
+
+
     // Agregar un controlador de eventos al documento para ocultar todos los detalles cuando se hace clic fuera de ellos
 document.addEventListener("click", (event) => {
   // Iterar sobre todos los detalles de productos
@@ -520,6 +539,7 @@ function abrirChatWhatsApp() {
   // Abre el enlace en una nueva ventana o pestaña
   window.open(enlaceChatWhatsApp);
 }
+
 
 
 

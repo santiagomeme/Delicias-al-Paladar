@@ -1,132 +1,66 @@
-
+// Importaciones necesarias
 import { firebaseConfig } from './firebase-config.mjs';
-import 'firebase/auth';
 import firebaseui from 'firebaseui';
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
-import { getFirestore } from 'firebase/firestore'; 
+import { initializeApp } from 'firebase/app';
+import { getAuth, GoogleAuthProvider, FacebookAuthProvider, EmailAuthProvider } from 'firebase/auth';
 
-const auth = getAuth();
-const db = getFirestore();
-console.log("esta funcionando el firebase-auth")
-firebase.initializeApp(firebaseConfig);
+// Inicialización de Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+console.log("Firebase Auth inicializado correctamente");
 
-
-
-const provider = new GoogleAuthProvider();
-provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
-
-
-const ui = new firebaseui.auth.AuthUI(firebase.auth());
-
-var uiConfig = {
+// Configuración de FirebaseUI
+const ui = new firebaseui.auth.AuthUI(auth);
+const uiConfig = {
   callbacks: {
     signInSuccessWithAuthResult: function(authResult, redirectUrl) {
-      // Por ejemplo, podrías redirigir al usuario a una página específica después del inicio de sesión.
-      window.location.assign( 'https://delicias-al-paladar-689f1.web.app/? ');
-      return false; // Devuelve false para evitar la redirección automática
+      window.location.assign('https://delicias-al-paladar-689f1.web.app/');
+      return false; // Para evitar la redirección automática
     },
     uiShown: function() {
-      // The widget is rendered.
-      // Hide the loader.
       document.getElementById('loader').style.display = 'none';
     }
   },
-  // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
   signInFlow: 'popup',
-  signInSuccessUrl: 'https://delicias-al-paladar-689f1.web.app/?',
+  signInSuccessUrl: 'https://delicias-al-paladar-689f1.web.app/',
   signInOptions: [
-    // Proveedor de autenticación de Google
     {
-      provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-      // Puedes personalizar más opciones para el proveedor de Google aquí si es necesario.
+      provider: GoogleAuthProvider.PROVIDER_ID,
+      scopes: ['https://www.googleapis.com/auth/contacts.readonly'],
+      customParameters: { prompt: 'select_account' }
     },
-    // Proveedor de autenticación de Facebook
     {
-      provider: firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-      // Puedes personalizar más opciones para el proveedor de Facebook aquí si es necesario.
+      provider: FacebookAuthProvider.PROVIDER_ID,
+      scopes: ['public_profile', 'email', 'user_likes', 'user_friends'],
+      customParameters: { auth_type: 'reauthenticate' }
     },
-    // correo
-    {
-     provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
-
-    }
-  ], 
-
- // Terms of service url.
+    EmailAuthProvider.PROVIDER_ID
+  ],
   tosUrl: 'https://delicias-al-paladar-689f1.web.app/?condicioneServicios',
-  // Privacy policy url.
   privacyPolicyUrl: 'https://delicias-al-paladar-689f1.web.app/?Politicas'
 };
 
+ui.start('#firebaseui-auth-container', uiConfig);
 
-ui.start('#firebaseui-auth-container', {
-  signInOptions: [
-    {
-      provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-      scopes: [
-        'https://www.googleapis.com/auth/contacts.readonly'
-      ],
-      customParameters: {
-        // Forces account selection even when one account
-        // is available.
-        prompt: 'select_account'
-      }
-    },
-    {
-      provider: firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-      scopes: [
-        'public_profile',
-        'email',
-        'user_likes',
-        'user_friends'
-      ],
-      customParameters: {
-        // Forces password re-entry.
-        auth_type: 'reauthenticate'
-      }
-    },
-    firebase.auth.EmailAuthProvider.PROVIDER_ID // Other providers don't need to be given as object.
-  ]
-});
-
-// Is there an email link sign-in?
-if (ui.isPendingRedirect()) {
-  ui.start('#firebaseui-auth-container', uiConfig);
-}
-// This can also be done via:
-if (firebase.auth().isSignInWithEmailLink(window.location.href)) {
-  ui.start('#firebaseui-auth-container', uiConfig);
-}
-
-
-
+// Manejo del estado de autenticación
 const initApp = function() {
-  firebase.auth().onAuthStateChanged(function(user) {
+  auth.onAuthStateChanged(function(user) {
     if (user) {
-      // User is signed in.
-      var displayName = user.displayName;
-      var email = user.email;
-      var emailVerified = user.emailVerified;
-      var photoURL = user.photoURL;
-      var uid = user.uid;
-      var phoneNumber = user.phoneNumber;
-      var providerData = user.providerData;
       user.getIdToken().then(function(accessToken) {
         document.getElementById('sign-in-status').textContent = 'Signed in';
         document.getElementById('sign-in').textContent = 'Sign out';
         document.getElementById('account-details').textContent = JSON.stringify({
-          displayName: displayName,
-          email: email,
-          emailVerified: emailVerified,
-          phoneNumber: phoneNumber,
-          photoURL: photoURL,
-          uid: uid,
+          displayName: user.displayName,
+          email: user.email,
+          emailVerified: user.emailVerified,
+          phoneNumber: user.phoneNumber,
+          photoURL: user.photoURL,
+          uid: user.uid,
           accessToken: accessToken,
-          providerData: providerData
+          providerData: user.providerData
         }, null, '  ');
       });
     } else {
-      // User is signed out.
       document.getElementById('sign-in-status').textContent = 'Signed out';
       document.getElementById('sign-in').textContent = 'Sign in';
       document.getElementById('account-details').textContent = 'null';
@@ -137,139 +71,96 @@ const initApp = function() {
 };
 
 window.addEventListener('load', function() {
-  initApp()
+  initApp();
 });
 
+// Validación de registro e inicio de sesión
 function validarRegistro() {
-  // Obtener los valores de los campos de entrada
   var correo = document.getElementById('correoRegistro').value;
   var password = document.getElementById('passwordRegistro').value;
-
-  // Validar que los campos no estén vacíos
   if (correo.trim() === '' || password.trim() === '') {
-      alert('Por favor completa todos los campos.');
-      return false; // Devolver false para evitar el envío automático del formulario
+    alert('Por favor completa todos los campos.');
+    return false;
   }
-
-  // Validar el formato del correo electrónico (opcional)
   var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(correo)) {
-      alert('Por favor introduce un correo electrónico válido.');
-      return false; // Devolver false si el formato del correo es inválido
+    alert('Por favor introduce un correo electrónico válido.');
+    return false;
   }
-
-  // Puedes agregar más validaciones aquí según tus requerimientos
-
-  // Devolver true si todas las validaciones pasan
   return true;
 }
-
-document.getElementById('buttonRegistro').addEventListener('click', function() {
-  validarRegistro();
-});
-
-document.getElementById('buttonInicioSesion').addEventListener('click', function() {
-  validarInicioSesion();
-});
-
 
 function validarInicioSesion() {
-  // Obtener los valores de los campos de entrada
   var correo = document.getElementById('correoInicio').value;
   var password = document.getElementById('passwordInicio').value;
-
-  // Validar que los campos no estén vacíos
   if (correo.trim() === '' || password.trim() === '') {
-      alert('Por favor completa todos los campos.');
-      return false; // Devolver false para evitar el envío automático del formulario
+    alert('Por favor completa todos los campos.');
+    return false;
   }
-
-  // Puedes agregar más validaciones aquí según tus requerimientos
-
-  // Devolver true si todas las validaciones pasan
   return true;
 }
 
+document.getElementById('buttonRegistro').addEventListener('click', validarRegistro);
+document.getElementById('buttonInicioSesion').addEventListener('click', validarInicioSesion);
 
+// Inicio de sesión con Google
 document.getElementById('googleSignInButton').addEventListener('click', function() {
-  // Crea una instancia del proveedor de autenticación de Google
-  var provider = new firebase.auth.GoogleAuthProvider();
-
-  // Inicia el proceso de inicio de sesión con Google
-  firebase.auth().signInWithPopup(provider)
-  .then((result) => {
-      // Aquí puedes manejar el resultado del inicio de sesión exitoso
-      var user = result.user;
-      console.log('Inicio de sesión exitoso con Google. Usuario:', user);
-  })
-  .catch((error) => {
-      // Aquí puedes manejar cualquier error que ocurra durante el inicio de sesión
+  const provider = new GoogleAuthProvider();
+  auth.signInWithPopup(provider)
+    .then((result) => {
+      console.log('Inicio de sesión exitoso con Google. Usuario:', result.user);
+    })
+    .catch((error) => {
       console.error('Error al iniciar sesión con Google:', error);
-  });
+    });
 });
 
-
-
-
-
+// Alternar entre registro e inicio de sesión
 document.addEventListener('DOMContentLoaded', function() {
   const authForm = document.getElementById('authForm');
   const authButton = document.getElementById('authButton');
   const switchAuthText = document.getElementById('switchAuthText');
   const switchAuthLink = document.getElementById('switchAuthLink');
+  let isRegistering = true;
 
-  let isRegistering = true; // Inicialmente, el usuario está registrándose
-
-  // Cambiar el texto del botón y el enlace según si el usuario está registrándose o iniciando sesión
   function toggleAuthState() {
-      isRegistering = !isRegistering;
-      if (isRegistering) {
-          authButton.textContent = 'Registrarse';
-          switchAuthText.textContent = '¿Ya tienes una cuenta?';
-          switchAuthLink.textContent = 'Inicia sesión aquí';
-      } else {
-          authButton.textContent = 'Iniciar Sesión';
-          switchAuthText.textContent = '¿No tienes una cuenta?';
-          switchAuthLink.textContent = 'Regístrate aquí';
-      }
+    isRegistering = !isRegistering;
+    if (isRegistering) {
+      authButton.textContent = 'Registrarse';
+      switchAuthText.textContent = '¿Ya tienes una cuenta?';
+      switchAuthLink.textContent = 'Inicia sesión aquí';
+    } else {
+      authButton.textContent = 'Iniciar Sesión';
+      switchAuthText.textContent = '¿No tienes una cuenta?';
+      switchAuthLink.textContent = 'Regístrate aquí';
+    }
   }
 
-  // Manejar el evento de clic en el enlace para alternar entre registro e inicio de sesión
   switchAuthLink.addEventListener('click', function(event) {
-      event.preventDefault(); // Evitar el comportamiento predeterminado del enlace
-      toggleAuthState(); // Cambiar el estado de autenticación
+    event.preventDefault();
+    toggleAuthState();
   });
 
-  // Manejar el envío del formulario
   authForm.addEventListener('submit', function(event) {
-      event.preventDefault(); // Evitar el comportamiento predeterminado del formulario
-      // Aquí puedes agregar la lógica para manejar el registro o inicio de sesión según el estado actual
-      if (isRegistering) {
-          // Lógica para registrar al usuario
-          console.log('Registrando usuario...');
-      } else {
-          // Lógica para iniciar sesión
-          console.log('Iniciando sesión...');
-      }
+    event.preventDefault();
+    if (isRegistering) {
+      console.log('Registrando usuario...');
+    } else {
+      console.log('Iniciando sesión...');
+    }
   });
 });
 
-
-
-
-
-function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
+// Facebook Authentication
+function statusChangeCallback(response) {
   console.log('statusChangeCallback');
-  console.log(response);                   // The current login status of the person.
-  if (response.status === 'connected') {   // Logged into your webpage and Facebook.
+  console.log(response);
+  if (response.status === 'connected') {
     testAPI();  
-  } else {                                 // Not logged into your webpage or we are unable to tell.
-    document.getElementById('status').innerHTML = 'Please log ' +
-      'into this webpage.';
+  } else {
+    document.getElementById('status').innerHTML = 'Please log into this webpage.';
   }
 }
-
-
 
 function checkLoginState() {
   FB.getLoginStatus(function(response) {
@@ -277,42 +168,24 @@ function checkLoginState() {
   });
 }
 
-function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+function testAPI() {
   console.log('Welcome!  Fetching your information.... ');
   FB.api('/me', function(response) {
     console.log('Successful login for: ' + response.name);
     document.getElementById('status').innerHTML =
       'Thanks for logging in, ' + response.name + '!';
 
-      
-        // Mostrar el nombre del usuario en un div
-        document.getElementById('user-info').innerHTML =
-            'Welcome, ' + response.name + '!';
-
+    document.getElementById('user-info').innerHTML = 'Welcome, ' + response.name + '!';
   });
 }
 
-
-// Llamada a loginWithFacebook en respuesta a un evento, por ejemplo, clic en un botón de inicio de sesión
 document.getElementById('facebookSignInButton').addEventListener('click', function() {
   loginWithFacebook();
 });
 
-// Llamada a logoutIfConnected en respuesta a un evento, por ejemplo, clic en un botón de cierre de sesión
 document.getElementById('logoutButton').addEventListener('click', function() {
   logoutIfConnected();
 });
 
-
-
-
-
-
-export default {
-  auth,
-  db
-};
-
-
-
-
+export { auth };
+export default { auth };
