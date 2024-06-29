@@ -6,7 +6,7 @@
     <meta http-equiv="Permissions-Policy" content="ambient-light-sensor 'self';">
     <meta name="description" content="Encuentra los mejores servicios de venta de comidas para eventos en Cali, Colombia. Ofrecemos una amplia variedad de opciones gastronómicas para bodas, fiestas de cumpleaños, reuniones corporativas y más. ¡Haz que tu evento sea memorable con nuestra deliciosa comida!">
 
-    <title>Venta de Comidas para Eventos en Cali, Colombia | [Delicias al Paladar]</title>
+    <title>Comidas para Eventos Especiales en Cali, Colombia | [Delicias al Paladar]</title>
 
     <link rel="stylesheet" type="text/css" href="css.css">
 
@@ -102,8 +102,7 @@
 
   <script src="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.js"></script>
     <script defer type="module" src="prueba.mjs"></script>
-    <script defer type="module" src="firebase-auth.mjs"></script> 
-    <script defer type="module" src="firebase-firestore.mjs"></script> 
+
 
     <meta name="google-site-verification" content="F1QagEOf8Pnw3tNH3gHB4yUOOxPw_R9wsE4RSdvwvJc" />
 
@@ -121,15 +120,192 @@
            <input type="text" class="form-control" id="inputBusqueda" placeholder="Buscar platos">
          <button class="stilo" type="button" id="btnMostrarCarrito" class="btn btn-primary">Carrito</button>
        <!--  <button id="whatsappButton"> WhatsApp</button>-->
-       <button   class="btn btn-primary"type="button"id="btnMostrarBlog">Mostrar Blog</button>
-<button class="stilo" type="button"  id="whatsappButton" class="btn btn-primary">Reservas</button>
+       <button class="menu-button" onclick="toggleVisibility('blogForm')">Blog</button>
+       <button class="stilo" type="button"  id="whatsappButton" class="btn btn-primary">Reservas</button>
            <span class="btn btn-primary" id="mostrarRegistroButton"  id="mostrar-cuadro-registro" >Registrase</span>
            <div id="user-info">
             ¡Bienvenido, <span id="user-email"></span>!
           </div>
 
           </div>
-          <div class="imgDecorP"><img class="imgDecorP"  src="images/resChimi.jpg" alt="imajen decorativa de comida" ></div>
+           <!--  <div class="imgDecorP"><img class="imgDecorP"  src="images/resChimi.jpg" alt="imajen decorativa de comida" ></div>-->
+
+
+
+
+           <div class="texto-sofisticado" class="lora-uniquifier">
+            <p>Arma platos al gusto, eligiendo la proteina la Ensalada y el Acompañante que desees</p>
+          </div>
+          <div class="text2" class="lora-uniquifier">
+            <p>Precio por plato para 1 Proteina 1 ensalada 1 acompañante</p>
+            <p>Pollo:$11.000, Cerdo:$12.000, Res:$13.000, Camaron:$18.000</p>
+          </div>
+          
+          
+          <div class="imgDecorP"><img class="imgDecorP"  src="../images/imgDecorP.jpg" alt="Imagen de Plato decorativo"></div>
+          
+          
+          
+          <button class="menu-button" type="button" onclick="toggleVisibility('opcionesProteina')"> Proteínas</button>
+          
+          
+          
+          <div id="opcionesProteina">
+           <h1>Proteínas</h1>
+            <div class="opcionesProteina">
+              <ul>
+                <li><h3 >Pollo</h3></li>
+                <li>Rollo de Pollo</li>
+                <li>Pollo relleno</li>
+                <li>Gordon Blue</li>
+                <li>Pechuga Rellena</li>
+                <li>Alitas en Salsa Cremosa</li>
+                <li>Croquetas de Pollo Rellenas de queso</li>     
+                <li>Chuleta de pollo super Cronch</li>
+                <li>Pollo a la Naranja</li>
+                <li>Pollo en Chanpigñones</li>
+                <li>Sudado de Pollo</li>
+            </ul>
+          <ul>  
+            <li> <h3>Carnes Rojas</h3></li>
+            <li>Lomo de Cerdo al Horno</li>
+            <li>Res en Chimichurry</li>
+            <li>Res en Bisteck</li>
+            <li>Res a la parrilla en Carbon</li>
+          
+          </ul>
+            <ul>  
+              <li><h3>Arroces</h3>    </li>
+                <li>Arroz Chaufa</li>
+                <li>Arroz con Pollo</li>
+                <li>Arroz Mixto</li>
+                <li>Arroz Marinero</li>
+                <li>Arroz de Camaron</li>
+                <li>Rissotto</li>
+          </ul>
+          <ul>  
+            <li><h3>Comida de Mar</h3></li>
+            <li>Chuleta de Pescado</li>
+            <li>Camarones al Ajillo</li>
+            <li>Ceviche de Camaron</li>
+            <li>Ceviche Peruano</li>
+            <li>Ceviche Leche de Tigre</li>
+            <li>Cazuela de Mariscos o camaron</li>
+            <li>Arroz Marinero</li>
+            <li>Arroz de Camaron</li>
+            <li>Camarones Apanados</li>
+            <li>Picada Marinera</li>
+            <li>Sudado de Mariscos</li>
+            <li>Sudado de Camaron</li>
+            <li>Sudado de Calamar</li>
+            <li>Sudado Triple</li>
+            <li>Triple de Camaron</li>
+            <li>Croquetas de Pezcado</li>
+          
+          </ul>
+          </div>
+          </div>
+          <button class="menu-button" type="button" onclick="toggleVisibility('opcionesSalsas')"> Salsas</button>
+          
+            <div id="opcionesSalsas">
+                  <div class="opcionesSalsas">
+               <h2>Salsas</h2>
+            <ul>
+                <li>Ajillo</li>
+                <li>Chanpigñon</li>
+                <li>Vino Blanco</li>
+                <li>Vino Tinto</li>
+                <li>5 Quesos</li>
+                <li>Agridulce</li>     
+                <li>Maracuya</li>
+                <li>BBQ</li>
+                <li>MielMostaza</li>
+                <li>CocoRanchera</li>
+                <li>Mango</li>
+                <li>TeriyakyEncebollado</li>
+                <li>Pimienta</li>
+             </ul>
+            </div>
+          </div>
+          
+          <button class="menu-button" type="button" onclick="toggleVisibility('opcionesAcompa')">Acompañantes</button>
+          
+           <div id="opcionesAcompa">
+                  <div class="opcionesAcompa">
+                      <h2>Acompañantes</h2>
+                      <ul>
+            <li>Crocqueta de Espinaca</li>
+            <li>Croqueta de Zanahoria</li>
+            <li>Croqueta de Papa</li>
+            <li>Guayabo Calado</li>
+            <li>Pure de Papa</li>
+            <li>Verduras Salteadas</li>     
+            <li>Arroz Zanahoria</li>
+            <li>Arroz Verde</li>
+            <li>Arroz Con Pasta</li>
+            <li>Arroz Coco</li>
+            <li>Arroz Criollo</li>
+            <li>Arroz Negro</li>
+            <li>Papa Guisada</li>
+            <li>Yuca Frita</li>
+            <li>Tostadas de Platano Verdes</li>
+            <li>Tostadas de Platano Maduro</li>
+            <li>Papa Guisada</li>
+            <li>Brocoli en Salsa de Queso</li>
+            <li>Macarrones</li>
+            <li>Zanahoria Caramelizada</li>
+            <li>Chips de Platano</li>
+            <li>Torta de Verduras</li>
+          
+          </ul>
+          </div>
+          </div>
+          
+          <button class="menu-button" type="button" onclick="toggleVisibility('opcionesRapida')">Comida Rápida</button>
+          
+             <div id="opcionesRapida">
+                  <div class="opcionesRapida">
+                      <h2>Comida Rápida</h2>
+                      <ul>
+              <li>Alitas Picandulce</li>
+              <li>lasagña</li>
+              <li>Hamburguesa de pollo y Res</li>
+              <li>Cocretas de Pollo</li>
+              <li>Snacks de Pollo</li>
+              <li>Perros</li>     
+              <li>Quesadillas </li>
+              <li>Pollo a la Naranja al wok </li>
+              <li>Colitas</li>
+              <li>Creeps</li>
+              <li>Tacos</li>
+              <li>Burritos</li>
+              <li>Maicitos Gratinados</li>
+            </ul>
+            </div>
+          </div>
+          
+          
+          <button class="menu-button" type="button" onclick="toggleVisibility('opcionesEnsalada')"> Ensaladas</button>
+          
+          <div id="opcionesEnsalada">
+            <div class="opcionesEnsalada">
+              <h2>Ensaladas</h2>
+            <ul>
+              <li>Lechuga, Aguacate, Cebolla, Tomate, Cilantro, Limon</li>
+              <li>Tropical Lechuga, Piña, Mango, Fresa, Manzana, Zanahoria, Repollo </li>
+              <li>Lwchuga, Repollo Morado, Pepino, Zanahoria, Vinagreta de Fruta</li>
+              <li>Lechuga, Apio Caladao, Tomare, Zanahoria, Maiz Tierno</li>
+              <li>Remolacha, Zanahoria, Cebolla, Aderezo</li>
+              <li>Cebolla, Cilantro, Tomate, Limon o Vinagreta</li>     
+              <li>Lechuga, Fresa,Zanahoria, Calabazin Aarillo, Calado de Mango, </li>
+            </ul>
+          </div>
+          </div>
+          
+          
+          
+          
+
 
 
            <div id="status"></div>
@@ -199,6 +375,7 @@
 </div>
 
 
+
       <!--<img id="mostrarRegistro" src="../images/iconUser.png" alt="Registrarse" onclick="mostrarRegistro()">-->
       <div id="container"> 
        <div  class="container-flex">
@@ -214,176 +391,6 @@
        </div>
       </div>
       
-
-
-
-<div class="texto-sofisticado" class="lora-uniquifier">
-  <p>Arma platos al gusto, eligiendo la proteina la Ensalada y el Acompañante que desees</p>
-</div>
-<div class="text2" class="lora-uniquifier">
-  <p>Precio por plato para 1 Proteina 1 ensalada 1 acompañante</p>
-  <p>Pollo:$11.000, Cerdo:$12.000, Res:$13.000, Camaron:$18.000</p>
-</div>
-
-
-<div class="imgDecorP"><img class="imgDecorP"  src="../images/imgDecorP.jpg" alt="Imagen de Plato decorativo"></div>
-
-
-
-<button type="button" onclick="toggleVisibility('opcionesProteina')">Mostrar/Ocultar Proteínas</button>
-<button type="button" onclick="toggleVisibility('opcionesSalsas')">Mostrar/Ocultar Salsas</button>
-<button type="button" onclick="toggleVisibility('opcionesAcompa')">Mostrar/Ocultar Acompañantes</button>
-<button type="button" onclick="toggleVisibility('opcionesEnsalada')">Mostrar/Ocultar Ensaladas</button>
-<button type="button" onclick="toggleVisibility('opcionesRapida')">Mostrar/Ocultar Comida Rápida</button>
-
-
-
-<div id="opcionesProteina">
- <h1>Proteínas</h1>
-  <div class="opcionesProteina">
-    <ul>
-      <li><h3 >Pollo</h3></li>
-      <li>Rollo de Pollo</li>
-      <li>Pollo relleno</li>
-      <li>Gordon Blue</li>
-      <li>Pechuga Rellena</li>
-      <li>Alitas en Salsa Cremosa</li>
-      <li>Croquetas de Pollo Rellenas</li>     
-      <li>Chule de pollo super Cronch</li>
-      <li>Pollo a la Naranja</li>
-      <li>Pollo en Chanpigñones</li>
-      <li>Sudado de Pollo</li>
-  </ul>
-<ul>  
-  <li> <h3>Carnes Rojas</h3></li>
-  <li>Lomo de Cerdo al Horno</li>
-  <li>Res en Chimichurry</li>
-  <li>Res en Bisteck</li>
-  <li>Res a la parrilla en Carbon</li>
-
-</ul>
-  <ul>  
-    <li><h3>Arroces</h3>    </li>
-      <li>Arroz Chaufa</li>
-      <li>Arroz con Pollo</li>
-      <li>Arroz Mixto</li>
-      <li>Arroz Marinero</li>
-      <li>Arroz de Camaron</li>
-      <li>Rissotto</li>
-</ul>
-<ul>  
-  <li><h3>Comida de Mar</h3></li>
-  <li>Chuleta de Pezcado</li>
-  <li>Camarones al Ajillo</li>
-  <li>Ceviche de Camaron</li>
-  <li>Ceviche Peruano</li>
-  <li>Ceviche Leche de Tigre</li>
-  <li>Cazuela de Mariscos o camaron</li>
-  <li>Arroz Marinero</li>
-  <li>Arroz de Camaron</li>
-  <li>Camarones Apanados</li>
-  <li>Picada Marinera</li>
-  <li>Sudado de Mariscos</li>
-  <li>Sudado de Camaron</li>
-  <li>Sudado de Calamar</li>
-  <li>Sudado Triple</li>
-  <li>Triple de Camaron</li>
-  <li>Croquetas de Pezcado</li>
-
-</ul>
-</div>
-</div>
-
-  <div id="opcionesSalsas">
-        <div class="opcionesSalsas">
-            <h2>Salsas</h2>
-            <ul>
-      <li>Ajillo</li>
-      <li>Chanpigñon</li>
-      <li>Vino Blanco</li>
-      <li>Vino Tinto</li>
-      <li>5 Quesos</li>
-      <li>Agridulce</li>     
-      <li>Maracuya</li>
-      <li>BBQ</li>
-      <li>MielMostaza</li>
-      <li>CocoRanchera</li>
-      <li>Mango</li>
-      <li>TeriyakyEncebollado</li>
-      <li>Pimienta</li>
-   </ul>
-  </div>
-</div>
- <div id="opcionesAcompa">
-        <div class="opcionesAcompa">
-            <h2>Acompañantes</h2>
-            <ul>
-  <li><h2>Acompañantes</h2></li>
-  <li>Crocqueta de Espinaca</li>
-  <li>Croqueta de Zanahoria</li>
-  <li>Croqueta de Papa</li>
-  <li>Guayabo Calado</li>
-  <li>Pure de Papa</li>
-  <li>Verduras Salteadas</li>     
-  <li>Arroz Zanahoria</li>
-  <li>Arroz Verde</li>
-  <li>Arroz Con Pasta</li>
-  <li>Arroz Coco</li>
-  <li>Arroz Criollo</li>
-  <li>Arroz Negro</li>
-  <li>Papa Guisada</li>
-  <li>Yuca Frita</li>
-  <li>Tostadas e Platano Verdes</li>
-  <li>Tostadas e Platano Maduro</li>
-  <li>Papa Guisada</li>
-  <li>Brocoli en Salsa de Queso</li>
-  <li>Macarrones</li>
-  <li>Zanahoria Caramelizada</li>
-  <li>Chips de Platano</li>
-  <li>Torta de Verduras</li>
-
-</ul>
-</div>
-</div>
-
-
-   <div id="opcionesRapida">
-        <div class="opcionesRapida">
-            <h2>Comida Rápida</h2>
-            <ul>
-    <li>Alitas Picandulce</li>
-    <li>lasagña</li>
-    <li>Hambueguesa de pollo y Res</li>
-    <li>Cocretas de Pollo</li>
-    <li>Snacks de Pollo</li>
-    <li>Perros</li>     
-    <li>Quesadillas </li>
-    <li>Pollo a la Naranja al wok </li>
-    <li>Colitas</li>
-    <li>Creeps</li>
-    <li>Tacos</li>
-    <li>Burritos</li>
-    <li>Maicitos Gratinados</li>
-  </ul>
-  </div>
-</div>
-
-<div id="opcionesEnsalada">
-  <div class="opcionesEnsalada">
-    <h2>Ensaladas</h2>
-  <ul>
-    <li>Lechuga, Aguacate, Cebolla, Tomate, Cilantro, Limon</li>
-    <li>Tropical Lechuga, Piña, Mango, Fresa, Manzana, Zanahoria, Repollo </li>
-    <li>Lwchuga, Repollo Morado, Pepino, Zanahoria, Vinagreta de Fruta</li>
-    <li>Lechuga, Apio Caladao, Tomare, Zanahoria, Maiz Tierno</li>
-    <li>Remolacha, Zanahoria, Cebolla, Aderezo</li>
-    <li>Cebolla, Cilantro, Tomate, Limon o Vinagreta</li>     
-    <li>Lechuga, Fresa,Zanahoria, Calabazin Aarillo, Calado de Mango, </li>
-  </ul>
-</div>
-</div>
-
-
 
 
       
@@ -448,18 +455,20 @@ data-ad-slot="1343460463"></ins>
 </div>  
 
 
+<div id="blogForm" class="hidden-content">
+  <form id="blog-form">
+    <h2>Publicar en el Blog</h2>
 
-<div id="contenedorBlog">
-  <!-- Formulario para agregar un nuevo mensaje -->
-  <form id="formularioMensaje">
-      <textarea id="inputMensaje" rows="4" cols="50" placeholder="Escribe tu mensaje aquí"></textarea>
+      <div>
+          <label for="title">Título:</label>
+          <input type="text" id="title" name="title" required>
+      </div>
+      <div>
+          <label for="content">Contenido:</label>
+          <textarea id="content" name="content" required></textarea>
+      </div>
       <button type="submit">Publicar</button>
   </form>
-
-  <!-- Contenedor para mostrar los mensajes -->
-  <div id="contenedorMensajes">
-      <!-- Los mensajes se agregarán aquí dinámicamente -->
-  </div>
 </div>
         
           <div class="bottom-panel">

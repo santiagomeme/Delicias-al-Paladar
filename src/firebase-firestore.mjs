@@ -1,4 +1,3 @@
-// firebase-firestore.mjs
 import { getFirestore, collection, addDoc, getDocs } from 'https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore.js';
 import { app } from './firebase-config.mjs';
 

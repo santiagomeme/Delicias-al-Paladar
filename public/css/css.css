@@ -354,8 +354,6 @@
       }
 
       
-
-
       #catalogo{
         flex: 1; /* El catálogo ocupará todo el espacio disponible */
         margin-top: 100px;
@@ -388,7 +386,7 @@
   justify-content:center;
   position:relative;
   width: 100%; /* Ajusta el ancho al 100% de la ventana del navegador */
-  height: 300px;
+  height: 270px;
   left: 0; /* Alinea el panel a la izquierda */
   text-align: center; /* Centra el contenido horizontalmente */
  flex-direction: row;
@@ -507,8 +505,8 @@
 
  .logoBottonP{
   background-color:#f5f5f5;
-  height: 45px;
-  width: 45px;
+  height: 65px;
+  width: 65px;
   border:none;
   position:relative;
   align-items: center;
@@ -968,4 +966,87 @@ h3 {
 }
 #contenedorBlog.mostrado {
   display: block;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.menu-button {
+    padding: 10px 20px;
+    background:none;
+    color: black;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 10%;
+
+}
+
+.menu-button:hover {
+    background-color: #ffffff;
+    transform: translateY(-2px);
+    width: 10%;
+}
+
+.menu-button:active {
+    background-color: #003f7f;
+}
+
+.hidden-content {
+    display: none;
+    width: 90%;
+    max-width: 600px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+form label {
+    margin-bottom: 5px;
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+form button:hover {
+    background-color: #218838;
+}
+
+form button:active {
+    background-color: #1e7e34;
 }

@@ -354,8 +354,6 @@
       }
 
       
-
-
       #catalogo{
         flex: 1; /* El catálogo ocupará todo el espacio disponible */
         margin-top: 100px;
@@ -388,7 +386,7 @@
   justify-content:center;
   position:relative;
   width: 100%; /* Ajusta el ancho al 100% de la ventana del navegador */
-  height: 300px;
+  height: 270px;
   left: 0; /* Alinea el panel a la izquierda */
   text-align: center; /* Centra el contenido horizontalmente */
  flex-direction: row;
@@ -507,8 +505,8 @@
 
  .logoBottonP{
   background-color:#f5f5f5;
-  height: 45px;
-  width: 45px;
+  height: 65px;
+  width: 65px;
   border:none;
   position:relative;
   align-items: center;
@@ -601,16 +599,14 @@
   margin-left: 200px;
   padding-right: 50px;
   margin-right: 200px;
-  margin-bottom: 100px;
+  margin-bottom: 0px;
   padding-top: 50px;
   padding-left: 50px;
   margin: 0 auto; /* Centra horizontalmente */
   transform: translateX(-50%, -50%);
   background-color: rgb(255, 255, 255);
-  margin-top: 100px;
+  margin-top: 300px;
   box-shadow: 0 5px 10px rgba(255, 230, 0, 0.900);
-
-
 
 }
 
@@ -638,7 +634,7 @@
   margin-left: 5px;
   padding-right: 5px;
   margin-right: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 0px;
   padding-top: 5px;
   padding-left: 5px;
   margin: 0 auto; /* Centra horizontalmente */
@@ -787,7 +783,7 @@ display: none!important;
   color: #333; /* Cambia el color del texto */
   border-color: #c7c400;
   border-style: solid;
-  margin-top:5px;
+  margin-top:50px;
   padding-top: 5px;
   width: 70%;
   height: 10%;
@@ -840,10 +836,9 @@ border-radius: 5px;
 .parB{
   color: #000;
 }
-  /* Incluye aquí el CSS actualizado */
   #opcionesProteina,
-  #opcionesSalsas, /* Corregido el ID */
-  #opcionesAcompa, /* Corregido el ID */
+  #opcionesSalsas,
+  #opcionesAcompa, 
   #opcionesRapida,
   #opcionesEnsalada {
       display: none; /* Oculta inicialmente */
@@ -981,25 +976,26 @@ body {
 }
 .menu-button {
     padding: 10px 20px;
-    background-color: #007BFF;
-    color: white;
+    background:none;
+    color: black;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease, transform 0.2s ease;
     margin-bottom: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 10%;
+
 }
 
 .menu-button:hover {
-    background-color: #0056b3;
+    background-color: #ffffff;
     transform: translateY(-2px);
+    width: 10%;
 }
 
 .menu-button:active {
     background-color: #003f7f;
-    transform: translateY(0);
 }
 
 .hidden-content {
@@ -1015,7 +1011,7 @@ body {
 }
 
 form {
-    display: flex;
+    display: none;
     flex-direction: column;
 }
 

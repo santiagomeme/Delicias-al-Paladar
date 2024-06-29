@@ -1,4 +1,3 @@
-// script.js
 function toggleVisibility(id) {
     var element = document.getElementById(id);
     if (element.style.display === "none") {
@@ -8,5 +7,4 @@ function toggleVisibility(id) {
     }
 }
 
-// Hacer que la función esté disponible globalmente
 window.toggleVisibility = toggleVisibility;
