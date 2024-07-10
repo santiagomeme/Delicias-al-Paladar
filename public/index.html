@@ -102,6 +102,7 @@
 
   <script src="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.js"></script>
     <script defer type="module" src="prueba.mjs"></script>
+    <script defer type="module" src="panelBusqueda.ms"></script>
 
 
     <meta name="google-site-verification" content="F1QagEOf8Pnw3tNH3gHB4yUOOxPw_R9wsE4RSdvwvJc" />
@@ -131,6 +132,14 @@
            <!--  <div class="imgDecorP"><img class="imgDecorP"  src="images/resChimi.jpg" alt="imajen decorativa de comida" ></div>-->
 
 
+           
+
+           <div id="panelBusqueda">
+            <div id="resultadoBusqueda">
+                <!-- Aquí se mostrarán los resultados de la búsqueda -->
+            </div>
+        </div>
+    
 
 
            <div class="texto-sofisticado" class="lora-uniquifier">
@@ -142,7 +151,9 @@
           </div>
           
           
-          <div class="imgDecorP"><img class="imgDecorP"  src="../images/imgDecorP.jpg" alt="Imagen de Plato decorativo"></div>
+          
+ 
+       <!-- <div class="imgDecorP"><img class="imgDecorP"  src="../images/imgDecorP.jpg" alt="Imagen de Plato decorativo"></div>-->
           
           
           
@@ -319,13 +330,7 @@
       </div>
 
       
-      
-      <div id="panelBusqueda">
-        <div id="resultadoBusqueda">
-            <!-- Aquí se mostrarán los resultados de la búsqueda -->
-        </div>
-    </div>
-
+     
 
 <div class="registro-box" id="registroBox">
   <div class="auth-container">
@@ -365,8 +370,9 @@
 
 
 <div id="blog">
-    <h2>Blog Panel</h2>
     <form id="blogForm">
+      <h2>Blog Panel</h2>
+
         <input type="text" id="title" placeholder="Title" required>
         <textarea id="content" placeholder="Content" required></textarea>
         <button type="submit">Submit</button>
@@ -455,21 +461,9 @@ data-ad-slot="1343460463"></ins>
 </div>  
 
 
-<div id="blogForm" class="hidden-content">
-  <form id="blog-form">
-    <h2>Publicar en el Blog</h2>
 
-      <div>
-          <label for="title">Título:</label>
-          <input type="text" id="title" name="title" required>
-      </div>
-      <div>
-          <label for="content">Contenido:</label>
-          <textarea id="content" name="content" required></textarea>
-      </div>
-      <button type="submit">Publicar</button>
-  </form>
-</div>
+
+
         
           <div class="bottom-panel">
             <div class="logoBottonP" ><img class="imgLogo"  src="images/logo.jpg" alt="logo" ></div>

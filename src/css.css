@@ -124,20 +124,20 @@
 
           }
 
-          form.title {
+          .registro-box form.title {
               color: #ffffff;
               font-size: 35px;
               font-weight: 800;
               margin-bottom: 10px;
           }
   
-          form label {
+          .registro-box form label {
               margin-bottom: 2px;
               justify-content: center;
 
           }
   
-          form-label.fa-solid {
+          .registro-box form-label.fa-solid {
               font-size: 20px;
               color: #c40000;
               margin-right: 0px;
@@ -145,7 +145,7 @@
 
           }
   
-          form label input {
+          .registro-box  form label input {
               outline: none;
               border: none;
               color: #186cda;
@@ -157,21 +157,21 @@
 
           }
   
-          form label input::placeholder {
+          .registro-box form label input::placeholder {
               color: rgb(255, 255, 255);
           }
   
-          form .link {
+          .registro-box  form .link {
               color: #030303;
               margin-bottom: 5px;
           }
   
-          form button {
+          .registro-box  form button {
             color: rgb(0, 0, 0);
             border:none;
             background:#ffffff; /* Cambiado a fondo transparente */
             padding: 5px;
-            cursor: pointer;
+            cursor: pointer;         
             font-size: 18px;
             display: flex;
             background-size: 16px;
@@ -182,7 +182,7 @@
           }
           
           /* Puedes ajustar este estilo según tus preferencias */
-          form button:hover {
+          .registro-box   form button:hover {
             background: linear-gradient(to right, #00ffdd, #ffbb00);
             color: rgb(255, 255, 255); /* Cambiado a color de texto blanco al pasar el ratón sobre el botón */
             border-radius: 10%;
@@ -390,7 +390,7 @@
   left: 0; /* Alinea el panel a la izquierda */
   text-align: center; /* Centra el contenido horizontalmente */
  flex-direction: row;
-
+margin: 0px;
 }
 
 
@@ -505,14 +505,30 @@
 
  .logoBottonP{
   background-color:#f5f5f5;
-  height: 65px;
-  width: 65px;
+  height: 300px;
+  width: 300px;
   border:none;
   position:relative;
   align-items: center;
   display: flex;
   justify-content: center;
  }
+
+/* Media query para dispositivos pequeños */
+@media screen and (max-width: 768px) {
+  /* Reduce el margen inferior del texto sofisticado en dispositivos pequeños */
+  .logoBottonP {
+    height: 65px;
+  width: 65px;
+  }
+
+  /* Reduce el margen superior del div de opciones en dispositivos pequeños */
+  .opciones {
+    margin-top: 1%; /* Ajusta este valor según sea necesario */
+  }
+}
+
+
 
  #RegistroLogo{
   border-radius: 50%;
@@ -610,9 +626,6 @@
 
 }
 
-
-
-
 #panelBusqueda ul {
   max-height: 300px; /* Establece la altura máxima para la lista de resultados */
   overflow-y: auto; /* Agrega una barra de desplazamiento vertical si es necesario */
@@ -664,6 +677,7 @@ padding: 5px; /* Ajusta el espacio interior del botón de búsqueda */
   border-color:#c7c400;
 border-style: solid;
 }
+
 #registroBox{
   display: none;
   position: fixed;
@@ -865,6 +879,7 @@ border-radius: 5px;
       border: #000;
   }
 
+
   ul {
       list-style-type: none; /* Elimina los puntos de la lista */
       padding: 0;
@@ -932,10 +947,15 @@ h3 {
   }
 }
 
+.logoP{
+margin-top: 200px;
+align-items: center;
+margin-right: 50px;
+margin-left: 50px;
+width: 300px;
+}
 
-
-
-    #menu ul {
+ #menu ul {
       list-style-type: none; /* Quita los puntos de lista */
       padding: 0; /* Quita el relleno predeterminado */
     }
@@ -969,13 +989,13 @@ body {
   font-family: 'Arial', sans-serif;
   background-color: #f4f4f9;
   margin: 0;
-  padding: 20px;
+  padding: 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .menu-button {
-    padding: 10px 20px;
+    padding: 1px 2px;
     background:none;
     color: black;
     border: none;
@@ -984,18 +1004,17 @@ body {
     transition: background-color 0.3s ease, transform 0.2s ease;
     margin-bottom: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 10%;
-
+    width: 20%;
 }
 
 .menu-button:hover {
     background-color: #ffffff;
-    transform: translateY(-2px);
-    width: 10%;
+    transform: translateY(-1px);
+    width: 15%;
 }
 
 .menu-button:active {
-    background-color: #003f7f;
+    background-color: #d1c303;
 }
 
 .hidden-content {
@@ -1010,27 +1029,27 @@ body {
     margin-top: 20px;
 }
 
-form {
+#blog form {
     display: none;
     flex-direction: column;
 }
 
-form div {
+#blog form div {
     margin-bottom: 15px;
 }
 
-form label {
+#blog form label {
     margin-bottom: 5px;
 }
 
-form input, form textarea {
+#blog form input, form textarea {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-form button {
+#blog form button {
     padding: 10px 20px;
     background-color: #28a745;
     color: white;
@@ -1040,10 +1059,11 @@ form button {
     font-size: 16px;
 }
 
-form button:hover {
+
+#blog form button:hover {
     background-color: #218838;
 }
 
-form button:active {
+#blog form button:active {
     background-color: #1e7e34;
 }
