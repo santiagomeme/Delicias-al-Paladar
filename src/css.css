@@ -148,8 +148,8 @@
           .registro-box  form label input {
               outline: none;
               border: none;
-              color: #186cda;
-              border-bottom: solid 1px #4fce1d;
+              color: #dacd18;
+              border-bottom: solid 1px #520000;
               padding: 0 5px;
               font-size: 18px;
               margin-top: 1px;
@@ -389,8 +389,8 @@
   height: 270px;
   left: 0; /* Alinea el panel a la izquierda */
   text-align: center; /* Centra el contenido horizontalmente */
- flex-direction: row;
-margin: 0px;
+  flex-direction: row;
+  margin: 0px;
 }
 
 
@@ -505,8 +505,8 @@ margin: 0px;
 
  .logoBottonP{
   background-color:#f5f5f5;
-  height: 300px;
-  width: 300px;
+  height: 200px;
+  width: 200px;
   border:none;
   position:relative;
   align-items: center;
@@ -524,20 +524,10 @@ margin: 0px;
 
   /* Reduce el margen superior del div de opciones en dispositivos pequeños */
   .opciones {
-    margin-top: 1%; /* Ajusta este valor según sea necesario */
+    margin-top: 0%; /* Ajusta este valor según sea necesario */
   }
 }
 
-
-
- #RegistroLogo{
-  border-radius: 50%;
-  height: 150px;
-  width: 150px;
-  position: relative;
-  margin-top: 2px;
-
- }
 
 
  
@@ -615,13 +605,13 @@ margin: 0px;
   margin-left: 200px;
   padding-right: 50px;
   margin-right: 200px;
-  margin-bottom: 0px;
+  margin-bottom: 90%;
   padding-top: 50px;
   padding-left: 50px;
   margin: 0 auto; /* Centra horizontalmente */
   transform: translateX(-50%, -50%);
   background-color: rgb(255, 255, 255);
-  margin-top: 300px;
+  margin-top: 0px;
   box-shadow: 0 5px 10px rgba(255, 230, 0, 0.900);
 
 }
@@ -631,11 +621,12 @@ margin: 0px;
   overflow-y: auto; /* Agrega una barra de desplazamiento vertical si es necesario */
   max-width: 300px;
   margin-left: 100px;
+  margin-bottom: 3px;
 }
 
 #resultadoBusqueda{
   position: absolute;
-  top: 70%;
+  top: -50%; /* Ajusta este valor para mover el div más arriba */
   left: 50%;
   overflow-y: auto;  background-color: #fff;
   border: 3px solid #c7c400;
@@ -647,7 +638,7 @@ margin: 0px;
   margin-left: 5px;
   padding-right: 5px;
   margin-right: 5px;
-  margin-bottom: 0px;
+  margin-bottom: 90%;
   padding-top: 5px;
   padding-left: 5px;
   margin: 0 auto; /* Centra horizontalmente */
@@ -1001,10 +992,9 @@ body {
     border: none;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    margin-bottom: 10px;
+    transition: background-color 0.1s ease, transform 0.1s ease;
+    margin-bottom: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 20%;
 }
 
 .menu-button:hover {

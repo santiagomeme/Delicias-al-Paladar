@@ -111,7 +111,8 @@
   <body>
  
 
-<button type="button" class="btnMenu" id="toggleTopPanel">...</button>
+   <button type="button" class="btnMenu" id="toggleTopPanel">...</button>
+   <div class="logoP" class="logo"><img class="imgLogo"  src="images/logo2.jpg" alt="logo" ></div>
 
 
            
@@ -119,11 +120,11 @@
             <h2 id="titulo1" class="cursiva sobreado">Delicias al Paladar</h2>
            <div class="logo"><img class="imgLogo"  src="images/logo.jpg" alt="logo" ></div>
            <input type="text" class="form-control" id="inputBusqueda" placeholder="Buscar platos">
-         <button class="stilo" type="button" id="btnMostrarCarrito" class="btn btn-primary">Carrito</button>
+         <button class="menu-button" class="stilo" type="button" id="btnMostrarCarrito" class="btn btn-primary">Carrito</button>
        <!--  <button id="whatsappButton"> WhatsApp</button>-->
        <button class="menu-button" onclick="toggleVisibility('blogForm')">Blog</button>
-       <button class="stilo" type="button"  id="whatsappButton" class="btn btn-primary">Reservas</button>
-           <span class="btn btn-primary" id="mostrarRegistroButton"  id="mostrar-cuadro-registro" >Registrase</span>
+       <button class="menu-button"  class="stilo" type="button"  id="whatsappButton" class="btn btn-primary">Reservas</button>
+           <span class="menu-button"  class="btn btn-primary" id="mostrarRegistroButton"  id="mostrar-cuadro-registro" >Registrase</span>
            <div id="user-info">
             ¡Bienvenido, <span id="user-email"></span>!
           </div>
@@ -143,10 +144,10 @@
 
 
            <div class="texto-sofisticado" class="lora-uniquifier">
-            <p>Arma platos al gusto, eligiendo la proteina la Ensalada y el Acompañante que desees</p>
+            <p>Bienvenido a Delicias al Paladar. Arma tus propios platos eligiendo la proteina y los Acompañamientos que desees, como ensaladas o principios</p>
           </div>
           <div class="text2" class="lora-uniquifier">
-            <p>Precio por plato para 1 Proteina 1 ensalada 1 acompañante</p>
+            <p>Precio por plato con una Proteina y dos acompañantes</p>
             <p>Pollo:$11.000, Cerdo:$12.000, Res:$13.000, Camaron:$18.000</p>
           </div>
           
@@ -337,15 +338,13 @@
       <!-- Formulario de Registro e Inicio de Sesión -->
       <form id="authForm" class="form"  id="formRegistro"  onsubmit="return validarRegistro()"  >
           <label for="correo">Correo Electrónico:</label>
-          <input type="email" id="correo" placeholder="Correo Electrónico" required>
+          <input type="email" id="correo" placeholder="Escriba su Correo" required>
           <label for="password">Contraseña:</label>
-          <input type="password" id="password" placeholder="Contraseña" required>
-
+          <input type="password" id="password" placeholder="Escriba su Contraseña" required>
           <button id="authButton" type="submit">Registrarse</button>
           <p id="switchAuthText">¿Ya tienes una cuenta? <a href="#" id="switchAuthLink">Inicia sesión aquí</a>.</p>
       </form>
-
-      <!-- Contenedor para Firebase UI -->
+     <!-- Contenedor para Firebase UI -->
       <div id="firebaseui-auth-container">
           <!-- Aquí se mostrará el widget de inicio de sesión de Firebase UI -->
       </div>
@@ -371,7 +370,7 @@
 
 <div id="blog">
     <form id="blogForm">
-      <h2>Blog Panel</h2>
+      <h2>Blog</h2>
 
         <input type="text" id="title" placeholder="Title" required>
         <textarea id="content" placeholder="Content" required></textarea>
