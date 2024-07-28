@@ -540,6 +540,43 @@ margin-top: 0px;
 
 }
 
+.imgP{
+border-radius: 25px;
+max-height: 80%; /* Establece la altura máxima al 100% del contenedor */
+max-width: 80%;
+position: relative;
+margin-top: 0px;
+
+
+}
+.imgPP{
+height: 500px;
+width: 450px;
+border:none;
+background-color:#ffffff;
+position:relative;
+align-items: center;
+display: flex;
+justify-content: center;
+
+}
+/* Media query para dispositivos pequeños */
+@media screen and (max-width: 600px) {
+/* Reduce el margen inferior del texto sofisticado en dispositivos pequeños */
+.imgPP {
+height: 300px;
+width: 300px;
+}
+
+/* Reduce el margen superior del div de opciones en dispositivos pequeños */
+.imgPP {
+margin-top: 0%; /* Ajusta este valor según sea necesario */
+}
+}
+
+
+
+
 
 #titulo1{
 color:#c7c400;
@@ -605,14 +642,14 @@ padding-bottom: 100px;
 margin-left: 200px;
 padding-right: 50px;
 margin-right: 200px;
-margin-bottom: 90%;
+margin-bottom: 100%;
 padding-top: 50px;
 padding-left: 50px;
 margin: 0 auto; /* Centra horizontalmente */
 transform: translateX(-50%, -50%);
 background-color: rgb(255, 255, 255);
-margin-top: 0px;
-box-shadow: 0 5px 10px rgba(255, 230, 0, 0.900);
+margin-top: -200%;
+box-shadow: 0 7px 7px 7px rgb(0, 217, 255);
 
 }
 
@@ -629,7 +666,7 @@ position: absolute;
 top: -50%; /* Ajusta este valor para mover el div más arriba */
 left: 50%;
 overflow-y: auto;  background-color: #fff;
-border: 3px solid #c7c400;
+border: 3px solid #00ffff;
 z-index: 1000;
 display: none;
 max-height: 300px; /* Establece la altura máxima para la lista de resultados */
