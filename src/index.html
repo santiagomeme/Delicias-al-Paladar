@@ -102,8 +102,10 @@
 
   <script src="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.js"></script>
     <script defer type="module" src="prueba.mjs"></script>
-    <script defer type="module" src="panelBusqueda.ms"></script>
+   
 
+
+    
 
     <meta name="google-site-verification" content="F1QagEOf8Pnw3tNH3gHB4yUOOxPw_R9wsE4RSdvwvJc" />
 
@@ -335,41 +337,32 @@
 
       
      
-
-<div class="registro-box" id="registroBox">
-  <div class="auth-container">
-      <!-- Formulario de Registro e Inicio de Sesión -->
-      <form id="authForm" class="form"  id="formRegistro"  onsubmit="return validarRegistro()"  >
-          <label for="correo">Correo Electrónico:</label>
-          <input type="email" id="correo" placeholder="Escriba su Correo" required>
-          <label for="password">Contraseña:</label>
-          <input type="password" id="password" placeholder="Escriba su Contraseña" required>
-          <button id="authButton" type="submit">Registrarse</button>
-          <p id="switchAuthText">¿Ya tienes una cuenta? <a href="#" id="switchAuthLink">Inicia sesión aquí</a>.</p>
-      </form>
-     <!-- Contenedor para Firebase UI -->
-      <div id="firebaseui-auth-container">
-          <!-- Aquí se mostrará el widget de inicio de sesión de Firebase UI -->
+      <div class="registro-box" id="registroBox">
+        <div class="auth-container">
+          <form onsubmit="registrarUsuario(event)"id="authForm" class="form" >
+            <label for="correo">Correo Electrónico:</label>
+            <input type="email" id="correo" name="email" placeholder="Escriba su Correo" required>
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" placeholder="Escriba su Contraseña" required>
+            <button id="authButton" type="submit">Registrarse</button>
+            <p id="switchAuthText">¿Ya tienes una cuenta? <a href="#" id="switchAuthLink">Inicia sesión aquí</a>.</p>
+          </form>
+          <div id="firebaseui-auth-container"></div>
+          <button class="btnGoogle" type="button" id="googleSignInButton" onclick="iniciarSesionConGoogle()">Iniciar sesión con Google</button>
+          <button class="btnFacebook" type="button" id="facebookSignInButton" onclick="iniciarSesionConFacebook()">Iniciar sesión con Facebook</button>
+          <div id="facebookLoginContainer">
+            <div class="fb-login-button" data-width="" data-size="" data-button-type="" data-layout="" data-auto-logout-link="true" data-use-continue-as="true"></div>
+            <div id="fb-root"></div>
+            <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+          </div>
+          <p>Al enviar este formulario, aceptas nuestra <a href="/politica-de-privacidad">política de privacidad</a>.</p>
+          <div id="loader">Loading...</div>
+        </div>
       </div>
-      <!-- Botones de Inicio de Sesión con Google y Facebook -->
-<button class="btnGoogle" type="button" id="googleSignInButton" onclick="iniciarSesionConGoogle()">Iniciar sesión con Google</button>
-<button class="btnFacebook" type="button" id="facebookSignInButton" onclick="iniciarSesionConFacebook()">Iniciar sesión con Facebook</button>
-
-      <div id="facebookLoginContainer"><div id="facebookLoginContainer">
-        <!-- Contenido del botón de inicio de sesión con Facebook -->
-        <div class="fb-login-button" data-width="" data-size="" data-button-type="" data-layout="" data-auto-logout-link="true" data-use-continue-as="true"></div>
-        
-        <!-- Script para cargar el SDK de Facebook -->
-        <div id="fb-root"></div>
-        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
-      </div>
-      </div>
-        <p>Al enviar este formulario, aceptas nuestra <a href="/politica-de-privacidad">política de privacidad</a>.</p>
-        <div id="loader">Loading...</div>
-  </div>
-</div>
-
-
+      
+      <h2>Lista de Usuarios</h2>
+      <div id="usuarios-lista"></div>
+      
 
 <div id="blog">
     <form id="blogForm">
@@ -492,8 +485,35 @@ data-ad-slot="1343460463"></ins>
           </div>
 
 
+          <script >
 
+          async function registrarUsuario(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('correo').value;
+            const password = document.getElementById('password').value;
           
+            try {
+              const response = await fetch('/register', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, password })
+              });
+              
+              const data = await response.json();
+              if (data.success) {
+                alert('Registro exitoso');
+              } else {
+                alert(data.message);
+              }
+            } catch (error) {
+              console.error('Error al registrar el usuario:', error);
+            }
+          }
+        </script>
+     
   </body>
   
 </html>

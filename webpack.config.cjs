@@ -11,6 +11,10 @@ module.exports={
   devServer: {
     static: path.resolve(__dirname, 'public'),
     port: 8080,
+    proxy: {
+      '/register': 'http://localhost:3000',
+      // Puedes añadir más rutas si es necesario
+    }
   },
   resolve: {
     extensions: ['.js', '.mjs', '.cjs', '.json', '.css'],

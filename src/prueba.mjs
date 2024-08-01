@@ -545,7 +545,7 @@ function abrirChatWhatsApp() {
 
 })
 
- // const mostrarCarrito = () => {
+ // const mostrarCarrito=()=>{
  //   const carritoNodo = document.getElementById("carrito");
  //   const precioNodo = document.getElementById("precioTotal");
  // 
