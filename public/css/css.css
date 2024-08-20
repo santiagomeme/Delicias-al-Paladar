@@ -386,7 +386,7 @@
   justify-content:center;
   position:relative;
   width: 100%; /* Ajusta el ancho al 100% de la ventana del navegador */
-  height: 270px;
+  height: 240px;
   left: 0; /* Alinea el panel a la izquierda */
   text-align: center; /* Centra el contenido horizontalmente */
   flex-direction: row;
@@ -401,6 +401,28 @@
   align-items: center; /* Centra los elementos verticalmente */
   flex-wrap: wrap; /* Permite que los elementos se envuelvan cuando no haya suficiente espacio */
 }
+
+#contenedorCarrito {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 300px;
+  background-color: white;
+  border: 2px solid goldenrod;
+  border-radius: 5px;
+  overflow-y: auto;
+  z-index: 1000; /* Asegura que el carrito esté por encima de otros elementos */
+  display: none; /* Inicialmente oculto */
+}
+
+#carrito {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+
 
 /* Media query para dispositivos móviles */
 @media screen and (max-width: 768px) {
@@ -437,15 +459,15 @@
 
 .panel-content {
   flex-grow: 1;
-  padding: 1%;
-  padding-bottom: 10%;
+  padding: 1px;
+  padding-bottom: 1px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   width: 50%;
   margin: 0 auto; /* Ajusta el margen derecho para dejar espacio al panel derecho */
   max-width: 1200px; ; /* Resta el ancho del panel derecho al 100% del ancho total */
-  margin-bottom: 5%;
+  margin-bottom: 1px;
 }
 
 
@@ -1023,20 +1045,20 @@ body {
   align-items: center;
 }
 .menu-button {
-    padding: 1px 2px;
+    padding: 1px 1px;
     background:none;
     color: black;
     border: none;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.1s ease, transform 0.1s ease;
+    transition: background-color 0.0s ease, transform 0.0s ease;
     margin-bottom: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
 }
 
 .menu-button:hover {
     background-color: #ffffff;
-    transform: translateY(-1px);
+    transform: translateY(1px);
     width: 15%;
 }
 

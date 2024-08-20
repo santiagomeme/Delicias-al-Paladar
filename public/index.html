@@ -14,6 +14,7 @@
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
     rel="stylesheet"
     integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+ 
     crossorigin="anonymous"
      />
      <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -102,6 +103,7 @@
 
   <script src="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.js"></script>
     <script defer type="module" src="prueba.mjs"></script>
+   
 
 
     
@@ -110,10 +112,10 @@
 
   </head>
   <body>
- s
+ 
 
    <button type="button" class="btnMenu" id="toggleTopPanel">...</button>
-   <div class="imgPP" class="logo"><img class="imgP"  src="images/comiEventos1.jpg" alt="logo" ></div>
+   <div class="imgPP" class="logo"><img class="imgP"  src="images/comiEventos2.jpg" alt="logo" ></div>
 
 
            
@@ -131,12 +133,10 @@
            <input type="text" class="form-control" id="inputBusqueda" placeholder="Buscar platos">
          <button class="menu-button" class="stilo" type="button" id="btnMostrarCarrito" class="btn btn-primary">Carrito</button>
        <!--  <button id="whatsappButton"> WhatsApp</button>-->
-       <button class="menu-button" onclick="toggleVisibility('blogForm')">Blog</button>
-       <button class="menu-button"  class="stilo" type="button"  id="whatsappButton" class="btn btn-primary">Reservas</button>
-           <span class="menu-button"  class="btn btn-primary" id="mostrarRegistroButton"  id="mostrar-cuadro-registro" >Registrase</span>
-           <div id="user-info">
-            ¡Bienvenido, <span id="user-email"></span>!
-          </div>
+             <!--<button class="menu-button" onclick="toggleVisibility('blogForm')">Blog</button>-->
+       <button class="menu-button"  class="stilo" type="button"  id="whatsappButton" class="btn btn-primary">WhatsApp</button>
+                <!-- <span class="menu-button"  class="btn btn-primary" id="mostrarRegistroButton"  id="mostrar-cuadro-registro" >Registrase</span>-->
+        
 
           </div>
            <!--  <div class="imgDecorP"><img class="imgDecorP"  src="images/resChimi.jpg" alt="imajen decorativa de comida" ></div>-->
@@ -338,7 +338,7 @@
      
       <div class="registro-box" id="registroBox">
         <div class="auth-container">
-          <form id="authForm" class="form" onsubmit="registrarUsuario(event)">
+          <form onsubmit="registrarUsuario(event)"id="authForm" class="form" >
             <label for="correo">Correo Electrónico:</label>
             <input type="email" id="correo" name="email" placeholder="Escriba su Correo" required>
             <label for="password">Contraseña:</label>
@@ -359,9 +359,7 @@
         </div>
       </div>
       
-      <h2>Lista de Usuarios</h2>
-      <div id="usuarios-lista"></div>
-      
+     
 
 <div id="blog">
     <form id="blogForm">
@@ -464,7 +462,9 @@ data-ad-slot="1343460463"></ins>
             <br>
             <div class="panel-content">
              <div ><h1 class="cursiva sobreado">Delicias al Paladar </h1></div>
-              <p class="parB"  >Comida Gourmet para Eventos. Cali Colombia. </p>
+              <p class="parB"  >Comida Gourmet para Eventos.</p>
+              <p class="parB"  >Contacto 3177505231    Cali Colombia. </p>
+
             </div>
             <div id="menu">
               <ul>
@@ -483,38 +483,36 @@ data-ad-slot="1343460463"></ins>
             <button type="button" onclick="rechazarCookies()">Rechazar Cookies</button>
           </div>
 
-     
+
           <script >
 
-            async function registrarUsuario(event) {
-              event.preventDefault();
-              
-              const email = document.getElementById('correo').value;
-              const password = document.getElementById('password').value;
+          async function registrarUsuario(event) {
+            event.preventDefault();
             
-              try {
-                const response = await fetch('/register', {
-                  method: 'POST',
-                  headers: {
-                    'Content-Type': 'application/json'
-                  },
-                  body: JSON.stringify({ email, password })
-                });
-                
-                const data = await response.json();
-                if (data.success) {
-                  alert('Registro exitoso');
-                } else {
-                  alert(data.message);
-                }
-              } catch (error) {
-                console.error('Error al registrar el usuario:', error);
+            const email = document.getElementById('correo').value;
+            const password = document.getElementById('password').value;
+          
+            try {
+              const response = await fetch('/register', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, password })
+              });
+              
+              const data = await response.json();
+              if (data.success) {
+                alert('Registro exitoso');
+              } else {
+                alert(data.message);
               }
+            } catch (error) {
+              console.error('Error al registrar el usuario:', error);
             }
-          </script>
-       
-
-
+          }
+        </script>
+     
   </body>
   
 </html>

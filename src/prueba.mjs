@@ -44,11 +44,10 @@ var productos = [{
 
   }, {
     id: 7,
-    nombre: "Cenas para Eventos",
-    precio: 11000,
-    detalle: "Cenas para Eventos con una Proteina una Ensalada, y un Acompañante, Proteinas Pollo $11.000, Cerdo $12.000, Res $13.000",
-    imagen: "images/comiEventos1.jpg"
-
+    nombre: "Pollo Relleno",
+    precio: 120000,
+    detalle: "Rellenos: Hawallano, Verduras, Agridulce. Acompañado de Ensalada y un Acompañante para 10 personas x $120.000",
+    imagen: "images/PolloRelleno.jpg"
   }, {
     id: 8,
     nombre: "Chuleta de Pollo",
@@ -65,11 +64,10 @@ var productos = [{
 
   }, {
     id: 11,
-    nombre: "Arroz Marinero",
-    precio: 100000,
-    detalle: "Arroz Marinero Compuesto de Camaron, Calamar, Pulpo, Pescado y Cangrejo,  Acompañado de Tostadas de Platano o Papas a la Francesa y Aji, para 5 Personas x $100.000",
-    imagen: "images/ArrozMar.jpg"
-
+    nombre: "Pernil de Pollo",
+    precio: 11000,
+    detalle: "Pernil de Pollo al Horno en Salsa o en Verduras. Acompañado de Ensalada y un Acompañante  x $11.000",
+    imagen: "images/PernilPollo.jpg"
   }, {
     id: 12,
     nombre: "Picada Marinera",
@@ -84,42 +82,26 @@ var productos = [{
     detalle: "Cazuela de Mariscos o Camaron Grande Acompañada de Arroz Coco, Tostadas de Platano o Papas a la Francesa para 5 Personas x $135.000",
     imagen: "images/Cazuela.jpg"
 
-  }, {
-    id: 14,
-    nombre: "Pollo Relleno",
-    precio: 120000,
-    detalle: "Rellenos: Hawallano, Verduras, Agridulce. Acompañado de Ensalada y un Acompañante para 10 personas x $120.000",
-    imagen: "images/PolloRelleno.jpg"
+  }// {
+    //id: 15,
+    //nombre: "Pernil de Pollo",
+    //precio: 11000,
+    //detalle: "Pernil de Pollo al Horno en Salsa o en Verduras. Acompañado de Ensalada y un Acompañante  x $11.000",
+    //imagen: "images/PernilPollo.jpg"
 
-  }, {
-    id: 15,
-    nombre: "Pernil de Pollo",
-    precio: 11000,
-    detalle: "Pernil de Pollo al Horno en Salsa o en Verduras. Acompañado de Ensalada y un Acompañante  x $11.000",
-    imagen: "images/PernilPollo.jpg"
+  //}
+   // id: 17,
+    //nombre: "Chuleta de Pescado",
+    //precio: 14500,
+    //detalle: "Chuleta de Filete de Tilapia Acompañada de Ensalada y un Acompañante x $14.500",
+    //imagen: "images/ChulePez.jpg"
 
-  }, {
-    id: 16,
-    nombre: "Pechuga Rellena",
-    precio: 11000,
-    detalle: "Rellenos:Hawallano, Verduras, Agridulce. Queso y Espinaca. Acompañada de ensalada y un acompañante.",
-    imagen: "images/PechugaRellena.jpg"
+  //}
+ // nombre: "Arroz Marinero",
+ // precio: 100000,
+  //detalle: "Arroz Marinero Compuesto de Camaron, Calamar, Pulpo, Pescado y Cangrejo,  Acompañado de Tostadas de Platano o Papas a la Francesa y Aji, para 5 Personas x $100.000",
+  //imagen: "images/ArrozMar.jpg"
 
-  }, {
-    id: 17,
-    nombre: "Chuleta de Pescado",
-    precio: 14500,
-    detalle: "Chuleta de Filete de Tilapia Acompañada de Ensalada y un Acompañante x $14.500",
-    imagen: "images/ChulePez.jpg"
-
-  }, {
-  id: 18,
-  nombre: "Comida para Eventos",
-  precio: 11000,
-  detalle: "Cenas para Eventos con una Proteina una Ensalada, y un Acompañante, Proteinas Pollo $11.000, Cerdo $12.000, Res $13.000",
-  imagen: "images/comiEventos2.jpg"
-
-  }
 
 ];
 
@@ -160,7 +142,6 @@ var productos = [{
             <p class="card-text">Precio:$ ${producto.precio}</p>
             <p class="card-text">Detalles del Producto: ${producto.detalle}</p>   </div> <!-- Mostrar detalle del producto -->
             <button id="btn-carrito-${producto.idCompra}" class="btn btn-danger">Quitar</button>
-            <button id="btn-detalle-carrito-${producto.idCompra}" class="btn btn-info">Detalles</button>
            </div>
         </div>
       </div>`;
