@@ -106,6 +106,11 @@ var productos = [{
 ];
 
 
+function toggleVisibility(panelId) {
+  const panel = document.getElementById(panelId);
+  panel.classList.toggle('active');
+}
+
 
   var contadorCarrito = 0;
   var carrito = [];
@@ -226,7 +231,9 @@ window.toggleVisibility = toggleVisibility;
         mostrarCarrito();
       });
 
-    
+
+
+
       const botonDetalleId = `btn-detalle-${producto.id}`; // Obtener el ID del botón de detalle
       const botonDetalleNodo = document.getElementById(botonDetalleId); // Obtener el nodo del botón de detalle
 
@@ -277,8 +284,6 @@ window.toggleVisibility = toggleVisibility;
   mostrarCatalogo();
 console.log(productoCatalogoHTML(productos[0]));
   
-
-
 
 
 
@@ -516,7 +521,6 @@ function abrirChatWhatsApp() {
   // Abre el enlace en una nueva ventana o pestaña
   window.open(enlaceChatWhatsApp);
 }
-
 
 
 

@@ -163,14 +163,16 @@
        <!-- <div class="imgDecorP"><img class="imgDecorP"  src="../images/imgDecorP.jpg" alt="Imagen de Plato decorativo"></div>-->
           
           
-          
+       <div class="button-container">
+
           <button class="menu-button" type="button" onclick="toggleVisibility('opcionesProteina')"> Proteínas</button>
           
           
           
-          <div id="opcionesProteina">
+          <div id="opcionesProteina"class="opciones-panel">
+            <div class="opciones-content">
+
            <h1>Proteínas</h1>
-            <div class="opcionesProteina">
               <ul>
                 <li><h3 >Pollo</h3></li>
                 <li>Rollo de Pollo</li>
@@ -223,10 +225,13 @@
           </ul>
           </div>
           </div>
+      
+
           <button class="menu-button" type="button" onclick="toggleVisibility('opcionesSalsas')"> Salsas</button>
           
-            <div id="opcionesSalsas">
-                  <div class="opcionesSalsas">
+            <div id="opcionesSalsas" class="opciones-panel">
+              <div class="opciones-content">
+
                <h2>Salsas</h2>
             <ul>
                 <li>Ajillo</li>
@@ -248,10 +253,10 @@
           
           <button class="menu-button" type="button" onclick="toggleVisibility('opcionesAcompa')">Acompañantes</button>
           
-           <div id="opcionesAcompa">
-                  <div class="opcionesAcompa">
-                      <h2>Acompañantes</h2>
-                      <ul>
+           <div id="opcionesAcompa" class="opciones-panel">
+            <div class="opciones-content">
+              <h2>Acompañantes</h2>
+         <ul>
             <li>Crocqueta de Espinaca</li>
             <li>Croqueta de Zanahoria</li>
             <li>Croqueta de Papa</li>
@@ -281,10 +286,10 @@
           
           <button class="menu-button" type="button" onclick="toggleVisibility('opcionesRapida')">Comida Rápida</button>
           
-             <div id="opcionesRapida">
-                  <div class="opcionesRapida">
-                      <h2>Comida Rápida</h2>
-                      <ul>
+           <div id="opcionesRapida"class="opciones-panel">
+            <div class="opciones-content">
+              <h2>Comida Rápida</h2>
+            <ul>
               <li>Alitas Picandulce</li>
               <li>lasagña</li>
               <li>Hamburguesa de pollo y Res</li>
@@ -305,8 +310,8 @@
           
           <button class="menu-button" type="button" onclick="toggleVisibility('opcionesEnsalada')"> Ensaladas</button>
           
-          <div id="opcionesEnsalada">
-            <div class="opcionesEnsalada">
+          <div id="opcionesEnsalada"class="opciones-panel">
+            <div class="opciones-content">
               <h2>Ensaladas</h2>
             <ul>
               <li>Lechuga, Aguacate, Cebolla, Tomate, Cilantro, Limon</li>
@@ -319,13 +324,11 @@
             </ul>
           </div>
           </div>
-          
-          
-          
-          
+        </div>
 
 
-
+          
+      
            <div id="status"></div>
       <!--codigo del contenedor de la caja de registro-->
       <h1 id="nombreUsuario"></h1>

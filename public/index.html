@@ -131,10 +131,10 @@
             <h2 id="titulo1" class="cursiva sobreado">Delicias al Paladar</h2>
            <div class="logo"><img class="imgLogo"  src="images/logo.jpg" alt="logo" ></div>
            <input type="text" class="form-control" id="inputBusqueda" placeholder="Buscar platos">
-         <button class="menu-button" class="stilo" type="button" id="btnMostrarCarrito" class="btn btn-primary">Carrito</button>
+         <button class="menu-button" class="stilo" type="button" id="btnMostrarCarrito" class="btn btn-primary"><b>Carrito<b></button>
        <!--  <button id="whatsappButton"> WhatsApp</button>-->
              <!--<button class="menu-button" onclick="toggleVisibility('blogForm')">Blog</button>-->
-       <button class="menu-button"  class="stilo" type="button"  id="whatsappButton" class="btn btn-primary">WhatsApp</button>
+       <button class="menu-button"  class="stilo" type="button"  id="whatsappButton" class="btn btn-primary"><b>WhatsApp</b></button>
                 <!-- <span class="menu-button"  class="btn btn-primary" id="mostrarRegistroButton"  id="mostrar-cuadro-registro" >Registrase</span>-->
         
 
@@ -148,11 +148,13 @@
 
 
            <div class="texto-sofisticado" class="lora-uniquifier">
-            <p>Bienvenido a Delicias al Paladar. Arma tus propios platos eligiendo la proteina y los Acompañamientos que desees, como ensaladas o principios</p>
+            <p><b>Bienvenido a Delicias al Paladar<b></p>
+
+            <p><b>Arma tus propios platos eligiendo la proteina y los Acompañamientos que desees, como ensaladas o principios<b></p>
           </div>
           <div class="text2" class="lora-uniquifier">
-            <p>Precio por plato con una Proteina y dos acompañantes</p>
-            <p>Pollo:$11.000, Cerdo:$12.000, Res:$13.000, Camaron:$18.000</p>
+            <p><b>Precio por plato con una Proteina y dos acompañantes<b></p>
+            <p><b>Pollo: $11.000, Cerdo: $12.000, Res: $13.000, Camaron: $18.000</b></p>
           </div>
           
           
@@ -161,14 +163,16 @@
        <!-- <div class="imgDecorP"><img class="imgDecorP"  src="../images/imgDecorP.jpg" alt="Imagen de Plato decorativo"></div>-->
           
           
-          
+       <div class="button-container">
+
           <button class="menu-button" type="button" onclick="toggleVisibility('opcionesProteina')"> Proteínas</button>
           
           
           
-          <div id="opcionesProteina">
+          <div id="opcionesProteina"class="opciones-panel">
+            <div class="opciones-content">
+
            <h1>Proteínas</h1>
-            <div class="opcionesProteina">
               <ul>
                 <li><h3 >Pollo</h3></li>
                 <li>Rollo de Pollo</li>
@@ -221,10 +225,13 @@
           </ul>
           </div>
           </div>
+      
+
           <button class="menu-button" type="button" onclick="toggleVisibility('opcionesSalsas')"> Salsas</button>
           
-            <div id="opcionesSalsas">
-                  <div class="opcionesSalsas">
+            <div id="opcionesSalsas" class="opciones-panel">
+              <div class="opciones-content">
+
                <h2>Salsas</h2>
             <ul>
                 <li>Ajillo</li>
@@ -246,10 +253,10 @@
           
           <button class="menu-button" type="button" onclick="toggleVisibility('opcionesAcompa')">Acompañantes</button>
           
-           <div id="opcionesAcompa">
-                  <div class="opcionesAcompa">
-                      <h2>Acompañantes</h2>
-                      <ul>
+           <div id="opcionesAcompa" class="opciones-panel">
+            <div class="opciones-content">
+              <h2>Acompañantes</h2>
+         <ul>
             <li>Crocqueta de Espinaca</li>
             <li>Croqueta de Zanahoria</li>
             <li>Croqueta de Papa</li>
@@ -279,10 +286,10 @@
           
           <button class="menu-button" type="button" onclick="toggleVisibility('opcionesRapida')">Comida Rápida</button>
           
-             <div id="opcionesRapida">
-                  <div class="opcionesRapida">
-                      <h2>Comida Rápida</h2>
-                      <ul>
+           <div id="opcionesRapida"class="opciones-panel">
+            <div class="opciones-content">
+              <h2>Comida Rápida</h2>
+            <ul>
               <li>Alitas Picandulce</li>
               <li>lasagña</li>
               <li>Hamburguesa de pollo y Res</li>
@@ -303,8 +310,8 @@
           
           <button class="menu-button" type="button" onclick="toggleVisibility('opcionesEnsalada')"> Ensaladas</button>
           
-          <div id="opcionesEnsalada">
-            <div class="opcionesEnsalada">
+          <div id="opcionesEnsalada"class="opciones-panel">
+            <div class="opciones-content">
               <h2>Ensaladas</h2>
             <ul>
               <li>Lechuga, Aguacate, Cebolla, Tomate, Cilantro, Limon</li>
@@ -317,13 +324,11 @@
             </ul>
           </div>
           </div>
-          
-          
-          
-          
+        </div>
 
 
-
+          
+      
            <div id="status"></div>
       <!--codigo del contenedor de la caja de registro-->
       <h1 id="nombreUsuario"></h1>
@@ -462,8 +467,8 @@ data-ad-slot="1343460463"></ins>
             <br>
             <div class="panel-content">
              <div ><h1 class="cursiva sobreado">Delicias al Paladar </h1></div>
-              <p class="parB"  >Comida Gourmet para Eventos.</p>
-              <p class="parB"  >Contacto 3177505231    Cali Colombia. </p>
+              <p class="parB"  ><b>Comida Gourmet para Eventos.<b></p>
+              <p class="parB"  ><b>Contacto 3177505231    Cali Colombia. <b></p>
 
             </div>
             <div id="menu">
