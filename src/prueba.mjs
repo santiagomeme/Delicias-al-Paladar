@@ -1,548 +1,651 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-var productos = [{
-    id: 1,
-    nombre: "Gordon Blue",
-    precio: 11000,
-    detalle: "Gordon Blue Relleno de Jamon y Queso, Acompañadp de Ensalada, y un Acompañante",
-    imagen: "images/cenaGordonBlue.jpg"
+    var productos = [{
+        id: 1,
+        nombre: "Gordon Blue",
+        precio: 11000,
+        detalle: "Gordon Blue Relleno de Jamon y Queso, Acompañadp de Ensalada, y un Acompañante",
+        imagen: "images/cenaGordonBlue.jpg"
+    
+      }, {
+        id: 2,
+        nombre: "Filete de Pollo relleno ",
+        precio: 11000,
+        detalle: "Rellenos: Verduras Salteadas, Hawallano, Verduras Agridulces, Maduro y Queso, Acompañados de Salsa",
+        imagen: "images/filete-relleno.jpg"
+    
+      },{
+        id: 3,
+        nombre: "Cena con Gordon Blue ",
+        precio: 11000,
+        detalle: "Gordon Blue Relleno de Jamon y Queso, Acompañado de Ensalada, y un Acompañante",
+        imagen: "images/cenaGordonBlue2.jpg"
+    
+      }, {
+        id: 4,
+        nombre: "Cenas con Rollo de Pollo",
+        precio: 100000,
+        detalle: "Rollo de Pollo Relleno de: Verduras Salteadas, Hawallano, Verduras Agridulces, Maduro y Queso, Acompañados de Salsa. Acompañadp de Ensalada, y un Acompañante para 10 Personas x $100.000",
+        imagen: "images/cenaRollo.jpg"
+    
+      }, {
+        id: 5,
+        nombre: "Lomo de Cerdo",
+        precio: 12000,
+        detalle: "Lomo de Cerdo al Horno Bañado en Salsa, Acompañado de Ensalada y 1 Acompañante",
+        imagen: "images/cerdoSalsa.jpg"
+    
+      },{
+        id: 6,
+        nombre: "Comida Rapida",
+        precio: 6000,
+        detalle: "Hamburguesa Tradicional $10000 , super Cronch 13000$ ,Hamburguesa Infantil $, Perros $ ,Perro Infantil $ , Snaks de Pollo $ 8000, Lasagñas $12000 , Quesadillas $8000 , Alitas $ 10000 ",
+        imagen: "images/comidaRapida.jpg"
+    
+      }, {
+        id: 7,
+        nombre: "Pollo Relleno",
+        precio: 120000,
+        detalle: "Rellenos: Hawallano, Verduras, Agridulce. Acompañado de Ensalada y un Acompañante para 10 personas x $120.000",
+        imagen: "images/PolloRelleno.jpg"
+      }, {
+        id: 8,
+        nombre: "Chuleta de Pollo",
+        precio: 11000,
+        detalle: "Chuleta de Pollo Acompañada de ensalada y un Acompañante x $11.000.",
+        imagen: "images/chuletaPollo.jpg"
+    
+      }, {
+        id: 9,
+        nombre:"Postres",
+        precio: 3500,
+        detalle: "Postres de Diferentes Sabores y Mini Postres",
+        imagen: "images/miniPostres.jpg"
+    
+      }, {
+        id: 11,
+        nombre: "Pernil de Pollo",
+        precio: 11000,
+        detalle: "Pernil de Pollo al Horno en Salsa o en Verduras. Acompañado de Ensalada y un Acompañante  x $11.000",
+        imagen: "images/PernilPollo.jpg"
+      }, {
+        id: 12,
+        nombre: "Picada Marinera",
+        precio: 100000,
+        detalle: "Camaron, Calamar, Cangrejo Apanados Acompañados de Papas a la Francesa con Salsas y Ajies",
+        imagen: "images/PicadaMarinera.jpg"
+    
+      }, {
+        id: 13,
+        nombre: "Cazuela de Mariscos o Camaron",
+        precio: 120000,
+        detalle: "Cazuela de Mariscos o Camaron Grande Acompañada de Arroz Coco, Tostadas de Platano o Papas a la Francesa para 5 Personas x $135.000",
+        imagen: "images/Cazuela.jpg"
+    
+      }// {
+        //id: 15,
+        //nombre: "Pernil de Pollo",
+        //precio: 11000,
+        //detalle: "Pernil de Pollo al Horno en Salsa o en Verduras. Acompañado de Ensalada y un Acompañante  x $11.000",
+        //imagen: "images/PernilPollo.jpg"
+    
+      //}
+       // id: 17,
+        //nombre: "Chuleta de Pescado",
+        //precio: 14500,
+        //detalle: "Chuleta de Filete de Tilapia Acompañada de Ensalada y un Acompañante x $14.500",
+        //imagen: "images/ChulePez.jpg"
+    
+      //}
+     // nombre: "Arroz Marinero",
+     // precio: 100000,
+      //detalle: "Arroz Marinero Compuesto de Camaron, Calamar, Pulpo, Pescado y Cangrejo,  Acompañado de Tostadas de Platano o Papas a la Francesa y Aji, para 5 Personas x $100.000",
+      //imagen: "images/ArrozMar.jpg"
+    
+    
+    ];
+    
+    
+    function toggleVisibility(panelId) {
+      const panel = document.getElementById(panelId);
+      panel.classList.toggle('active');
+    }
+    
+    
+      var contadorCarrito = 0;
+      var carrito = [];
+    
+      const productoCatalogoHTML = (producto) => {
+        return `
+          <div class="col-md-3 productoTam">
+            <div class="card">
+              <img src="${producto.imagen}" class="card-img-top"/>
+              <div class="card-body">
+                <h5 class="card-title">${producto.nombre}</h5>
+                <p class="card-text">Precio: $${producto.precio}</p>
+                <div id="detalle-${producto.id}" class="detalle" style="display: none;">
+                  <p>Detalle del Producto: ${producto.detalle}</p>
+                </div>
+                <button id="btn-catalogo-${producto.id}" class="btn btn-success">Agregar</button>
+                <button id="btn-detalle-${producto.id}" class="btn btn-info">Detalles</button>
+              </div>
+            </div>
+          </div>`;
+      };
+      const productoCarritoHTML = (producto) => {
+        return `
+          <div class="col">
+            <div class="card">
+              <img src="${producto.imagen}" class="card-img-top"/>
+              <div class="card-body">
+                <h5 class="card-title">${producto.nombre}</h5>
+                <p class="card-text">Precio: $${producto.precio}</p>
+                <p class="card-text">Cantidad: ${producto.cantidad}</p> <!-- Añadido el campo de cantidad -->
+                <button id="btn-carrito-${producto.idCompra}" class="btn btn-danger">Quitar</button>
+              </div>
+            </div>
+          </div>`;
+      };
+      
+    
+      const mostrarCatalogo = () => {
+        const catalogoContenedor = document.getElementById("catalogo");
+        catalogoContenedor.innerHTML = "";
+      
+        for (const producto of productos) {
+          const productoHTML = productoCatalogoHTML(producto);
+          catalogoContenedor.innerHTML += productoHTML;
+        }
+      
+        // Llama a la función para asignar eventos después de generar el HTML de los productos
+        botonesCatalogo();
+      };
+      
 
-  }, {
-    id: 2,
-    nombre: "Filete de Pollo relleno ",
-    precio: 11000,
-    detalle: "Rellenos: Verduras Salteadas, Hawallano, Verduras Agridulces, Maduro y Queso, Acompañados de Salsa",
-    imagen: "images/filete-relleno.jpg"
 
-  },{
-    id: 3,
-    nombre: "Cena con Gordon Blue ",
-    precio: 11000,
-    detalle: "Gordon Blue Relleno de Jamon y Queso, Acompañado de Ensalada, y un Acompañante",
-    imagen: "images/cenaGordonBlue2.jpg"
+      const mostrarCarrito = () => {
+        const carritoContenedor = document.getElementById("carrito");
+        if (!carritoContenedor) {
+          console.error("El contenedor del carrito no se encuentra en el DOM.");
+          return;
+        }
+      
+        // Limpia el contenido del carrito antes de agregar nuevos elementos
+        carritoContenedor.innerHTML = "";
+      
+        let totalCarrito = 0; // Inicializa el total del carrito
+      
+        // Agrega cada producto del carrito al contenedor
+        for (const producto of carrito) {
+          const productoHTML = productoCarritoHTML(producto);
+          carritoContenedor.innerHTML += productoHTML;
+          
+          // Calcula el total del carrito
+          totalCarrito += producto.precio * producto.cantidad;
+        }
+      
+        // Muestra el total del carrito
+        carritoContenedor.innerHTML += `
+          <p class="total-carrito">Total: $${totalCarrito}</p>
+        `;
+      
+        
 
-  }, {
-    id: 4,
-    nombre: "Cenas con Rollo de Pollo",
-    precio: 100000,
-    detalle: "Rollo de Pollo Relleno de: Verduras Salteadas, Hawallano, Verduras Agridulces, Maduro y Queso, Acompañados de Salsa. Acompañadp de Ensalada, y un Acompañante para 10 Personas x $100.000",
-    imagen: "images/cenaRollo.jpg"
+ // Agrega el botón de enviar por WhatsApp con la clase CSS correcta
+ carritoContenedor.innerHTML += `
+ <button id="btnEnviarWhatsApp" class="btn btn-success mt-3 whatsapp-button">Enviar por WhatsApp</button>
+`;
 
-  }, {
-    id: 5,
-    nombre: "Lomo de Cerdo",
-    precio: 12000,
-    detalle: "Lomo de Cerdo al Horno Bañado en Salsa, Acompañado de Ensalada y 1 Acompañante",
-    imagen: "images/cerdoSalsa.jpg"
-
-  },{
-    id: 6,
-    nombre: "Comida Rapida",
-    precio: 6000,
-    detalle: "Hamburguesa Tradicional $10000 , super Cronch 13000$ ,Hamburguesa Infantil $, Perros $ ,Perro Infantil $ , Snaks de Pollo $ 8000, Lasagñas $12000 , Quesadillas $8000 , Alitas $ 10000 ",
-    imagen: "images/comidaRapida.jpg"
-
-  }, {
-    id: 7,
-    nombre: "Pollo Relleno",
-    precio: 120000,
-    detalle: "Rellenos: Hawallano, Verduras, Agridulce. Acompañado de Ensalada y un Acompañante para 10 personas x $120.000",
-    imagen: "images/PolloRelleno.jpg"
-  }, {
-    id: 8,
-    nombre: "Chuleta de Pollo",
-    precio: 11000,
-    detalle: "Chuleta de Pollo Acompañada de ensalada y un Acompañante x $11.000.",
-    imagen: "images/chuletaPollo.jpg"
-
-  }, {
-    id: 9,
-    nombre:"Postres",
-    precio: 3500,
-    detalle: "Postres de Diferentes Sabores y Mini Postres",
-    imagen: "images/miniPostres.jpg"
-
-  }, {
-    id: 11,
-    nombre: "Pernil de Pollo",
-    precio: 11000,
-    detalle: "Pernil de Pollo al Horno en Salsa o en Verduras. Acompañado de Ensalada y un Acompañante  x $11.000",
-    imagen: "images/PernilPollo.jpg"
-  }, {
-    id: 12,
-    nombre: "Picada Marinera",
-    precio: 100000,
-    detalle: "Camaron, Calamar, Cangrejo Apanados Acompañados de Papas a la Francesa con Salsas y Ajies",
-    imagen: "images/PicadaMarinera.jpg"
-
-  }, {
-    id: 13,
-    nombre: "Cazuela de Mariscos o Camaron",
-    precio: 120000,
-    detalle: "Cazuela de Mariscos o Camaron Grande Acompañada de Arroz Coco, Tostadas de Platano o Papas a la Francesa para 5 Personas x $135.000",
-    imagen: "images/Cazuela.jpg"
-
-  }// {
-    //id: 15,
-    //nombre: "Pernil de Pollo",
-    //precio: 11000,
-    //detalle: "Pernil de Pollo al Horno en Salsa o en Verduras. Acompañado de Ensalada y un Acompañante  x $11.000",
-    //imagen: "images/PernilPollo.jpg"
-
-  //}
-   // id: 17,
-    //nombre: "Chuleta de Pescado",
-    //precio: 14500,
-    //detalle: "Chuleta de Filete de Tilapia Acompañada de Ensalada y un Acompañante x $14.500",
-    //imagen: "images/ChulePez.jpg"
-
-  //}
- // nombre: "Arroz Marinero",
- // precio: 100000,
-  //detalle: "Arroz Marinero Compuesto de Camaron, Calamar, Pulpo, Pescado y Cangrejo,  Acompañado de Tostadas de Platano o Papas a la Francesa y Aji, para 5 Personas x $100.000",
-  //imagen: "images/ArrozMar.jpg"
-
-
-];
-
-
-function toggleVisibility(panelId) {
-  const panel = document.getElementById(panelId);
-  panel.classList.toggle('active');
+// Añade el evento al botón de enviar por WhatsApp
+const btnEnviarWhatsApp = document.getElementById("btnEnviarWhatsApp");
+if (btnEnviarWhatsApp) {
+ btnEnviarWhatsApp.addEventListener("click", enviarCarritoPorWhatsApp);
 }
 
 
-  var contadorCarrito = 0;
-  var carrito = [];
+        
+        // Muestra el contenedor del carrito
+        const contenedorCarrito = document.getElementById("contenedorCarrito");
+        if (contenedorCarrito) {
+          contenedorCarrito.style.display = "block"; // Cambia a 'block' para mostrar el contenedor
+        } else {
+          console.error("El contenedor del carrito no se encuentra en el DOM.");
+        }
+      
+        botonesCarrito(); // Llama a esta función para agregar eventos de clic a los botones "Quitar"
+      };
+      
+      
 
-  const productoCatalogoHTML = (producto) => {
-    return`
-      <div class="col-md-3" class="productoTam">
-        <div class="card">
-          <img
-          src="${producto.imagen}"
-            class="card-img-top"
-          />
-          <div class="card-body">
-            <h5 class="card-title">${producto.nombre}</h5>
-            <p class="card-text">Precio:$ ${producto.precio}</p>
-            <div id="detalle-${producto.id}" class="detalle" style="display: none;">
-            <p>Detalle del Producto: ${producto.detalle}</p></div>            
-            <button id="btn-catalogo-${producto.id}" class="btn btn-success">Agregar</button>
-            <button id="btn-detalle-${producto.id}" class="btn btn-info">Detalles</button>
+ const btnMostrarCarrito = document.getElementById("btnMostrarCarrito");
 
-          </div>
-        </div>
-      </div>`;
-  };
-  const productoCarritoHTML = (producto) => {
-    console.log("Valor de producto.imagen:", producto.imagen); // Agregar este console.log
-    return`
-      <div class="col">
-        <div class="card">
-          <img src="${producto.imagen}" class="card-img-top"/>
-          <div class="card-body">
-            <h5 class="card-title">${producto.nombre}</h5>
-            <div id="detalle-${producto.id}" style="display: none;">
-            <p class="card-text">Precio:$ ${producto.precio}</p>
-            <p class="card-text">Detalles del Producto: ${producto.detalle}</p>   </div> <!-- Mostrar detalle del producto -->
-            <button id="btn-carrito-${producto.idCompra}" class="btn btn-danger">Quitar</button>
-           </div>
-        </div>
-      </div>`;
-  };
+if (btnMostrarCarrito) {
+  btnMostrarCarrito.addEventListener("click", function (event) {
+    event.preventDefault(); // Previene el comportamiento por defecto, si aplica
+    event.stopPropagation(); // Detiene la propagación del evento para evitar conflictos
 
-  const mostrarCatalogo = () => {
-    const catalogoNodo = document.getElementById("catalogo");
-    let catalogoHTML = "";
-  
-    for (const producto of productos) {
-      catalogoHTML += productoCatalogoHTML(producto);
-    }
-  
-    catalogoNodo.innerHTML = catalogoHTML;
-    botonesCatalogo();
-  };
-
-
-  const mostrarCarrito = () => {
     const contenedorCarrito = document.getElementById("contenedorCarrito");
-    const carritoNodo = document.getElementById("carrito");
-    const precioNodo = document.getElementById("precioTotal");
-  
-    let carritoHTML = "";
-    let precio = 0;
-    for (const producto of carrito) {
-        carritoHTML += productoCarritoHTML(producto);
-        precio += producto.precio;
+
+    // Alterna la visibilidad del carrito
+    if (contenedorCarrito.style.display === "none" || contenedorCarrito.style.display === "") {
+      contenedorCarrito.style.display = "block";
+      console.log("Carrito mostrado, display: block");
+      mostrarCarrito(); // Mostrar los elementos del carrito cuando se muestra
+    } else {
+      contenedorCarrito.style.display = "none";
+      console.log("Carrito ocultado, display: none");
     }
-  
-    precioNodo.textContent = precio;
-    carritoNodo.innerHTML = carritoHTML;
+  });
+} else {
+  console.error("El botón para mostrar el carrito no se encuentra en el DOM.");
+}
 
-    // Mostrar el contenedor del carrito
-    contenedorCarrito.style.display = "block";
 
-    botonesCarrito(); // Asegurarse de que los botones del carrito estén configurados correctamente
-};
 
-// Evento para mostrar el carrito al hacer clic en el botón
-document.getElementById("btnMostrarCarrito").addEventListener("click", mostrarCarrito);
 
 // Evento para ocultar el carrito al hacer clic fuera de él
-document.addEventListener("click", (event) => {
-    const contenedorCarrito = document.getElementById("contenedorCarrito");
-    const btnMostrarCarrito = document.getElementById("btnMostrarCarrito");
+document.addEventListener("click", function (event) {
+  const contenedorCarrito = document.getElementById("contenedorCarrito");
 
-    if (!contenedorCarrito.contains(event.target) && event.target !== btnMostrarCarrito) {
-        contenedorCarrito.style.display = "none";
-    }
+  // Solo oculta el carrito si se hace clic fuera de él y si está visible
+  if (
+    contenedorCarrito &&
+    !contenedorCarrito.contains(event.target) &&
+    event.target !== btnMostrarCarrito && // Asegura que no se oculte al hacer clic en el botón
+    contenedorCarrito.style.display === "block"
+  ) {
+    contenedorCarrito.style.display = "none";
+    console.log("Clic fuera del carrito, ocultando el carrito.");
+  }
 });
 
+    
 
-function toggleVisibility(id) {
-  var element = document.getElementById(id);
-  if (element.style.display === "none") {
-      element.style.display = "block";
-  } else {
-      element.style.display = "none";
-  }
-}
+const botonesCatalogo = () => {
+  for (const producto of productos) {
+    const botonId = `btn-catalogo-${producto.id}`;
+    const botonDetalleId = `btn-detalle-${producto.id}`;
+    const botonNodo = document.getElementById(botonId);
+    const botonDetalleNodo = document.getElementById(botonDetalleId);
 
-// Hacer que la función esté disponible globalmente
-window.toggleVisibility = toggleVisibility;
-
-
-  const botonesCatalogo = () => {
-    for (const producto of productos) {
-      const botonId = `btn-catalogo-${producto.id}`;
-      const botonNodo = document.getElementById(botonId);
-  
+    // Evento para el botón de "Agregar al carrito"
+    if (botonNodo) {
       botonNodo.addEventListener("click", () => {
-        const productoCarrito = {
-          nombre: producto.nombre,
-          idCompra: contadorCarrito,
-          precio: producto.precio,
-        };
-  
-        contadorCarrito += 1;
-        carrito.push(productoCarrito);
-        console.log("Producto agregado al carrito:", productoCarrito);
-        mostrarCarrito();
+        // Busca si el producto ya está en el carrito
+        const productoExistente = carrito.find(p => p.idCompra === producto.id);
+
+        if (productoExistente) {
+          // Incrementa la cantidad si el producto ya está en el carrito
+          productoExistente.cantidad++;
+        } else {
+          // Agrega el producto con cantidad inicial de 1
+          const productoCarrito = {
+            nombre: producto.nombre,
+            idCompra: producto.id,
+            precio: producto.precio,
+            imagen: producto.imagen,
+            cantidad: 1 // Nueva propiedad de cantidad
+          };
+          carrito.push(productoCarrito);
+        }
+
+        mostrarCarrito(); // Muestra el carrito actualizado
       });
-
-
-
-
-      const botonDetalleId = `btn-detalle-${producto.id}`; // Obtener el ID del botón de detalle
-      const botonDetalleNodo = document.getElementById(botonDetalleId); // Obtener el nodo del botón de detalle
-
-      // Agregar evento de clic al botón de detalle
-      botonDetalleNodo.addEventListener("click", () => {
-          const detalleNodo = document.getElementById(`detalle-${producto.id}`); // Obtener el nodo del detalle del producto
-
-         
-            // Verificar si el detalle está visible
-            const isVisible = detalleNodo.style.display === "block";
-
-            // Ocultar todos los detalles de productos
-            productos.forEach((p) => {
-                const detalle = document.getElementById(`detalle-${p.id}`);
-                detalle.style.display = "none";
-            });
-
-            // Mostrar u ocultar el detalle del producto según su estado actual
-            detalleNodo.style.display = isVisible ? "none" : "block";
-
-            // Evitar que el evento se propague al hacer clic en el botón de detalles
-            event.stopPropagation();
-      });
-
-
     }
-  };
-  
 
+    // Evento para el botón de "Detalles"
+    if (botonDetalleNodo) {
+      botonDetalleNodo.addEventListener("click", () => {
+        const detalleNodo = document.getElementById(`detalle-${producto.id}`);
+        if (detalleNodo) {
+          // Alterna la visibilidad de los detalles del producto
+          detalleNodo.style.display = detalleNodo.style.display === 'none' ? 'block' : 'none';
+        } else {
+          console.error(`No se encontró el detalle del producto con id: ${producto.id}`);
+        }
+      });
+    }
+  }
+};
 
+// Supongamos que esta función renderiza el catálogo de productos en el DOM
+const renderizarCatalogo = () => {
+  const catalogoContenedor = document.getElementById("catalogo");
+  catalogoContenedor.innerHTML = ""; // Limpia el catálogo actual
 
+  productos.forEach(producto => {
+    catalogoContenedor.innerHTML += productoCatalogoHTML(producto);
+  });
+
+  botonesCatalogo(); // Llama a la función después de renderizar
+};
+
+// Llama a la función para renderizar el catálogo al cargar la página
+renderizarCatalogo();
+
+    
+ 
   const botonesCarrito = () => {
-    carrito.forEach(producto => {
+    carrito.forEach((producto) => {
       const botonId = `btn-carrito-${producto.idCompra}`;
       const botonNodo = document.getElementById(botonId);
-  
-      botonNodo.addEventListener("click", (event) => {
-        event.stopPropagation(); // Evitar que el evento se propague al contenedor del carrito
-        const index = carrito.findIndex((p) => p.idCompra == producto.idCompra);
-        carrito.splice(index, 1);
-        mostrarCarrito();
-        
-      });
-    })
+
+      if (botonNodo) {
+        botonNodo.addEventListener("click", (event) => {
+          event.stopPropagation(); // Evitar que el evento se propague al contenedor del carrito
+          const index = carrito.findIndex((p) => p.idCompra === producto.idCompra);
+          if (index !== -1) {
+            carrito.splice(index, 1);
+            mostrarCarrito();
+          }
+        });
+      } else {
+        console.error(`Botón con ID ${botonId} no encontrado`);
+      }
+    });
   };
-
-
-  mostrarCatalogo();
-console.log(productoCatalogoHTML(productos[0]));
-  
-
-
-
-
-var panelBusqueda = document.getElementById("panelBusqueda");
-var inputBusqueda = document.getElementById("inputBusqueda");
-
-// Evento al escribir en el campo de búsqueda
-inputBusqueda.addEventListener("input", function () {
-  // Obtén el término de búsqueda actual
-  var terminoBusqueda = inputBusqueda.value.toLowerCase();
-      // Realiza la búsqueda y muestra los resultados
-  var resultados = buscarProductos(terminoBusqueda);
-  mostrarResultados(resultados);
-});
-
-
-
-
-
-document.addEventListener("click", function (event) {
-  // Verifica si el clic no ocurrió dentro del panel de búsqueda o en el campo de entrada de búsqueda
-  if (!panelBusqueda.contains(event.target) && event.target !== inputBusqueda) {
-    panelBusqueda.style.display = "none";
+    
+  function toggleVisibility(id) {
+    var element = document.getElementById(id);
+    if (element.style.display === "none") {
+        element.style.display = "block";
+    } else {
+        element.style.display = "none";
+    }
   }
-});
-
-function buscarProductos(termino) {
-  // Filtra los productos que coinciden con el término de búsqueda
-  return productos.filter(function (producto) {
-    return producto.nombre.toLowerCase().includes(termino);
-  });
-}
-
-function mostrarResultados(resultados) {
-// Limpia el contenido actual del panel de búsqueda
-  panelBusqueda.innerHTML = "";
-  // Muestra los resultados en una lista
-  resultados.forEach(function (producto) {
-    var card = document.createElement("div");
-    card.classList.add("card"); // Agrega la clase "card" para estilos CSS
-    card.innerHTML = `
-      <img src="${producto.imagen}" class="card-img-top" alt="${producto.nombre}">
-      <div class="card-body">
-        <h5 class="card-title">${producto.nombre}</h5>
-        <p class="card-text">Precio: ${producto.precio}</p>
-        <p class="card-text">${producto.detalle}</p>
-      </div>
-    `;
-    panelBusqueda.appendChild(card);
-
-  });
-  panelBusqueda.style.display = "block";
-}
-
-
-
-// Función para hacer un elemento arrastrable
-function makeDraggable(element) {
-    let offsetX, offsetY;
   
-    element.addEventListener('mousedown', function(event) {
-        // Calcular la distancia entre la esquina superior izquierda del elemento y la posición del mouse
-        offsetX = event.clientX - element.getBoundingClientRect().left;
-        offsetY = event.clientY - element.getBoundingClientRect().top;
+  // Hacer que la función esté disponible globalmente
+  window.toggleVisibility = toggleVisibility;
   
+  
+
+ 
+  var panelBusqueda = document.getElementById("panelBusqueda");
+  var inputBusqueda = document.getElementById("inputBusqueda");
+  
+  // Evento al escribir en el campo de búsqueda
+  inputBusqueda.addEventListener("input", function () {
+    // Obtén el término de búsqueda actual
+    var terminoBusqueda = inputBusqueda.value.toLowerCase();
+        // Realiza la búsqueda y muestra los resultados
+    var resultados = buscarProductos(terminoBusqueda);
+    mostrarResultados(resultados);
+  });
+  
+  
+  
+  
+  
+  document.addEventListener("click", function (event) {
+    // Verifica si el clic no ocurrió dentro del panel de búsqueda o en el campo de entrada de búsqueda
+    if (!panelBusqueda.contains(event.target) && event.target !== inputBusqueda) {
+      panelBusqueda.style.display = "none";
+    }
+  });
+  
+  function buscarProductos(termino) {
+    // Filtra los productos que coinciden con el término de búsqueda
+    return productos.filter(function (producto) {
+      return producto.nombre.toLowerCase().includes(termino);
+    });
+  }
+  
+  function mostrarResultados(resultados) {
+  // Limpia el contenido actual del panel de búsqueda
+    panelBusqueda.innerHTML = "";
+    // Muestra los resultados en una lista
+    resultados.forEach(function (producto) {
+      var card = document.createElement("div");
+      card.classList.add("card"); // Agrega la clase "card" para estilos CSS
+      card.innerHTML = `
+        <img src="${producto.imagen}" class="card-img-top" alt="${producto.nombre}">
+        <div class="card-body">
+          <h5 class="card-title">${producto.nombre}</h5>
+          <p class="card-text">Precio: ${producto.precio}</p>
+          <p class="card-text">${producto.detalle}</p>
+        </div>
+      `;
+      panelBusqueda.appendChild(card);
+  
+    });
+    panelBusqueda.style.display = "block";
+  }
+
+
+
+  document.getElementById('botonWhatsAppCarrito').addEventListener('click', enviarCarritoPorWhatsApp);
+
+  function enviarCarritoPorWhatsApp() {
+    let mensaje = "Hola! Quiero realizar un pedido:\n";
+    carrito.forEach(producto => {
+      mensaje += `- ${producto.nombre} (Cantidad: ${producto.cantidad})\n`;
+    });
+  
+    const numeroWhatsApp = '573177505231';
+    const enlaceChatWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+  
+    window.open(enlaceChatWhatsApp, '_blank');
+  }
+  
+  // Agregar evento para el botón de WhatsApp
+  document.getElementById('whatsappButton').addEventListener('click', enviarCarritoPorWhatsApp);
+  
+    
+      mostrarCatalogo();
+    console.log(productoCatalogoHTML(productos[0]));
+      
+    
+ 
+    
+   
+
+       
+    
+    
+    
+    // Función para hacer un elemento arrastrable
+    function makeDraggable(element) {
+        let offsetX, offsetY;
+      
+        element.addEventListener('mousedown', function(event) {
+            // Calcular la distancia entre la esquina superior izquierda del elemento y la posición del mouse
+            offsetX = event.clientX - element.getBoundingClientRect().left;
+            offsetY = event.clientY - element.getBoundingClientRect().top;
+      
+            // Agregar un controlador de eventos para el movimiento del mouse mientras se mantiene presionado
+            document.addEventListener('mousemove', onMouseMove);
+            
+            // Agregar un controlador de eventos para soltar el botón del mouse
+            document.addEventListener('mouseup', onMouseUp);
+        });
+      
+        function onMouseMove(event) {
+            // Calcular la nueva posición del elemento basándose en la posición actual del mouse y las distancias calculadas
+            var newLeft = event.clientX - offsetX;
+            var newTop = event.clientY - offsetY;
+      
+            // Establecer la nueva posición del elemento
+            element.style.left = newLeft + 'px';
+            element.style.top = newTop + 'px';
+        }
+      
+        function onMouseUp() {
+            // Eliminar los controladores de eventos de movimiento del mouse y de soltar el botón del mouse
+            document.removeEventListener('mousemove', onMouseMove);
+            document.removeEventListener('mouseup', onMouseUp);
+        }
+      }
+      
+      // Aplicar la función makeDraggable al panel de resultados
+      var resultadoBusqueda = document.getElementById("resultadoBusqueda");
+      makeDraggable(resultadoBusqueda);
+      
+    
+        // Agregar un controlador de eventos al documento para ocultar todos los detalles cuando se hace clic fuera de ellos
+    document.addEventListener("click", (event) => {
+      // Iterar sobre todos los detalles de productos
+      for (const producto of productos) {
+          const detalleNodo = document.getElementById(`detalle-${producto.id}`); // Obtener el nodo del detalle del producto
+    
+          // Verificar si el clic no ocurrió dentro del detalle del producto
+          if (detalleNodo.style.display === "block" && !detalleNodo.contains(event.target)) {
+              detalleNodo.style.display = "none"; // Ocultar el detalle del producto
+          }
+      }
+    
+      // Iterar sobre todos los detalles de productos en el carrito
+      for (const producto of carrito) {
+          const detalleNodo = document.getElementById(`detalle-${producto.id}`); // Obtener el nodo del detalle del producto
+    
+          // Verificar si el clic no ocurrió dentro del detalle del producto
+          if (detalleNodo.style.display === "block" && !detalleNodo.contains(event.target)) {
+              detalleNodo.style.display = "none"; // Ocultar el detalle del producto
+          }
+      }
+    });
+    
+    document.getElementById('toggleTopPanel').addEventListener('click', function() {
+      var topPanel = document.getElementById('top-panel');
+      if (topPanel.style.display === 'none') {
+          topPanel.style.display = 'block'; // Muestra el top panel
+      } else {
+          topPanel.style.display = 'none'; // Oculta el top panel
+      }
+    });
+    
+    // Obtiene el botón y el cuadro de registro
+    var mostrarRegistro = document.getElementById("mostrarRegistro");
+    var registroBox = document.getElementById("registroBox");
+    var mostrarRegistroButton = document.getElementById("mostrarRegistroButton");
+    
+    //  BOTON Agrega un evento click al botón
+    if (mostrarRegistro) {
+      mostrarRegistro.addEventListener("click", function () {
+        // Utiliza window.getComputedStyle para obtener el estilo actual del elemento
+        var estiloRegistroBox = window.getComputedStyle(registroBox);
+        if (estiloRegistroBox.display === "none" || estiloRegistroBox.display === "block") {
+          // Cambia la propiedad display basándote en la lógica deseada
+          registroBox.style.display = "flex";  // Cambia a la propiedad que desees
+        } else {
+          registroBox.style.display = "none";
+        }
+      });
+    }
+    
+    // Verifica si el botón de mostrar registro existe antes de agregar el event listener
+    if (mostrarRegistroButton && registroBox) {
+      mostrarRegistroButton.addEventListener("click", function (event) {
+        event.stopPropagation();  // Evita que el clic se propague al documento
+        var estiloRegistroBox = window.getComputedStyle(registroBox);
+        if (estiloRegistroBox.display === "none" || estiloRegistroBox.display === "block") {
+          registroBox.style.display = "flex";
+        } else {
+          registroBox.style.display = "none";
+        }
+      });
+    }
+    // Agrega un event listener al documento para detectar clics en cualquier lugar
+    document.addEventListener("click", function (event) {
+      // Verifica si el clic fue fuera del registroBox
+      if (!registroBox.contains(event.target) && event.target !== mostrarRegistroButton) {
+        registroBox.style.display = "none";
+      }
+    });
+    
+    
+    
+    
+    var registroBox = document.querySelector('.registro-box');
+    var offsetX, offsetY;
+    
+    registroBox.addEventListener('mousedown', function(event) {
+        // Calcular la distancia entre la esquina superior izquierda del cuadro de registro y la posición del mouse
+        offsetX = event.clientX - registroBox.getBoundingClientRect().left;
+        offsetY = event.clientY - registroBox.getBoundingClientRect().top;
+    
         // Agregar un controlador de eventos para el movimiento del mouse mientras se mantiene presionado
         document.addEventListener('mousemove', onMouseMove);
         
         // Agregar un controlador de eventos para soltar el botón del mouse
         document.addEventListener('mouseup', onMouseUp);
     });
-  
+    
     function onMouseMove(event) {
-        // Calcular la nueva posición del elemento basándose en la posición actual del mouse y las distancias calculadas
+        // Calcular la nueva posición del cuadro de registro basándose en la posición actual del mouse y las distancias calculadas
         var newLeft = event.clientX - offsetX;
         var newTop = event.clientY - offsetY;
-  
-        // Establecer la nueva posición del elemento
-        element.style.left = newLeft + 'px';
-        element.style.top = newTop + 'px';
+    
+        // Establecer la nueva posición del cuadro de registro
+        registroBox.style.left = newLeft + 'px';
+        registroBox.style.top = newTop + 'px';
     }
-  
+    
     function onMouseUp() {
         // Eliminar los controladores de eventos de movimiento del mouse y de soltar el botón del mouse
         document.removeEventListener('mousemove', onMouseMove);
         document.removeEventListener('mouseup', onMouseUp);
     }
-  }
-  
-  // Aplicar la función makeDraggable al panel de resultados
-  var resultadoBusqueda = document.getElementById("resultadoBusqueda");
-  makeDraggable(resultadoBusqueda);
-  
-
-    // Agregar un controlador de eventos al documento para ocultar todos los detalles cuando se hace clic fuera de ellos
-document.addEventListener("click", (event) => {
-  // Iterar sobre todos los detalles de productos
-  for (const producto of productos) {
-      const detalleNodo = document.getElementById(`detalle-${producto.id}`); // Obtener el nodo del detalle del producto
-
-      // Verificar si el clic no ocurrió dentro del detalle del producto
-      if (detalleNodo.style.display === "block" && !detalleNodo.contains(event.target)) {
-          detalleNodo.style.display = "none"; // Ocultar el detalle del producto
-      }
-  }
-
-  // Iterar sobre todos los detalles de productos en el carrito
-  for (const producto of carrito) {
-      const detalleNodo = document.getElementById(`detalle-${producto.id}`); // Obtener el nodo del detalle del producto
-
-      // Verificar si el clic no ocurrió dentro del detalle del producto
-      if (detalleNodo.style.display === "block" && !detalleNodo.contains(event.target)) {
-          detalleNodo.style.display = "none"; // Ocultar el detalle del producto
-      }
-  }
-});
-
-document.getElementById('toggleTopPanel').addEventListener('click', function() {
-  var topPanel = document.getElementById('top-panel');
-  if (topPanel.style.display === 'none') {
-      topPanel.style.display = 'block'; // Muestra el top panel
-  } else {
-      topPanel.style.display = 'none'; // Oculta el top panel
-  }
-});
-
-// Obtiene el botón y el cuadro de registro
-var mostrarRegistro = document.getElementById("mostrarRegistro");
-var registroBox = document.getElementById("registroBox");
-var mostrarRegistroButton = document.getElementById("mostrarRegistroButton");
-
-//  BOTON Agrega un evento click al botón
-if (mostrarRegistro) {
-  mostrarRegistro.addEventListener("click", function () {
-    // Utiliza window.getComputedStyle para obtener el estilo actual del elemento
-    var estiloRegistroBox = window.getComputedStyle(registroBox);
-    if (estiloRegistroBox.display === "none" || estiloRegistroBox.display === "block") {
-      // Cambia la propiedad display basándote en la lógica deseada
-      registroBox.style.display = "flex";  // Cambia a la propiedad que desees
-    } else {
-      registroBox.style.display = "none";
-    }
-  });
-}
-
-// Verifica si el botón de mostrar registro existe antes de agregar el event listener
-if (mostrarRegistroButton && registroBox) {
-  mostrarRegistroButton.addEventListener("click", function (event) {
-    event.stopPropagation();  // Evita que el clic se propague al documento
-    var estiloRegistroBox = window.getComputedStyle(registroBox);
-    if (estiloRegistroBox.display === "none" || estiloRegistroBox.display === "block") {
-      registroBox.style.display = "flex";
-    } else {
-      registroBox.style.display = "none";
-    }
-  });
-}
-// Agrega un event listener al documento para detectar clics en cualquier lugar
-document.addEventListener("click", function (event) {
-  // Verifica si el clic fue fuera del registroBox
-  if (!registroBox.contains(event.target) && event.target !== mostrarRegistroButton) {
-    registroBox.style.display = "none";
-  }
-});
-
-
-
-
-var registroBox = document.querySelector('.registro-box');
-var offsetX, offsetY;
-
-registroBox.addEventListener('mousedown', function(event) {
-    // Calcular la distancia entre la esquina superior izquierda del cuadro de registro y la posición del mouse
-    offsetX = event.clientX - registroBox.getBoundingClientRect().left;
-    offsetY = event.clientY - registroBox.getBoundingClientRect().top;
-
-    // Agregar un controlador de eventos para el movimiento del mouse mientras se mantiene presionado
-    document.addEventListener('mousemove', onMouseMove);
     
-    // Agregar un controlador de eventos para soltar el botón del mouse
-    document.addEventListener('mouseup', onMouseUp);
-});
-
-function onMouseMove(event) {
-    // Calcular la nueva posición del cuadro de registro basándose en la posición actual del mouse y las distancias calculadas
-    var newLeft = event.clientX - offsetX;
-    var newTop = event.clientY - offsetY;
-
-    // Establecer la nueva posición del cuadro de registro
-    registroBox.style.left = newLeft + 'px';
-    registroBox.style.top = newTop + 'px';
-}
-
-function onMouseUp() {
-    // Eliminar los controladores de eventos de movimiento del mouse y de soltar el botón del mouse
-    document.removeEventListener('mousemove', onMouseMove);
-    document.removeEventListener('mouseup', onMouseUp);
-}
-
-
-
-
-
-document.getElementById('whatsappButton').addEventListener('click', function() {
-  var phoneNumber = '573177505231'; // Reemplaza con el número de teléfono al que deseas enviar el mensaje
-  var whatsappUrl = 'https://api.whatsapp.com/send?phone=' + phoneNumber;
-
-  // Intenta abrir la aplicación de WhatsApp
-  window.open(whatsappUrl, '_blank');
-
-  // Verifica si el navegador admite el protocolo de WhatsApp
-  setTimeout(function() {
-    var isWhatsAppSupported = document.hasFocus();
-    if (!isWhatsAppSupported) {
-      // Si el navegador no admite el protocolo de WhatsApp, redirige al usuario a la tienda de aplicaciones para descargar WhatsApp
-      window.location.href = 'https://play.google.com/store/apps/details?id=com.whatsapp&hl=es&gl=US'; // URL de la tienda de aplicaciones de WhatsApp en Google Play Store
+    
+    
+    
+    
+    document.getElementById('whatsappButton').addEventListener('click', function() {
+      var phoneNumber = '573177505231'; // Reemplaza con el número de teléfono al que deseas enviar el mensaje
+      var whatsappUrl = 'https://api.whatsapp.com/send?phone=' + phoneNumber;
+    
+      // Intenta abrir la aplicación de WhatsApp
+      window.open(whatsappUrl, '_blank');
+    
+      // Verifica si el navegador admite el protocolo de WhatsApp
+      setTimeout(function() {
+        var isWhatsAppSupported = document.hasFocus();
+        if (!isWhatsAppSupported) {
+          // Si el navegador no admite el protocolo de WhatsApp, redirige al usuario a la tienda de aplicaciones para descargar WhatsApp
+          window.location.href = 'https://play.google.com/store/apps/details?id=com.whatsapp&hl=es&gl=US'; // URL de la tienda de aplicaciones de WhatsApp en Google Play Store
+        }
+      }, 1000); // Espera un segundo antes de verificar si la aplicación de WhatsApp se abrió correctamente
+    });
+    
+    
+    
+    
+    
+    //abrir chat de wattsap
+    function abrirChatWhatsApp() {
+      console.log("Función abrirChatWhatsApp ejecutada");
+    
+      var numeroWhatsApp = '573177505231';
+    
+      // Crea el enlace de Chat de WhatsApp
+      var enlaceChatWhatsApp = 'https://wa.me/' + numeroWhatsApp + '?text=Hola%20Quisiera%20hacerte%20una%20consulta.';
+    
+      // Abre el enlace en una nueva ventana o pestaña
+      window.open(enlaceChatWhatsApp);
     }
-  }, 1000); // Espera un segundo antes de verificar si la aplicación de WhatsApp se abrió correctamente
-});
-
-
-
-
-
-//abrir chat de wattsap
-function abrirChatWhatsApp() {
-  console.log("Función abrirChatWhatsApp ejecutada");
-
-  var numeroWhatsApp = '573177505231';
-
-  // Crea el enlace de Chat de WhatsApp
-  var enlaceChatWhatsApp = 'https://wa.me/' + numeroWhatsApp + '?text=Hola%20Quisiera%20hacerte%20una%20consulta.';
-
-  // Abre el enlace en una nueva ventana o pestaña
-  window.open(enlaceChatWhatsApp);
-}
-
-
-
-
-//window.addEventListener('resize', onResize);
-//});
-
-})
-
- // const mostrarCarrito=()=>{
- //   const carritoNodo = document.getElementById("carrito");
- //   const precioNodo = document.getElementById("precioTotal");
- // 
- //   let carritoHTML = "";
- //   let precio = 0;
- //    for (const producto of carrito) {
- //     carritoHTML += productoCarritoHTML(producto);
- //     precio += producto.precio;
-  //  }
-  
-  //  precioNodo.innerHTML = precio;
-  //  carritoNodo.innerHTML = carritoHTML;
-  //  botonesCarrito();
-  //};
-  
+    
+    
+    
+    
+    //window.addEventListener('resize', onResize);
+    //});
+    
+    })
+    
+     // const mostrarCarrito=()=>{
+     //   const carritoNodo = document.getElementById("carrito");
+     //   const precioNodo = document.getElementById("precioTotal");
+     // 
+     //   let carritoHTML = "";
+     //   let precio = 0;
+     //    for (const producto of carrito) {
+     //     carritoHTML += productoCarritoHTML(producto);
+     //     precio += producto.precio;
+      //  }
+      
+      //  precioNodo.innerHTML = precio;
+      //  carritoNodo.innerHTML = carritoHTML;
+      //  botonesCarrito();
+      //};
+      
+    

@@ -198,7 +198,6 @@ margin-top: 60px; /* Agrega un margen superior para separar el contenido */
 body {
 background: linear-gradient(to right, #ffffff, #ffffff);
 flex-direction: column; /* Organiza los elementos en columnas */
-
 }
 
 .btnMenu{
@@ -345,13 +344,6 @@ border: 1px solid #555;
 border-radius: 0%;
 }
 
-#carrito{
-margin-top: 20px;
-width: 300px;
-height: 300px;
-border: goldenrod;
-border-radius: 5px;
-}
 
 
 #catalogo{
@@ -376,6 +368,8 @@ width: 100%;
 margin-top: 10px;
 margin-bottom: 10px;
 width: 100%;
+margin-right: 1px;
+
 }
 
 .bottom-panel {
@@ -404,24 +398,67 @@ flex-wrap: wrap; /* Permite que los elementos se envuelvan cuando no haya sufici
 
 #contenedorCarrito {
 position: fixed;
-top: 0;
-right: 0;
+top: 150px;
+right: 100px;
 width: 300px;
-height: 300px;
+height: 400px;
 background-color: white;
 border: 2px solid goldenrod;
 border-radius: 5px;
 overflow-y: auto;
 z-index: 1000; /* Asegura que el carrito esté por encima de otros elementos */
 display: none; /* Inicialmente oculto */
+box-shadow: 0 4px 4px 4px rgb(255, 238, 5);
+
 }
 
 #carrito {
-margin-top: 10px;
-margin-bottom: 10px;
-padding: 10px;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  padding: 10px;
+  width: 300px;
+  height: 200px;
+  border: goldenrod;
+  border-radius: 5px;
 }
 
+.btnEnviarWhatsApp {
+  font-weight: bold;
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+#btnEnviarWhatsApp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: rgb(0, 0, 0);
+  background-color: #25D366;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+  height: 30px;
+  width: 100%;
+}
+
+#btnEnviarWhatsApp:hover {
+  background-color: #00ffd5;
+}
+
+#btnEnviarWhatsApp:active {
+  background-color: #fffb00;
+}
+
+#btnEnviarWhatsApp img {
+  width: 20px;
+  height: auto;
+  margin-right: 5px;
+}
 
 
 /* Media query para dispositivos móviles */
@@ -672,8 +709,8 @@ padding-left: 50px;
 margin: 0 auto; /* Centra horizontalmente */
 transform: translateX(-50%, -50%);
 background-color: rgb(255, 255, 255);
-margin-top: -200%;
-box-shadow: 0 7px 7px 7px rgb(0, 217, 255);
+margin-top: -150%;
+box-shadow: 0 7px 7px 7px rgb(255, 238, 5);
 
 }
 
@@ -706,6 +743,16 @@ margin: 0 auto; /* Centra horizontalmente */
 transform: translate(-50%, -50%);
 
 }
+
+@media screen and (max-width: 770px) {
+  #resultadoBusqueda
+  #panelBusqueda{
+    margin-top: 100px;
+
+  }
+}
+
+
 #inputBusqueda{
 height:50px;
 padding-left: 3px;
@@ -814,11 +861,13 @@ height: auto; /* Asegura una altura variable para adaptarse al contenido */
 text-align: center; /* Centra el contenido horizontalmente */
 margin-right: 20px;
 }
-/*#anuncio-container,
+#anuncio-container,
 #anuncio-container2,
 #anuncio-container3 {
 display: none!important;
-}*/
+}
+
+
 .texto-sofisticado {
 font-family: "Montserrat", sans-serif; /* Cambia la fuente por una más sofisticada */
 font-size: 18px; /* Ajusta el tamaño de la fuente */
@@ -1011,12 +1060,17 @@ display: block;
 body {
 font-family: 'Arial', sans-serif;
 background-color: #f4f4f9;
-margin: 0;
-padding: 0px;
+margin: 0px!important;
 display: flex;
 flex-direction: column;
 align-items: center;
 }
+#catalogoContenedor{
+  margin-right: 500px!important;
+  padding-right: 500px;
+}
+
+
 .menu-button {
 display: block; /* Esto asegura que los botones se posicionen uno debajo del otro */
 padding: 1px 1px;
