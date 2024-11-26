@@ -196,137 +196,9 @@ border-bottom-left-radius:  5%
 margin-top: 60px; /* Agrega un margen superior para separar el contenido */
 }
 body {
-background: linear-gradient(to right, #ffffff, #ffffff);
 flex-direction: column; /* Organiza los elementos en columnas */
 }
 
-.btnMenu{
-justify-content:right;
-}
-
-#top-panel {
-background: rgba(255, 255, 255, 0.9); /* Color blanco con 80% de opacidad */
-padding: 2px 5px ;
-display: flex;
-justify-content: space-between;
-align-items: center; /* Agrega esto para centrar verticalmente */
-margin-right: 0px; 
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-z-index: 1000;
-border:none;
-border-color: #cfcfcf;
-box-shadow: 0px 2px 4px rgba(7, 119, 54, 0.2); /* Agrega un efecto de sombra */
-
-}
-
-.stilo{
-color: #000000;
-background-color: transparent;
-border:none;
-}
-
-
-#top-panel div {
-margin: 0; /* Ajusta el margen según sea necesario */
-}
-
-#top-panel span {
-background-color: transparent; /* Fondo transparente */
-border: none; /* Sin borde */
-color: rgb(#3e3f3f);
-cursor: pointer; /* Cambia el cursor al pasar sobre el texto */
-font-size: 14px;
-margin: 0px; /* Elimina el margen predeterminado */
-padding: 5px 10px; /* Elimina el relleno predeterminado */
-position: relative;
-
-}
-
-
-
-/* Media query para dispositivos móviles */
-@media (max-width: 768px) {
-#top-panel {
-flex-direction: column;
-align-items: center; /* Alinea los elementos a la izquierda */
-}
-
-#top-panel > * {
-margin: 5px 0; /* Ajusta el margen vertical */
-}
-
-.stilo {
-width: auto; /* Ajusta el ancho de los botones al 100% */
-}
-
-#top-panel .logo {
-order: -1; /* Cambia el orden de la imagen del logo */
-}
-}
-
-
-/* Estilos para dispositivos móviles */
-@media only screen and (max-width: 767px) {
-#top-panel {
-flex-direction: column;
-
-}
-#logo img {
-margin-bottom: 10px;
-}
-}  
-#logo img {
-width: 50%;
-margin-bottom: 10px;
-}
-
-#toggleTopPanel {
-position: fixed;
-top: 0;
-left: 0;
-display: none; /* Oculta el botón inicialmente */
-z-index: 1001; /* Asegura que el botón esté por encima del top panel */
-background-color: transparent; /* Fondo transparente */
-border: none; /* Sin borde */
-color: rgb(#3e3f3f);
-cursor: pointer; /* Cambia el cursor al pasar sobre el texto */
-font-size: 28px;
-margin: 0px; /* Elimina el margen predeterminado */
-padding: 5px 10px; /* Elimina el relleno predeterminado */
-margin-left: 90%;
-margin-right: 0%;
-}
-
-@media only screen and (max-width: 600px) {
-#top-panel {
-display: none; /* Oculta el top panel en dispositivos móviles */
-}
-
-#toggleTopPanel {
-display: block; /* Muestra el botón en dispositivos móviles */
-}
-}
-
-/* Muestra el top panel en pantallas más grandes que 600px */
-@media only screen and (min-width: 601px) {
-#top-panel {
-flex-direction: row; /* Cambia la dirección del flujo de los elementos a una fila */
-display: flex;
-justify-content: space-between;
-align-items: center; /* Alinea verticalmente los elementos */
-padding: 2px 5px;
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-z-index: 1000;
-border: none;
-border-color: #cfcfcf;
-box-shadow: 0px 2px 4px rgba(7, 119, 54, 0.2);
-}
 
 #inputBusqueda {
 width: 200px; /* Ancho automático para el input de búsqueda */
@@ -335,7 +207,88 @@ width: 200px; /* Ancho automático para el input de búsqueda */
 #titulo1 {
 font-size: 20px; /* Restaura el tamaño de fuente original para pantallas más grandes */
 }
+
+
+
+/* Media query para dispositivos móviles */
+@media (max-width: 768px) {
+  #top-panel {
+      display: flex; /* Asegura que el panel esté visible en dispositivos pequeños */
+      flex-direction: column; /* Organiza los elementos en una columna */
+      align-items: center; /* Centra los elementos horizontalmente */
+  }
+
+  #top-panel > * {
+      margin: 5px; /* Ajusta el margen vertical */
+  }
+
+  .stilo {
+      width: auto; /* Ajusta el ancho de los botones */
+  }
+
+  #top-panel .logo {
+      order: -1; /* Cambia el orden de la imagen del logo si es necesario */
+  }
 }
+
+/* Estilos para dispositivos más pequeños */
+@media only screen and (max-width: 600px) {
+  #top-panel {
+      display: flex; /* Asegura que el panel esté visible */
+      flex-direction: column; /* Organiza los elementos en una columna */
+  }
+
+  #logo img {
+      margin-bottom: 10px;
+  }
+}
+
+/* Estilos para pantallas más grandes que 600px */
+@media only screen and (min-width: 601px) {
+  #top-panel {
+      display: flex; /* Asegura que el panel esté visible */
+      flex-direction: row; /* Cambia la dirección del flujo de los elementos a una fila */
+      justify-content: space-between;
+      align-items: center; /* Alinea verticalmente los elementos */
+      padding: 2px 5px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      border: none;
+      border-color: #cfcfcf;
+      box-shadow: 0px 2px 4px rgba(7, 119, 54, 0.2);
+  }
+  #top-panel {
+    display: flex; /* Asegura que el panel esté visible */
+    flex-direction: row; /* Cambia la dirección del flujo de los elementos a una fila */
+    justify-content: space-between;
+    align-items: center; /* Alinea verticalmente los elementos */
+    padding: 2px 5px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    border: none;
+    border-color: #cfcfcf;
+    box-shadow: 0px 2px 4px rgba(7, 119, 54, 0.2);
+    background:#fff;
+
+  }
+
+  #inputBusqueda {
+      width: 200px; /* Ancho automático para el input de búsqueda */
+  }
+
+  #titulo1 {
+      font-size: 20px; /* Restaura el tamaño de fuente original para pantallas más grandes */
+  }
+}
+
+
+
 
 .panel-item {
 margin-bottom: 15px;
@@ -358,17 +311,20 @@ width: 200px;  /* Ancho de 20 píxeles */
 height: 200px; /* Altura de 20 píxeles */
 }
 
+
+
 #container {
 display: flex;
 flex-direction: column; /* Organiza los elementos en columnas */
 justify-content:center;
 width: 100%;
+margin-right: -200px;
 }
 #catalogo .row {
 margin-top: 10px;
 margin-bottom: 10px;
 width: 100%;
-margin-right: 1px;
+margin-right: 200px;
 
 }
 
@@ -397,13 +353,13 @@ flex-wrap: wrap; /* Permite que los elementos se envuelvan cuando no haya sufici
 }
 
 #contenedorCarrito {
-position: fixed;
+position: absolute;
 top: 150px;
-right: 100px;
-width: 300px;
+right: 10px;
+width: 250px;
 height: 400px;
-background-color: white;
-border: 2px solid goldenrod;
+background-color: rgb(189, 186, 0);
+border: 1px solid goldenrod;
 border-radius: 5px;
 overflow-y: auto;
 z-index: 1000; /* Asegura que el carrito esté por encima de otros elementos */
@@ -412,15 +368,31 @@ box-shadow: 0 4px 4px 4px rgb(255, 238, 5);
 
 }
 
+
+@media screen and (max-width: 250px) {
+  #contenedorCarrito{
+    width: 230px;
+    right: 0px;
+
+  }
+}
+
+
 #carrito {
-  margin-top: 1%;
-  margin-bottom: 1%;
+  margin-top: 0px;
+  margin-bottom: 0px;
   padding: 10px;
-  width: 300px;
-  height: 200px;
+  width: 250px;
+  height: 0px;
   border: goldenrod;
   border-radius: 5px;
 }
+
+#carritoContenedor
+.carrito-contenedor{
+  position: absolute; top: 100px; left: 100px;
+}
+
 
 .btnEnviarWhatsApp {
   font-weight: bold;
@@ -611,8 +583,8 @@ margin-top: 0px;
 
 }
 .imgPP{
-height: 500px;
-width: 450px;
+height: 900px;
+width: 100%;
 border:none;
 background-color:#ffffff;
 position:relative;
@@ -625,8 +597,10 @@ justify-content: center;
 @media screen and (max-width: 600px) {
 /* Reduce el margen inferior del texto sofisticado en dispositivos pequeños */
 .imgPP {
-height: 300px;
-width: 300px;
+height: 500px;
+width: 100%;
+margin-top: 100px;
+margin-bottom: 100px;
 }
 
 /* Reduce el margen superior del div de opciones en dispositivos pequeños */
@@ -696,24 +670,28 @@ position: absolute;
 overflow-y: auto;  background-color: #fff;
 z-index: 1000;
 display: none;
-max-height: 300px; /* Establece la altura máxima para la lista de resultados */
+max-height: 500px; /* Establece la altura máxima para la lista de resultados */
 max-width: 400px; 
-padding: 10px;
-padding-bottom: 100px;
+padding: 1px;
+padding-bottom: 0px;
 margin-left: 200px;
-padding-right: 50px;
 margin-right: 200px;
 margin-bottom: 100%;
-padding-top: 50px;
-padding-left: 50px;
+padding-top: 10px;
 margin: 0 auto; /* Centra horizontalmente */
 transform: translateX(-50%, -50%);
-background-color: rgb(255, 255, 255);
-margin-top: -150%;
+background-color: rgb(189, 186, 0);
+margin-top: -200%;
 box-shadow: 0 7px 7px 7px rgb(255, 238, 5);
 
 }
 
+@media screen and (max-width: 500px) {
+ #panelBusqueda{
+  margin-top: -1900%;
+  width: 270px;
+ }
+}
 #panelBusqueda ul {
 max-height: 300px; /* Establece la altura máxima para la lista de resultados */
 overflow-y: auto; /* Agrega una barra de desplazamiento vertical si es necesario */
@@ -726,7 +704,7 @@ margin-bottom: 3px;
 position: absolute;
 top: -50%; /* Ajusta este valor para mover el div más arriba */
 left: 50%;
-overflow-y: auto;  background-color: #fff;
+overflow-y: auto;  background-color: #e6e6e6;
 border: 3px solid #00ffff;
 z-index: 1000;
 display: none;
@@ -861,11 +839,7 @@ height: auto; /* Asegura una altura variable para adaptarse al contenido */
 text-align: center; /* Centra el contenido horizontalmente */
 margin-right: 20px;
 }
-#anuncio-container,
-#anuncio-container2,
-#anuncio-container3 {
-display: none!important;
-}
+
 
 
 .texto-sofisticado {
@@ -952,7 +926,7 @@ letter-spacing: 0.5px;
 text-align: center;
 color: #333;
 border-color: #000000;
-border-style: none;
+border-style:solid;
 height: auto;
 justify-content: center;
 width: 100%;
@@ -994,7 +968,7 @@ h2 {
 color: #c7c400;
 }
 h3 {
-color: #c7c400;
+color: #8d5500;
 }
 
 .proteinas{
@@ -1065,10 +1039,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 }
-#catalogoContenedor{
-  margin-right: 500px!important;
-  padding-right: 500px;
-}
+
 
 
 .menu-button {
@@ -1102,18 +1073,29 @@ flex-wrap: wrap; /* Permite que los botones se envuelvan a la siguiente línea s
 }
 .opciones-panel {
 position: absolute;
-top: 300px; /* Ajusta según la posición deseada */
+top: 700px; /* Ajusta según la posición deseada */
 left: 50%;
 transform: translateX(-50%);
-background: white;
-border-radius: 10px;
-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-padding: 20px;
+background-color: rgb(255, 255, 255);
+border-radius: 5px;
+border-style: solid;
+border-color: #ffee00;
+padding: 2px;
 display: none; /* Mantén oculto por defecto */
-width: 300px; /* Ajusta según el tamaño deseado */
+width: 500px; /* Ajusta según el tamaño deseado */
 max-height: 400px; /* Altura máxima del panel antes de agregar scroll */
 overflow-y: auto; /* Agrega un scroll vertical si el contenido es más alto que el panel */
 z-index: 1000; /* Asegura que el panel se sitúe por encima del resto del contenido */
+box-shadow: 0 3px 3px 3px rgb(255, 238, 5);
+
+}
+
+@media screen and (max-width: 400px) {
+  .opciones-panel{
+    top: 1000px; 
+    width: 250px;
+  }
+
 }
 
 .opciones-panel.active {

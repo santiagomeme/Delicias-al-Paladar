@@ -106,12 +106,6 @@ document.addEventListener('DOMContentLoaded', function () {
     ];
     
     
-    function toggleVisibility(panelId) {
-      const panel = document.getElementById(panelId);
-      panel.classList.toggle('active');
-    }
-    
-    
       var contadorCarrito = 0;
       var carrito = [];
     
@@ -140,12 +134,18 @@ document.addEventListener('DOMContentLoaded', function () {
               <div class="card-body">
                 <h5 class="card-title">${producto.nombre}</h5>
                 <p class="card-text">Precio: $${producto.precio}</p>
-                <p class="card-text">Cantidad: ${producto.cantidad}</p> <!-- Añadido el campo de cantidad -->
-                <button id="btn-carrito-${producto.idCompra}" class="btn btn-danger">Quitar</button>
+                <p class="card-text">Cantidad: ${producto.cantidad}</p>
+                <div class="d-flex justify-content-between">
+                  <button id="btn-disminuir-${producto.idCompra}" class="btn btn-secondary btn-sm">-</button>
+                  <button id="btn-aumentar-${producto.idCompra}" class="btn btn-secondary btn-sm">+</button>
+                  <button id="btn-carrito-${producto.idCompra}" class="btn btn-danger btn-sm">Quitar</button>
+                </div>
               </div>
             </div>
           </div>`;
-      };
+    };
+
+    
       
     
       const mostrarCatalogo = () => {
@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function () {
       
 
 
-      const mostrarCarrito = () => {
+  const mostrarCarrito = () => {
         const carritoContenedor = document.getElementById("carrito");
         if (!carritoContenedor) {
           console.error("El contenedor del carrito no se encuentra en el DOM.");
@@ -189,18 +189,17 @@ document.addEventListener('DOMContentLoaded', function () {
           <p class="total-carrito">Total: $${totalCarrito}</p>
         `;
       
-        
+      
+        // Agrega el botón de enviar por WhatsApp con la clase CSS correcta
+        carritoContenedor.innerHTML += `
+        <button id="btnEnviarWhatsApp" class="btn btn-success mt-3 whatsapp-button">Enviar por WhatsApp</button>
+         `;
 
- // Agrega el botón de enviar por WhatsApp con la clase CSS correcta
- carritoContenedor.innerHTML += `
- <button id="btnEnviarWhatsApp" class="btn btn-success mt-3 whatsapp-button">Enviar por WhatsApp</button>
-`;
-
-// Añade el evento al botón de enviar por WhatsApp
-const btnEnviarWhatsApp = document.getElementById("btnEnviarWhatsApp");
-if (btnEnviarWhatsApp) {
- btnEnviarWhatsApp.addEventListener("click", enviarCarritoPorWhatsApp);
-}
+       // Añade el evento al botón de enviar por WhatsApp
+       const btnEnviarWhatsApp = document.getElementById("btnEnviarWhatsApp");
+       if (btnEnviarWhatsApp) {
+       btnEnviarWhatsApp.addEventListener("click", enviarCarritoPorWhatsApp);
+       }
 
 
         
@@ -213,9 +212,16 @@ if (btnEnviarWhatsApp) {
         }
       
         botonesCarrito(); // Llama a esta función para agregar eventos de clic a los botones "Quitar"
-      };
+    };
       
       
+
+
+
+
+
+
+
 
  const btnMostrarCarrito = document.getElementById("btnMostrarCarrito");
 
@@ -324,27 +330,65 @@ const renderizarCatalogo = () => {
 renderizarCatalogo();
 
     
- 
-  const botonesCarrito = () => {
-    carrito.forEach((producto) => {
-      const botonId = `btn-carrito-${producto.idCompra}`;
-      const botonNodo = document.getElementById(botonId);
+const botonesCarrito = () => {
+  carrito.forEach((producto) => {
+    const botonIdEliminar = `btn-carrito-${producto.idCompra}`;
+    const botonNodoEliminar = document.getElementById(botonIdEliminar);
 
-      if (botonNodo) {
-        botonNodo.addEventListener("click", (event) => {
-          event.stopPropagation(); // Evitar que el evento se propague al contenedor del carrito
+    const botonIdAumentar = `btn-aumentar-${producto.idCompra}`;
+    const botonNodoAumentar = document.getElementById(botonIdAumentar);
+
+    const botonIdDisminuir = `btn-disminuir-${producto.idCompra}`;
+    const botonNodoDisminuir = document.getElementById(botonIdDisminuir);
+
+    // Evento para eliminar producto
+    if (botonNodoEliminar) {
+      botonNodoEliminar.addEventListener("click", (event) => {
+        event.stopPropagation(); // Evitar que el evento se propague al contenedor del carrito
+        const index = carrito.findIndex((p) => p.idCompra === producto.idCompra);
+        if (index !== -1) {
+          carrito.splice(index, 1);
+          mostrarCarrito();
+        }
+      });
+    } else {
+      console.error(`Botón de eliminar con ID ${botonIdEliminar} no encontrado`);
+    }
+
+    // Evento para aumentar cantidad
+    if (botonNodoAumentar) {
+      botonNodoAumentar.addEventListener("click", (event) => {
+        event.stopPropagation();
+        producto.cantidad += 1;
+        mostrarCarrito(); // Refresca el carrito para mostrar el cambio en la cantidad
+      });
+    } else {
+      console.error(`Botón de aumentar con ID ${botonIdAumentar} no encontrado`);
+    }
+
+    // Evento para disminuir cantidad
+    if (botonNodoDisminuir) {
+      botonNodoDisminuir.addEventListener("click", (event) => {
+        event.stopPropagation();
+        if (producto.cantidad > 1) {
+          producto.cantidad -= 1;
+        } else {
+          // Eliminar producto si la cantidad es menor a 1
           const index = carrito.findIndex((p) => p.idCompra === producto.idCompra);
           if (index !== -1) {
             carrito.splice(index, 1);
-            mostrarCarrito();
           }
-        });
-      } else {
-        console.error(`Botón con ID ${botonId} no encontrado`);
-      }
-    });
-  };
-    
+        }
+        mostrarCarrito(); // Refresca el carrito para mostrar el cambio en la cantidad
+      });
+    } else {
+      console.error(`Botón de disminuir con ID ${botonIdDisminuir} no encontrado`);
+    }
+  });
+};
+
+
+
   function toggleVisibility(id) {
     var element = document.getElementById(id);
     if (element.style.display === "none") {
@@ -356,8 +400,6 @@ renderizarCatalogo();
   
   // Hacer que la función esté disponible globalmente
   window.toggleVisibility = toggleVisibility;
-  
-  
 
  
   var panelBusqueda = document.getElementById("panelBusqueda");
@@ -371,10 +413,6 @@ renderizarCatalogo();
     var resultados = buscarProductos(terminoBusqueda);
     mostrarResultados(resultados);
   });
-  
-  
-  
-  
   
   document.addEventListener("click", function (event) {
     // Verifica si el clic no ocurrió dentro del panel de búsqueda o en el campo de entrada de búsqueda
@@ -504,148 +542,10 @@ renderizarCatalogo();
       }
     });
     
-    document.getElementById('toggleTopPanel').addEventListener('click', function() {
-      var topPanel = document.getElementById('top-panel');
-      if (topPanel.style.display === 'none') {
-          topPanel.style.display = 'block'; // Muestra el top panel
-      } else {
-          topPanel.style.display = 'none'; // Oculta el top panel
-      }
-    });
-    
-    // Obtiene el botón y el cuadro de registro
-    var mostrarRegistro = document.getElementById("mostrarRegistro");
-    var registroBox = document.getElementById("registroBox");
-    var mostrarRegistroButton = document.getElementById("mostrarRegistroButton");
-    
-    //  BOTON Agrega un evento click al botón
-    if (mostrarRegistro) {
-      mostrarRegistro.addEventListener("click", function () {
-        // Utiliza window.getComputedStyle para obtener el estilo actual del elemento
-        var estiloRegistroBox = window.getComputedStyle(registroBox);
-        if (estiloRegistroBox.display === "none" || estiloRegistroBox.display === "block") {
-          // Cambia la propiedad display basándote en la lógica deseada
-          registroBox.style.display = "flex";  // Cambia a la propiedad que desees
-        } else {
-          registroBox.style.display = "none";
-        }
-      });
-    }
-    
-    // Verifica si el botón de mostrar registro existe antes de agregar el event listener
-    if (mostrarRegistroButton && registroBox) {
-      mostrarRegistroButton.addEventListener("click", function (event) {
-        event.stopPropagation();  // Evita que el clic se propague al documento
-        var estiloRegistroBox = window.getComputedStyle(registroBox);
-        if (estiloRegistroBox.display === "none" || estiloRegistroBox.display === "block") {
-          registroBox.style.display = "flex";
-        } else {
-          registroBox.style.display = "none";
-        }
-      });
-    }
-    // Agrega un event listener al documento para detectar clics en cualquier lugar
-    document.addEventListener("click", function (event) {
-      // Verifica si el clic fue fuera del registroBox
-      if (!registroBox.contains(event.target) && event.target !== mostrarRegistroButton) {
-        registroBox.style.display = "none";
-      }
-    });
-    
-    
-    
-    
-    var registroBox = document.querySelector('.registro-box');
-    var offsetX, offsetY;
-    
-    registroBox.addEventListener('mousedown', function(event) {
-        // Calcular la distancia entre la esquina superior izquierda del cuadro de registro y la posición del mouse
-        offsetX = event.clientX - registroBox.getBoundingClientRect().left;
-        offsetY = event.clientY - registroBox.getBoundingClientRect().top;
-    
-        // Agregar un controlador de eventos para el movimiento del mouse mientras se mantiene presionado
-        document.addEventListener('mousemove', onMouseMove);
-        
-        // Agregar un controlador de eventos para soltar el botón del mouse
-        document.addEventListener('mouseup', onMouseUp);
-    });
-    
-    function onMouseMove(event) {
-        // Calcular la nueva posición del cuadro de registro basándose en la posición actual del mouse y las distancias calculadas
-        var newLeft = event.clientX - offsetX;
-        var newTop = event.clientY - offsetY;
-    
-        // Establecer la nueva posición del cuadro de registro
-        registroBox.style.left = newLeft + 'px';
-        registroBox.style.top = newTop + 'px';
-    }
-    
-    function onMouseUp() {
-        // Eliminar los controladores de eventos de movimiento del mouse y de soltar el botón del mouse
-        document.removeEventListener('mousemove', onMouseMove);
-        document.removeEventListener('mouseup', onMouseUp);
-    }
-    
-    
-    
-    
-    
-    document.getElementById('whatsappButton').addEventListener('click', function() {
-      var phoneNumber = '573177505231'; // Reemplaza con el número de teléfono al que deseas enviar el mensaje
-      var whatsappUrl = 'https://api.whatsapp.com/send?phone=' + phoneNumber;
-    
-      // Intenta abrir la aplicación de WhatsApp
-      window.open(whatsappUrl, '_blank');
-    
-      // Verifica si el navegador admite el protocolo de WhatsApp
-      setTimeout(function() {
-        var isWhatsAppSupported = document.hasFocus();
-        if (!isWhatsAppSupported) {
-          // Si el navegador no admite el protocolo de WhatsApp, redirige al usuario a la tienda de aplicaciones para descargar WhatsApp
-          window.location.href = 'https://play.google.com/store/apps/details?id=com.whatsapp&hl=es&gl=US'; // URL de la tienda de aplicaciones de WhatsApp en Google Play Store
-        }
-      }, 1000); // Espera un segundo antes de verificar si la aplicación de WhatsApp se abrió correctamente
-    });
-    
-    
-    
-    
-    
-    //abrir chat de wattsap
-    function abrirChatWhatsApp() {
-      console.log("Función abrirChatWhatsApp ejecutada");
-    
-      var numeroWhatsApp = '573177505231';
-    
-      // Crea el enlace de Chat de WhatsApp
-      var enlaceChatWhatsApp = 'https://wa.me/' + numeroWhatsApp + '?text=Hola%20Quisiera%20hacerte%20una%20consulta.';
-    
-      // Abre el enlace en una nueva ventana o pestaña
-      window.open(enlaceChatWhatsApp);
-    }
-    
-    
-    
-    
-    //window.addEventListener('resize', onResize);
-    //});
+
     
     })
     
-     // const mostrarCarrito=()=>{
-     //   const carritoNodo = document.getElementById("carrito");
-     //   const precioNodo = document.getElementById("precioTotal");
-     // 
-     //   let carritoHTML = "";
-     //   let precio = 0;
-     //    for (const producto of carrito) {
-     //     carritoHTML += productoCarritoHTML(producto);
-     //     precio += producto.precio;
-      //  }
-      
-      //  precioNodo.innerHTML = precio;
-      //  carritoNodo.innerHTML = carritoHTML;
-      //  botonesCarrito();
-      //};
+    
       
     
