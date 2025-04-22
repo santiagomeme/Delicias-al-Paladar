@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     var productos = [{
+
         id: 1,
         nombre: "Gordon Blue",
         precio: 11000,
@@ -63,47 +64,135 @@ document.addEventListener('DOMContentLoaded', function () {
         imagen: "images/miniPostres.jpg"
     
       }, {
-        id: 11,
+        id: 10,
         nombre: "Pernil de Pollo",
         precio: 11000,
         detalle: "Pernil de Pollo al Horno en Salsa o en Verduras. Acompañado de Ensalada y un Acompañante  x $11.000",
         imagen: "images/PernilPollo.jpg"
       }, {
-        id: 12,
+        id: 11,
         nombre: "Picada Marinera",
         precio: 100000,
         detalle: "Camaron, Calamar, Cangrejo Apanados Acompañados de Papas a la Francesa con Salsas y Ajies",
         imagen: "images/PicadaMarinera.jpg"
     
       }, {
-        id: 13,
+        id: 12,
         nombre: "Cazuela de Mariscos o Camaron",
         precio: 120000,
         detalle: "Cazuela de Mariscos o Camaron Grande Acompañada de Arroz Coco, Tostadas de Platano o Papas a la Francesa para 5 Personas x $135.000",
         imagen: "images/Cazuela.jpg"
     
-      }// {
-        //id: 15,
-        //nombre: "Pernil de Pollo",
-        //precio: 11000,
-        //detalle: "Pernil de Pollo al Horno en Salsa o en Verduras. Acompañado de Ensalada y un Acompañante  x $11.000",
-        //imagen: "images/PernilPollo.jpg"
+      }, {
+        id: 13,
+        nombre: "Trucha Camaronera",
+        precio: 20000,
+        detalle: "Trucha en salsa de camarones, acompañada de Ensalada y un Acompañante x $20.000",
+        imagen: "images/TruchaCama.PNG"
+        
+    },{
+    id: 14,
+    nombre: "Triple de Camaron",
+    precio: 30000,
+    detalle: "Camaron en 3 presentaciones sudado, apanado y en salsa ajillo, acompañado de ensalada y un Acompañante x $14.500",
+    imagen: "images/4.PNG"
+ 
+   },{
+  id: 15,
+  nombre: "Salmon",
+  precio: 30000,
+  detalle: "Salomon a la plancha o en una salsa de tu eleccion, acompañado de Ensalada y un Acompañante x $30.000",
+  imagen: "images/6.PNG"
+
+ },{
+id: 16,
+nombre: "Lomo President",
+precio: 15500,
+detalle: "Lomo de res relleno de verduras en salsa de tu eleccion y acompañado de Ensalada y un Acompañante x $14.500",
+imagen: "images/11.PNG"
+
+},{
+id: 17,
+nombre: "Arroz Chaufa",
+precio: 18000,
+detalle: "Arroz chaufa compuesto de camaron, calamar, pescado, mejillon y pulpo x $18.000",
+imagen: "images/Chaufa.png"
+
+}
+,{
+  id: 18,
+  nombre: "Arroz Marinero",
+  precio: 18000,
+  detalle: "Arroz marinero con camaron, calamar, mejillones, pulpo, pescado y verduras x $18.000",
+  imagen: "images/ArrozMarineros.png"
+  
+  }
+  ,{
+id: 19,
+nombre: "Bagre",
+precio: 15000,
+detalle: "Presa de bagre sudada acompañada de Ensalada y un Acompañante x $15.000",
+imagen: "images/BagreSu.png"
+
+}
+,{
+  id: 20,
+  nombre: "Bagre Frito",
+  precio: 15000,
+  detalle: "Presa de bagre frita acompañada de Ensalada y un Acompañante x $15.00",
+  imagen: "images/BagreFritos.png"
+  
+  }
+,{
+id: 21,
+nombre: "Filete de Tilapia",
+precio: 15000,
+detalle: "Filete de Tilapia a la plancha o en salsa, acompañado de Ensalada y un Acompañante x $15.000",
+imagen: "images/FiletePlanc.png"
+
+}  
+,{
+  id: 22,
+  nombre: "Lasaña Camaron y Espinaca",
+  precio: 15000,
+  detalle: "Lasaña de camarones y espinaca en salsa de queso, acompañada de pan frances o papas a la francesa, o tostadas de platano x $15.000",
+  imagen: "images/lasañaEspi.png"
+  
+  }
+  ,{
+    id: 23,
+    nombre: "lomo Cran Berry",
+    precio: 12000,
+    detalle: "Lomo de cerdo en salsa Cran Berry, Acompañado de Ensalada y un Acompañante x $12.000",
+    imagen: "images/LomoCranBe.png"
     
-      //}
-       // id: 17,
-        //nombre: "Chuleta de Pescado",
-        //precio: 14500,
-        //detalle: "Chuleta de Filete de Tilapia Acompañada de Ensalada y un Acompañante x $14.500",
-        //imagen: "images/ChulePez.jpg"
+    }
+,{
+id: 24,
+nombre: "Pollo a la Naranja",
+precio: 11000,
+detalle: "Pollo a la naranja, Acompañado de Ensalada y un Acompañante x $11.000",
+imagen: "images/imagenesListasP/1.PNG"
+
+}
+,{
+  id: 25,
+  nombre: "Trucha Ahumada",
+  precio: 14500,
+  detalle: "Trucha Ahumada, Acompañada de Ensalada y un Acompañante x $14.500",
+  imagen: "images/truchaHumo.PNG"
+  
+  },{
+    id: 26,
+    nombre: "Filete en champiñones",
+    precio: 12000,
+    detalle: "Filete de pollo en salsa champiñones, acompañado de Ensalada y un Acompañante x $14.500",
+    imagen: "images/imagenesListasP/FileteChampi.PNG"
     
-      //}
-     // nombre: "Arroz Marinero",
-     // precio: 100000,
-      //detalle: "Arroz Marinero Compuesto de Camaron, Calamar, Pulpo, Pescado y Cangrejo,  Acompañado de Tostadas de Platano o Papas a la Francesa y Aji, para 5 Personas x $100.000",
-      //imagen: "images/ArrozMar.jpg"
-    
-    
-    ];
+    }
+
+
+]
     
     
       var contadorCarrito = 0;
