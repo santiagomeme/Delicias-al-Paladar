@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
         id: 2,
         nombre: "Filete de Pollo relleno ",
         precio: 11000,
-        detalle: "Rellenos: Verduras Salteadas, Hawallano, Verduras Agridulces, Maduro y Queso, Acompañados de Salsa",
+        detalle: "Rellenos: Verduras Salteadas, Hawallano, Verduras Agridulces, Maduro y Queso, Acompañados de Salsa, un acompañante y una ensalada",
         imagen: "images/filete-relleno.jpg"
     
       },{
@@ -24,9 +24,9 @@ document.addEventListener('DOMContentLoaded', function () {
     
       }, {
         id: 4,
-        nombre: "Cenas con Rollo de Pollo",
-        precio: 100000,
-        detalle: "Rollo de Pollo Relleno de: Verduras Salteadas, Hawallano, Verduras Agridulces, Maduro y Queso, Acompañados de Salsa. Acompañadp de Ensalada, y un Acompañante para 10 Personas x $100.000",
+        nombre: "Rollo de Pollo Relleno",
+        precio: 110000,
+        detalle: "Rollo de Pollo Relleno de: Verduras Salteadas, Hawallano, Verduras Agridulces, Maduro y Queso, Acompañados de Salsa. Acompañadp de Ensalada, y un Acompañante para 10 Personas x $110.000",
         imagen: "images/cenaRollo.jpg"
     
       }, {
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
         id: 6,
         nombre: "Comida Rapida",
         precio: 6000,
-        detalle: "Hamburguesa Tradicional $10000 , super Cronch 13000$ ,Hamburguesa Infantil $, Perros $ ,Perro Infantil $ , Snaks de Pollo $ 8000, Lasagñas $12000 , Quesadillas $8000 , Alitas $ 10000 ",
+        detalle: "Hamburguesa Tradicional $10.500, pollo $8.500 , pollo super Cronch $13.000 ,Hamburguesa Infantil res $8.500, Hamburguesa Infantil pollo $7.000, Perros $7.500 ,Perro Infantil $ 5.500, Snaks de Pollo $ 8.000, Lasañas $15.000 , Quesadillas $8.000 , Alitas en salsa $ 11.000 ",
         imagen: "images/comidaRapida.jpg"
     
       }, {
@@ -66,20 +66,20 @@ document.addEventListener('DOMContentLoaded', function () {
       }, {
         id: 10,
         nombre: "Pernil de Pollo",
-        precio: 11000,
-        detalle: "Pernil de Pollo al Horno en Salsa o en Verduras. Acompañado de Ensalada y un Acompañante  x $11.000",
+        precio: 12000,
+        detalle: "Pernil de Pollo al Horno en Salsa o en Verduras. Acompañado de Ensalada y un Acompañante  x $12.000",
         imagen: "images/PernilPollo.jpg"
       }, {
         id: 11,
         nombre: "Picada Marinera",
-        precio: 100000,
-        detalle: "Camaron, Calamar, Cangrejo Apanados Acompañados de Papas a la Francesa con Salsas y Ajies",
+        precio: 30000,
+        detalle: "Camaron, Calamar mejillon langostino pescado y Cangrejo Apanados, Acompañados de Papas a la Francesa con Salsas y Ajies",
         imagen: "images/PicadaMarinera.jpg"
     
       }, {
         id: 12,
         nombre: "Cazuela de Mariscos o Camaron",
-        precio: 120000,
+        precio: 23000,
         detalle: "Cazuela de Mariscos o Camaron Grande Acompañada de Arroz Coco, Tostadas de Platano o Papas a la Francesa para 5 Personas x $135.000",
         imagen: "images/Cazuela.jpg"
     
@@ -94,28 +94,28 @@ document.addEventListener('DOMContentLoaded', function () {
     id: 14,
     nombre: "Triple de Camaron",
     precio: 30000,
-    detalle: "Camaron en 3 presentaciones sudado, apanado y en salsa ajillo, acompañado de ensalada y un Acompañante x $14.500",
+    detalle: "Camaron en 3 presentaciones sudado, apanado y en salsa ajillo, acompañado de ensalada y un Acompañante x $30.000",
     imagen: "images/4.PNG"
  
    },{
   id: 15,
   nombre: "Salmon",
   precio: 30000,
-  detalle: "Salomon a la plancha o en una salsa de tu eleccion, acompañado de Ensalada y un Acompañante x $30.000",
+  detalle: "Salmon a la plancha o en una salsa de tu eleccion, acompañado de Ensalada y un Acompañante x $30.000",
   imagen: "images/6.PNG"
 
  },{
 id: 16,
 nombre: "Lomo President",
 precio: 15500,
-detalle: "Lomo de res relleno de verduras en salsa de tu eleccion y acompañado de Ensalada y un Acompañante x $14.500",
+detalle: "Lomo de res relleno de verduras en salsa de tu eleccion y acompañado de Ensalada y un Acompañante x $15.500",
 imagen: "images/11.PNG"
 
 },{
 id: 17,
 nombre: "Arroz Chaufa",
 precio: 18000,
-detalle: "Arroz chaufa compuesto de camaron, calamar, pescado, mejillon y pulpo x $18.000",
+detalle: "Arroz chaufa compuesto de camaron, calamar, pescado, mejillon, pulpo, verduras, tortilla de huevo y rices x $18.000",
 imagen: "images/Chaufa.png"
 
 }
@@ -154,8 +154,8 @@ imagen: "images/FiletePlanc.png"
 ,{
   id: 22,
   nombre: "Lasaña Camaron y Espinaca",
-  precio: 15000,
-  detalle: "Lasaña de camarones y espinaca en salsa de queso, acompañada de pan frances o papas a la francesa, o tostadas de platano x $15.000",
+  precio: 18000,
+  detalle: "Lasaña de camarones y espinaca en salsa de queso, acompañada de pan frances o papas a la francesa, o tostadas de platano x $18.000",
   imagen: "images/lasañaEspi.png"
   
   }
@@ -186,7 +186,7 @@ imagen: "images/imagenesListasP/1.PNG"
     id: 26,
     nombre: "Filete en champiñones",
     precio: 12000,
-    detalle: "Filete de pollo en salsa champiñones, acompañado de Ensalada y un Acompañante x $14.500",
+    detalle: "Filete de pollo en salsa champiñones, acompañado de Ensalada y un Acompañante x $12.000",
     imagen: "images/imagenesListasP/FileteChampi.PNG"
     
     }
@@ -200,7 +200,7 @@ imagen: "images/imagenesListasP/1.PNG"
     
       const productoCatalogoHTML = (producto) => {
         return `
-          <div class="col-md-3 productoTam">
+          <div class="productoTam">
             <div class="card">
               <img src="${producto.imagen}" class="card-img-top"/>
               <div class="card-body">
@@ -530,6 +530,8 @@ const botonesCarrito = () => {
           <h5 class="card-title">${producto.nombre}</h5>
           <p class="card-text">Precio: ${producto.precio}</p>
           <p class="card-text">${producto.detalle}</p>
+        <button id="btn-catalogo-${producto.id}" class="btn btn-success">Agregar</button>
+
         </div>
       `;
       panelBusqueda.appendChild(card);
