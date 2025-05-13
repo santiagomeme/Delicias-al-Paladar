@@ -209,8 +209,8 @@ imagen: "images/1.png"
                 <div id="detalle-${producto.id}" class="detalle" style="display: none;">
                   <p>Detalle del Producto: ${producto.detalle}</p>
                 </div>
-                <button id="btn-catalogo-${producto.id}" class="btn btn-success">Agregar</button>
-                <button id="btn-detalle-${producto.id}" class="btn btn-info">Detalles</button>
+                <button id="btn-catalogo-${producto.id}" class="btn">Agregar</button>
+                <button id="btn-detalle-${producto.id}" class="btn">Detalles</button>
               </div>
             </div>
           </div>`;
