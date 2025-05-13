@@ -88,28 +88,28 @@ document.addEventListener('DOMContentLoaded', function () {
         nombre: "Trucha Camaronera",
         precio: 20000,
         detalle: "Trucha en salsa de camarones, acompañada de Ensalada y un Acompañante x $20.000",
-        imagen: "images/TruchaCama.PNG"
+        imagen: "images/truchaCama.PNG"
         
     },{
     id: 14,
     nombre: "Triple de Camaron",
     precio: 30000,
     detalle: "Camaron en 3 presentaciones sudado, apanado y en salsa ajillo, acompañado de ensalada y un Acompañante x $30.000",
-    imagen: "images/4.PNG"
+    imagen: "images/4.png"
  
    },{
   id: 15,
   nombre: "Salmon",
   precio: 30000,
   detalle: "Salmon a la plancha o en una salsa de tu eleccion, acompañado de Ensalada y un Acompañante x $30.000",
-  imagen: "images/6.PNG"
+  imagen: "images/6.png"
 
  },{
 id: 16,
 nombre: "Lomo President",
 precio: 15500,
 detalle: "Lomo de res relleno de verduras en salsa de tu eleccion y acompañado de Ensalada y un Acompañante x $15.500",
-imagen: "images/11.PNG"
+imagen: "images/11.png"
 
 },{
 id: 17,
@@ -172,7 +172,7 @@ id: 24,
 nombre: "Pollo a la Naranja",
 precio: 11000,
 detalle: "Pollo a la naranja, Acompañado de Ensalada y un Acompañante x $11.000",
-imagen: "images/imagenesListasP/1.PNG"
+imagen: "images/1.png"
 
 }
 ,{
@@ -180,14 +180,14 @@ imagen: "images/imagenesListasP/1.PNG"
   nombre: "Trucha Ahumada",
   precio: 14500,
   detalle: "Trucha Ahumada, Acompañada de Ensalada y un Acompañante x $14.500",
-  imagen: "images/truchaHumo.png"
+  imagen: "images/TruchaHumo.png"
   
   },{
     id: 26,
     nombre: "Filete en champiñones",
     precio: 12000,
     detalle: "Filete de pollo en salsa champiñones, acompañado de Ensalada y un Acompañante x $12.000",
-    imagen: "images/imagenesListasP/FileteChampi.PNG"
+    imagen: "images/FileteChampi.png"
     
     }
 
