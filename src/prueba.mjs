@@ -180,7 +180,7 @@ imagen: "images/imagenesListasP/1.PNG"
   nombre: "Trucha Ahumada",
   precio: 14500,
   detalle: "Trucha Ahumada, Acompañada de Ensalada y un Acompañante x $14.500",
-  imagen: "images/truchaHumo.PNG"
+  imagen: "images/truchaHumo.png"
   
   },{
     id: 26,
