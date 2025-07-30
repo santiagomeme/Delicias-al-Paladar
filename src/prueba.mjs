@@ -194,6 +194,7 @@ imagen: "images/1.png"
 
 ]
     
+
     
       var contadorCarrito = 0;
       var carrito = [];
@@ -209,7 +210,7 @@ imagen: "images/1.png"
                 <div id="detalle-${producto.id}" class="detalle" style="display: none;">
                   <p>Detalle del Producto: ${producto.detalle}</p>
                 </div>
-                <button id="btn-catalogo-${producto.id}" class="btn">Agregar</button>
+                <button id="btn-catalogo-${producto.id}" class="btn" >Agregar</button>
                 <button id="btn-detalle-${producto.id}" class="btn">Detalles</button>
               </div>
             </div>
@@ -478,15 +479,36 @@ const botonesCarrito = () => {
 
 
 
-  function toggleVisibility(id) {
-    var element = document.getElementById(id);
-    if (element.style.display === "none") {
-        element.style.display = "block";
-    } else {
-        element.style.display = "none";
+function toggleVisibility(id) {
+  const element = document.getElementById(id);
+
+  const isVisible = element.style.display === "block";
+
+  // Oculta todos los paneles si alguno ya está visible
+  document.querySelectorAll('.opciones-panel').forEach(panel => {
+    panel.style.display = "none";
+  });
+
+  // Muestra el que corresponde si estaba oculto
+  if (!isVisible) {
+    element.style.display = "block";
+
+    // Escucha el clic fuera del panel
+    setTimeout(() => {
+      document.addEventListener("click", outsideClickListener);
+    }, 10);
+  } else {
+    document.removeEventListener("click", outsideClickListener);
+  }
+
+  function outsideClickListener(event) {
+    if (!element.contains(event.target) && !event.target.matches('.menu-button')) {
+      element.style.display = "none";
+      document.removeEventListener("click", outsideClickListener);
     }
   }
-  
+}
+
   // Hacer que la función esté disponible globalmente
   window.toggleVisibility = toggleVisibility;
 
@@ -634,9 +656,40 @@ const botonesCarrito = () => {
     });
     
 
+
+
+      
+    //funcion para el efecto  de los paneles de las opciones
+
+    function toggleVisibility(id) {
+  const panel = document.getElementById(id);
+  const isVisible = panel.classList.contains("visible");
+
+  // Oculta todos los demás paneles
+  document.querySelectorAll("#opcionesProteina, #opcionesSalsas, #opcionesAcompa, #opcionesRapida, #opcionesEnsalada").forEach(p => {
+    p.classList.remove("visible");
+  });
+
+  if (!isVisible) {
+    panel.classList.add("visible");
+
+    setTimeout(() => {
+      document.addEventListener("click", outsideClickListener);
+    }, 10);
+  } else {
+    document.removeEventListener("click", outsideClickListener);
+  }
+
+  function outsideClickListener(e) {
+    if (!panel.contains(e.target) && !e.target.matches(".menu-button")) {
+      panel.classList.remove("visible");
+      document.removeEventListener("click", outsideClickListener);
+    }
+  }
+}
+
+
     
     })
     
-    
-      
     
