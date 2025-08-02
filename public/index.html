@@ -89,7 +89,10 @@
 
            
    <div id="panelBusqueda">
+          <h2>Resultados de busqueda</h2>
+
     <div id="resultadoBusqueda">
+      <p id="textResult">Resultados de busqueda</p>
         <!-- Aquí se mostrarán los resultados de la búsqueda -->
     </div>
 </div>
@@ -147,8 +150,6 @@
        <div class="button-container">
 
           <button class="menu-button" type="button" onclick="toggleVisibility('opcionesProteina')"> Proteínas</button>
-          
-          
           
           <div id="opcionesProteina"class="opciones-panel">
             <div class="opciones-content">
@@ -320,20 +321,19 @@
     <div id="opcionesEnsalada"class="opciones-panel">
       <div class="opciones-content">
         <h2>Ensaladas</h2>
-     <ul>
-        <li><strong>CRIOLLA</strong> Lechuga, Aguacate, Cebolla, Tomate, Cilantro, Limon</li>
-        <li><strong>TROPICAL</strong> Lechuga, Piña, Mango, Fresa, Manzana, Zanahoria, Repollo </li>
-        <li><strong>SILVESTRE</strong> Lechuga, Repollo Morado, Pepino, Zanahoria, Vinagreta de Fruta</li>
-        <li><strong>PRIMAVERA</strong> Lechuga, Apio Caladao, Tomate, Zanahoria, Maiz Tierno, vinagreta de apio</li>
-        <li><strong>ROJA</strong> Remolacha, zanahoria, cebolla, crema de leche, mayonesa</li>
-        <li><strong>CLASICA</strong> Repollo, piña, Pasas, crema de leche, lechera</li>     
-        <li><strong>FUSION</strong> Lechuga, Fresa,Zanahoria, Calabazin Aarillo, Calado de Mango, </li>
+      <ul>
+        <li>CRIOLLA Lechuga, Aguacate, Cebolla, Tomate, Cilantro, Limon</li>
+        <li>TROPICAL Lechuga, Piña, Mango, Fresa, Manzana, Zanahoria, Repollo </li>
+        <li>SILVESTRE Lechuga, Repollo Morado, Pepino, Zanahoria, Vinagreta de Fruta</li>
+        <li>PRIMAVERA Lechuga, Apio Caladao, Tomate, Zanahoria, Maiz Tierno, vinagreta de apio</li>
+        <li>ROJA Remolacha, zanahoria, cebolla, crema de leche, mayonesa</li>
+        <li>CLASICA Repollo, piña, Pasas, crema de leche, lechera</li>     
+        <li>FUSION Lechuga, Fresa,Zanahoria, Calabazin Aarillo, Calado de Mango</li>
       </ul>
     </div>
     </div>
   </div>
-          
-     
+      
       <div id="detalleProductoPanel" class="detalle oculto">
         <p>${producto.detalle}</p>
 

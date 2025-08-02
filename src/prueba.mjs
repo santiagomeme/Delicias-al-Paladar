@@ -657,39 +657,49 @@ function toggleVisibility(id) {
     
 
 
-
-      
-    //funcion para el efecto  de los paneles de las opciones
-
-    function toggleVisibility(id) {
+function toggleVisibility(id) {
   const panel = document.getElementById(id);
-  const isVisible = panel.classList.contains("visible");
+  const button = document.querySelector(`[onclick="toggleVisibility('${id}')"]`);
+  const wasVisible = panel.classList.contains("visible");
 
-  // Oculta todos los demás paneles
-  document.querySelectorAll("#opcionesProteina, #opcionesSalsas, #opcionesAcompa, #opcionesRapida, #opcionesEnsalada").forEach(p => {
+  // Oculta todos los paneles
+  document.querySelectorAll(".opciones-panel").forEach(p => {
     p.classList.remove("visible");
+    p.style.display = "none";
   });
 
-  if (!isVisible) {
-    panel.classList.add("visible");
+  if (!wasVisible) {
+    // Posicionar el panel justo debajo del botón
+    const rect = button.getBoundingClientRect();
+    panel.style.position = "absolute";
+    panel.style.top = `${rect.bottom + window.scrollY + 10}px`; // 10px debajo del botón
+const panelWidth = panel.offsetWidth;
+let left = rect.left + window.scrollX + rect.width / 2 - panelWidth / 2;
 
-    setTimeout(() => {
-      document.addEventListener("click", outsideClickListener);
-    }, 10);
+// Limita para que no se salga de la pantalla
+left = Math.max(10, Math.min(left, window.innerWidth - panelWidth - 10));
+
+panel.style.left = `${left}px`;
+
+    panel.classList.add("visible");
+    panel.style.display = "block";
+
+    document.addEventListener("click", outsideClickListener);
   } else {
+    panel.classList.remove("visible");
+    panel.style.display = "none";
     document.removeEventListener("click", outsideClickListener);
   }
 
   function outsideClickListener(e) {
     if (!panel.contains(e.target) && !e.target.matches(".menu-button")) {
       panel.classList.remove("visible");
+      panel.style.display = "none";
       document.removeEventListener("click", outsideClickListener);
     }
   }
 }
 
-
-    
     })
     
-    
+  

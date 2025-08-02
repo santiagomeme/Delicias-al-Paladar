@@ -194,6 +194,7 @@ imagen: "images/1.png"
 
 ]
     
+
     
       var contadorCarrito = 0;
       var carrito = [];
@@ -478,15 +479,36 @@ const botonesCarrito = () => {
 
 
 
-  function toggleVisibility(id) {
-    var element = document.getElementById(id);
-    if (element.style.display === "none") {
-        element.style.display = "block";
-    } else {
-        element.style.display = "none";
+function toggleVisibility(id) {
+  const element = document.getElementById(id);
+
+  const isVisible = element.style.display === "block";
+
+  // Oculta todos los paneles si alguno ya está visible
+  document.querySelectorAll('.opciones-panel').forEach(panel => {
+    panel.style.display = "none";
+  });
+
+  // Muestra el que corresponde si estaba oculto
+  if (!isVisible) {
+    element.style.display = "block";
+
+    // Escucha el clic fuera del panel
+    setTimeout(() => {
+      document.addEventListener("click", outsideClickListener);
+    }, 10);
+  } else {
+    document.removeEventListener("click", outsideClickListener);
+  }
+
+  function outsideClickListener(event) {
+    if (!element.contains(event.target) && !event.target.matches('.menu-button')) {
+      element.style.display = "none";
+      document.removeEventListener("click", outsideClickListener);
     }
   }
-  
+}
+
   // Hacer que la función esté disponible globalmente
   window.toggleVisibility = toggleVisibility;
 
@@ -634,9 +656,50 @@ const botonesCarrito = () => {
     });
     
 
-    
+
+function toggleVisibility(id) {
+  const panel = document.getElementById(id);
+  const button = document.querySelector(`[onclick="toggleVisibility('${id}')"]`);
+  const wasVisible = panel.classList.contains("visible");
+
+  // Oculta todos los paneles
+  document.querySelectorAll(".opciones-panel").forEach(p => {
+    p.classList.remove("visible");
+    p.style.display = "none";
+  });
+
+  if (!wasVisible) {
+    // Posicionar el panel justo debajo del botón
+    const rect = button.getBoundingClientRect();
+    panel.style.position = "absolute";
+    panel.style.top = `${rect.bottom + window.scrollY + 10}px`; // 10px debajo del botón
+const panelWidth = panel.offsetWidth;
+let left = rect.left + window.scrollX + rect.width / 2 - panelWidth / 2;
+
+// Limita para que no se salga de la pantalla
+left = Math.max(10, Math.min(left, window.innerWidth - panelWidth - 10));
+
+panel.style.left = `${left}px`;
+
+    panel.classList.add("visible");
+    panel.style.display = "block";
+
+    document.addEventListener("click", outsideClickListener);
+  } else {
+    panel.classList.remove("visible");
+    panel.style.display = "none";
+    document.removeEventListener("click", outsideClickListener);
+  }
+
+  function outsideClickListener(e) {
+    if (!panel.contains(e.target) && !e.target.matches(".menu-button")) {
+      panel.classList.remove("visible");
+      panel.style.display = "none";
+      document.removeEventListener("click", outsideClickListener);
+    }
+  }
+}
+
     })
     
-    
-      
-    
+  

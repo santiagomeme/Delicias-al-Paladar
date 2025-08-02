@@ -60,13 +60,31 @@ body{
 }
 
 .container-fluid {
-margin-top: 60px; /* Agrega un margen superior para separar el contenido */
+margin-top: 100px; /* Agrega un margen superior para separar el contenido */
 width:100%;
  padding-left: 0 !important;
   padding-right: 0 !important;
 margin-right:0px!important;
-
+margin-left:0px!important;
 }
+
+
+@media (max-width:500px){
+.container-fluid {
+margin-top: 250px; /* Agrega un margen superior para separar el contenido */
+}
+}
+@media (max-width:425px){
+.container-fluid {
+margin-top: 100px; /* Agrega un margen superior para separar el contenido */
+}
+}
+@media (max-width:320px){
+.container-fluid {
+margin-top: -500px; /* Agrega un margen superior para separar el contenido */
+}
+}
+
 body {
 flex-direction: column; /* Organiza los elementos en columnas */
 background-color:#000000;
@@ -135,7 +153,6 @@ font-size: 20px; /* Restaura el tamaño de fuente original para pantallas más g
       z-index: 1000;
       border: none;
       border-color: #cfcfcf;
-      box-shadow: 0px 2px 4px rgba(7, 119, 54, 0.2);
   }
 
 
@@ -164,7 +181,7 @@ background: none!important;
 
 #catalogo{
 flex: 1; /* El catálogo ocupará todo el espacio disponible */
-margin-top: 100px;
+margin-top: 0px;
 width: 100%;
 gap:20px;
 background:transparent;
@@ -178,16 +195,11 @@ margin-right:0px!important;
 .panel-item img {
 width: 200px;  /* Ancho de 20 píxeles */
 height: 200px; /* Altura de 20 píxeles */
-background: none!important; 
+background: transparent!important; 
 
 }
 
-.container-flex {
-  width: 100%;
-  margin-right:0px!important;
-  background: none!important; 
 
-}
 
 
 #container {
@@ -204,7 +216,7 @@ background: none!important;
 #catalogo .row {
 margin-bottom: 10px;
 width: 100%;
-margin-top:100px;
+margin-top:-300px;
 padding-left: 0 !important;
 padding-right: 0 !important;
 z-index:1000;
@@ -218,7 +230,7 @@ background: none!important;
   padding: 20px;
   color: #ffd700;         /* Dorado brillante */
   margin-right:0px!important;
-
+  border:none!important;
 }
 #catalogo {
   width: 100%;
@@ -250,7 +262,7 @@ background-color:transparent!important;
 .productoTam {
   flex: 1 1 calc(25% - 20px); /* 4 por fila, menos el gap */
   max-width: calc(25% - 20px);
-  min-width: 230px; /* evita que se encojan demasiado */
+  min-width: 250px; /* evita que se encojan demasiado */
 gap:20px;
 }
 
@@ -492,7 +504,6 @@ justify-content: space-between;
 width: 50%;
 margin: 0 auto; /* Ajusta el margen derecho para dejar espacio al panel derecho */
 max-width: 1200px; ; /* Resta el ancho del panel derecho al 100% del ancho total */
-margin-bottom: 1px;
 }
 
 
@@ -500,7 +511,7 @@ margin-bottom: 1px;
 
 #top-panel {
   background-color: #000 !important;
-  box-shadow: 0 5px 15px -5px #FFD700; /* solo abajo */
+  box-shadow: 0 5px 15px -5px #FFD700!important; /* solo abajo */
   width: 100% !important;
   height: 60px;
 }
@@ -530,17 +541,29 @@ max-width: 100%!important; /* Ancho máximo del panel */
 @media screen and (max-width: 768px) {
 .bottom-panel {
 padding: 2%; /* Reducir el espacio interior */
-height: 300px!important;
-  box-shadow: 0 5px 15px -5px #FFD700!important; /* solo abajo */
+height: 500px!important;
 
 }
-
 .panel-content {
 font-size: 12px; /* Reducir el tamaño de la letra */
 }
 }
-
-
+/* Media query para dispositivos con un ancho máximo de 768px */
+@media screen and (max-width: 500px) {
+.bottom-panel {
+margin-top: 100px;
+margin-bottom: -300px;
+height: 300px!important;
+}
+}
+/* Media query para dispositivos con un ancho máximo de 768px */
+@media screen and (max-width: 350px) {
+.bottom-panel {
+margin-top: -450px;
+margin-bottom: -400px;
+height: 300px!important;
+}
+}
 
 
 
@@ -706,7 +729,7 @@ overflow-y: auto; /* Agrega una barra de desplazamiento vertical si el contenido
 
 #panelBusqueda {
 overflow-y: auto;  
-background-color: #fff;
+background-color: transparent;
 z-index: 1000;
 display: none;
 max-height: 500px; /* Establece la altura máxima para la lista de resultados */
@@ -719,28 +742,34 @@ margin-bottom: 100px;
 padding-top: 10px;
 margin: 0 auto; /* Centra horizontalmente */
 transform: translateX(-50%, -50%);
-background-color: rgb(0, 0, 0);
 margin-top: 200px;
 box-shadow: 0 7px 7px 7px rgb(255, 238, 5);
 gap:20px;
+border-radius:15px;
 }
 @media screen and (max-width: 700px) {
 
 #panelBusqueda {
   margin-top:300px;
-
+  margin-bottom: 100px;
+  max-width: 200px !important;
+  z-index: 9999!important;
+    position: fixed !important;
 }
 }
 @media screen and (max-width: 500px) {
- #panelBusqueda{
-  margin-top: -1900%;
-  width: 230px;
+  #resultadoBusqueda,
+  #panelBusqueda{
+  max-width: 200px !important;
+  z-index: 9999!important;
+    position: relative !important;
+
  }
 }
 #panelBusqueda ul {
 max-height: 300px; /* Establece la altura máxima para la lista de resultados */
 overflow-y: auto; /* Agrega una barra de desplazamiento vertical si es necesario */
-max-width: 300px;
+max-width: 200px;
 margin-left: 100px;
 margin-bottom: 20px;
 }
@@ -958,10 +987,21 @@ background-color:transparent!important;
 #opcionesAcompa, 
 #opcionesRapida,
 #opcionesEnsalada {
-display: none; /* Oculta inicialmente */
-text-align: center;
-
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  text-align: center;
 }
+.visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+}
+
+
+
+
 
 .opcionesProteina,
 .opcionesSalsas, /* Corregido el selector */
@@ -980,8 +1020,30 @@ height: auto;
 justify-content: center;
 width: 100%;
 background-color: #ffffff;
-margin-bottom: 20px;
+margin:0 auto;
 }
+
+@media (max-width:425px){
+.opcionesProteina,
+.opcionesSalsas, /* Corregido el selector */
+.opcionesAcompa, /* Corregido el selector */
+.opcionesRapida,
+.opcionesEnsalada {margin-top: 100px; /* Agrega un margen superior para separar el contenido */
+
+top: 50%!important;
+}
+}
+@media (max-width:360px){
+.opcionesProteina,
+.opcionesSalsas, /* Corregido el selector */
+.opcionesAcompa, /* Corregido el selector */
+.opcionesRapida,
+.opcionesEnsalada {margin-top: -500px; /* Agrega un margen superior para separar el contenido */
+margin-top: 40%!important;
+margin-bottom: -600px;
+}
+}
+
 
 
 ul {
@@ -1118,7 +1180,7 @@ flex-wrap: wrap; /* Permite que los botones se envuelvan a la siguiente línea s
 .opciones-panel {
 position: absolute;
 top: 980px; /* Ajusta según la posición deseada */
-left: 50%;
+margin: 0 auto;;
 transform: translateX(-50%);
 backdrop-filter: blur(10px); /* Borroso elegante */
 background-color: rgba(0, 0, 0, 0.4); /* Fondo oscuro translúcido */border-radius: 15px;
@@ -1137,7 +1199,7 @@ border: 1px solid #FFD700; /* Dorado brillante */
 
 @media screen and (max-width: 400px) {
   .opciones-panel{
-    top: 1000px; 
+    top: 1020px; 
     width: 250px;
   }
 
